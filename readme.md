@@ -2,15 +2,17 @@
 
 _Seguimiento_ es un Sistema Web realizado para el __Programa de Seguimiento a Graduados__ de la __Universidad Nacional de Ingenieria - UNI__ de _Managua, Nicaragua_. El proposito del desarrollo de sistema es la culminacion de estudio mediante monografia "_Reingenieria de Sistema de Seguimiento a Gaduados_".
 
+> Guia basada totalmente en Fedora 24 para ser ejecutada.
+
 1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
+  1. Ordered sub-list
 4. And another item.
 
-⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
+   You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
 
-⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
-⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
+   To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
+   Note that this line is separate, but within the same paragraph.⋅⋅
+   (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
 
 
 ## Puesta en marcha de _Seguimiento_
