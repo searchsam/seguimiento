@@ -28,8 +28,8 @@ Para poner en marcha el sistema es necesario satisfacer unos pre-requisitos:
 
 ### 2. [PHP](http://php.net/)
 
-    $ su -                                  # Cambiar a Usurio ROOT (Super Usuario / Usurio Administrador del Sistema)
-    # dnf install php php-common php-mysql php-gd php-cli php-mbstring  # Instalar Lenguaje PHP
+    $ su -                                  // Cambiar a Usurio ROOT (Super Usuario / Usurio Administrador del Sistema)
+    # dnf install php php-common php-mysql php-gd php-cli php-mbstring  // Instalar Lenguaje PHP
     
 Luego de instalar [PHP](http://php.net/) es recomendable reiniciar cualquier servicio relacionado ([Apache](https://www.apache.org/), [MariaDB](https://mariadb.org/)) a PHP y/o su funcionamiento:
 
@@ -84,13 +84,15 @@ Verificamos las versiones de [NodeJS](https://nodejs.org/es/) que tenemos instal
     $ su -                                  // Cambiar a Usurio ROOT (Super Usuario / Usurio Administrador del Sistema)
     # dnf install npm                       // Instalar el manejador de paquetes npm para NodeJS
     
-Al igual que [Composer](https://getcomposer.org/), [NPM](https://www.npmjs.com/) es un manejador de dependencias y hay que ejecutarlo desde la terminal (`$ npm install`) dentro de la carpeta del sistema. Asi que si acaba de clonar este repo lo mejor es que verifique su archivo _package.json_ y una ves conforme ejecute [Composer](https://getcomposer.org/) (`$ npm install`) dnetro de la carpeta donde se encuentra el archivo _package.json_.
+Al igual que [Composer](https://getcomposer.org/), [NPM](https://www.npmjs.com/) es un manejador de dependencias y hay que ejecutarlo desde la terminal (`$ npm install`) dentro de la carpeta del sistema. Asi que si acaba de clonar este repo lo mejor es que verifique su archivo _package.json_ y una ves conforme ejecute [Composer](https://getcomposer.org/) (`$ npm install`) dentro de la carpeta donde se encuentra el archivo _package.json_.
 
 ### 6. [Gulp](http://gulpjs.com/)
 
 Al ultimo pero no menos importante instalamos gulp para la compilacion y procesamiento de archivos css y suderivados (sass y less), como archivos javascript y su derivados (coffescript, vue, angular) y hacer el desarrollo mas agil y ordenado, como volver el sitio mas eficiente.
 
     $ npm install --global --save gulp-cli  // Instala gulp de manera global y perpetua
+    
+Cuando [Gulp](http://gulpjs.com/) ya este instalado se ejecuta desde la terminal (`$ gulp`) en la carpeta del sistema. [Gulp](http://gulpjs.com/) lee el archivo _gulpfile.js_ donde se encuentra su configuracion. Si acaba de clonar este repo lo mejor es que verifique su archivo _gulpfile.js_ y una ves conforme ejecute [Gulp](http://gulpjs.com/) (`$ gulp`) dentro de la carpeta donde se encuentra el archivo _gulpfile.js_.
 
 ## Contribuidores
 
