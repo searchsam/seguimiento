@@ -15,7 +15,7 @@ Instalacion global:
 
 ## Contribuidores
 
-[Samuel Jose Gutierrez Aviles](https://github.com/search-sam) y [Federico Alonso Matus Olivares](https://github.com/matusfede) quienes llevaron a cabo el desarrollo y la investigacion monografica
+[Samuel Jose Gutierrez Aviles](https://github.com/search-sam) y [Federico Alonso Matus Olivares](https://github.com/matusfede) quienes llevaron a cabo el desarrollo y la investigacion monografica.
 
 ## Licencia
 
