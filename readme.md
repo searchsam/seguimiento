@@ -6,7 +6,7 @@ Seguimiento es un Sistema Web realizado para el Programa de Seguimiento a Gradua
 
 Para poner en marcha el sistema es necesario satisfacer unos pre-requisitos:
 
-*Composer
+...* Composer
 
 ### 1. Composer
 
