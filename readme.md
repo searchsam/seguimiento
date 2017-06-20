@@ -63,6 +63,7 @@ Normalmente NVM no se puede instalar con tu manejador de paquetes debido a que d
     $ su -                                  // Cambiar a Usurio ROOT (Super Usuario / Usurio Administrador del Sistema)
     # dnf install curl                      // Instalar el gestor de descarga Curl (Es solo un pre-requisito para la descarga de archivos desde la consola, tambien se puede usar wget o algun otro.)
     # curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | NVM_DIR=/usr/local/nvm bash    // Instala NVM de manera global en el ambiente
+    # dnf install -y nodejs
     
 En este momento ya tenemos NVM instalado y listo para funcionar. Ahora instalaremos [NodeJS](https://nodejs.org/es/):
 
