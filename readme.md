@@ -29,7 +29,7 @@ Para poner en marcha el sistema es necesario satisfacer unos pre-requisitos:
 ### 2. [PHP](http://php.net/)
 
     $ su -                                  // Cambiar a Usurio ROOT (Super Usuario / Usurio Administrador del Sistema)
-    # dnf install php php-common php-mysql php-gd php-cli php-mbstring  // Instalar Lenguaje PHP
+    # dnf install php php-common php-pdo php-gd php-cli php-mbstring  // Instalar Lenguaje PHP
     
 Luego de instalar [PHP](http://php.net/) es recomendable reiniciar cualquier servicio relacionado ([Apache](https://www.apache.org/), [MariaDB](https://mariadb.org/)) a PHP y/o su funcionamiento:
 
