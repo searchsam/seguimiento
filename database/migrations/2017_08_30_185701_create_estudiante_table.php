@@ -28,7 +28,9 @@ class CreateEstudianteTable extends Migration
             $table->integer('usuario_id')->unsigned();
             $table->timestamps();
 
-            $table->primary('id_estudiante');
+            $table->foreign('tipo_estudiante_id')->references('id_tipo_estudiante')->on('tipo_estudiante');
+            $table->foreign('dato_profecional_id')->references('id_dato_profecional')->on('dato_profecional');
+            $table->foreign('usuario_id')->references('id_usuario')->on('usuario');
         });
     }
 

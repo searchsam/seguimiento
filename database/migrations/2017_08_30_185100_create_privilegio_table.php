@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipoEstudioTable extends Migration
+class CreatePrivilegioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateTipoEstudioTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_estudio', function (Blueprint $table) {
-            $table->increments('id_tipo_estudio');
-            $table->string('tipo_estudio');
+        Schema::create('privilegio', function (Blueprint $table) {
+            $table->increments('id_privilegio');
+            $table->string('privilegio');
             $table->timestamps();
-
-            $table->primary('id_tipo_estudio');
         });
     }
 
@@ -29,6 +27,6 @@ class CreateTipoEstudioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_estudio');
+        Schema::dropIfExists('privilegio');
     }
 }

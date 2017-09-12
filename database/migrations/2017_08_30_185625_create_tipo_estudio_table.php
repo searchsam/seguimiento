@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipoEstudianteTable extends Migration
+class CreateTipoEstudioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateTipoEstudianteTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_estudiante', function (Blueprint $table) {
-            $table->increments('id_tipo_estudiante');
-            $table->string('tipo_estudiante')->nullable();
+        Schema::create('tipo_estudio', function (Blueprint $table) {
+            $table->increments('id_tipo_estudio');
+            $table->string('tipo_estudio');
             $table->timestamps();
-
-            $table->primary('id_tipo_estudiante');
         });
     }
 
@@ -29,6 +27,6 @@ class CreateTipoEstudianteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_estudiante');
+        Schema::dropIfExists('tipo_estudio');
     }
 }

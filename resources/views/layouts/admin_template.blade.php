@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="UTF-8">
-        <title>{{ $page_title or "AdminLTE Dashboard" }}</title>
+        <title>{{ $page_title or "Seguimiento" }}</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
+        <!-- FavIcon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("img/favicon.png") }}">
+        <!-- Style -->
         <link href="{{ asset("css/app.css") }}" rel="stylesheet" type="text/css" />
         <!-- Font Awesome Icons -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -26,6 +27,8 @@
             <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <!-- Estilos de Seguimiento -->
+        <link href="{{ asset("css/seguimiento.css") }}" rel="stylesheet" type="text/css" />
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -72,6 +75,7 @@
         <script src="{{ asset ("js/app.js") }}"></script>
         <!-- AdminLTE App -->
         <script src="{{ asset ("js/AdminLTE.min.js") }}" type="text/javascript"></script>
-
+        <!-- Estilo de Seguimiento -->
+        <script src="{{ asset ("js/seguimiento.js") }}"></script>
     </body>
 </html>

@@ -1,95 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <title>{{ $page_title or "Seguimiento" }}</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-        <title>Laravel</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("img/favicon.png") }}">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <link href="{{ asset("css/app.css") }}" rel="stylesheet" type="text/css" />
+        <!-- Font Awesome Icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="{{ asset("css/seguimiento.css") }}" rel="stylesheet" type="text/css" />
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
+    <body id="login">
+        <form action="" method="POST" class="">
+            <div class="form-log-cont">
+                <div class="form-log-header">
+                    <img src="{{ asset("img/form-log-logo.png")}}" alt="">
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="form-log-body">
+                    <input type="text" name="user" id="user" placeholder="Usuario">
+                    <input type="password" name="password" id="password" placeholder="Contraseña">
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="form-log-footer">
+                    <button type="submit" class="btn btn-light form-log-btn">Acceder</button>
                 </div>
             </div>
-        </div>
+        </form>
+        <!-- REQUIRED JS SCRIPTS -->
+        <script src="{{ asset ("js/app.js") }}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ asset ("js/AdminLTE.min.js") }}" type="text/javascript"></script>
+        <!-- Estilo del Sistema -->
+        <script src="{{ asset ("js/seguimiento.js") }}"></script>
     </body>
 </html>

@@ -17,8 +17,6 @@ class CreateTipoOfertaTable extends Migration
             $table->increments('id_tipo_oferta');
             $table->string('tipo_oferta');
             $table->timestamps();
-
-            $table->primary('id_tipo_oferta');
         });
     }
 

@@ -19,7 +19,7 @@ class CreateFacultadTable extends Migration
             $table->integer('carrera_id')->unsigned();
             $table->timestamps();
 
-            $table->primary('id_facultad');
+            $table->foreign('carrera_id')->references('id_carrera')->on('carrera');
         });
     }
 

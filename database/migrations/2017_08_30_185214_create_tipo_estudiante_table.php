@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePrivilegioTable extends Migration
+class CreateTipoEstudianteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreatePrivilegioTable extends Migration
      */
     public function up()
     {
-        Schema::create('privilegio', function (Blueprint $table) {
-            $table->increments('id_privilegio');
-            $table->string('privilegio');
+        Schema::create('tipo_estudiante', function (Blueprint $table) {
+            $table->increments('id_tipo_estudiante');
+            $table->string('tipo_estudiante')->nullable();
             $table->timestamps();
-
-            $table->primary('id_privilegio');
         });
     }
 
@@ -29,6 +27,6 @@ class CreatePrivilegioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('privilegio');
+        Schema::dropIfExists('tipo_estudiante');
     }
 }

@@ -20,8 +20,6 @@ class CreateDetalleOfertaTable extends Migration
             $table->string('area');
             $table->string('cargo_oferta');
             $table->timestamps();
-
-            $table->primary('id_detalle_oferta');
         });
     }
 

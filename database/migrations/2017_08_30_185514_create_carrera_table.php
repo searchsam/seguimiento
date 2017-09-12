@@ -17,8 +17,6 @@ class CreateCarreraTable extends Migration
             $table->increments('id_carrera');
             $table->string('nombre_carrera');
             $table->timestamps();
-
-            $table->primary('id_carrera');
         });
     }
 

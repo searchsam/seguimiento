@@ -20,8 +20,6 @@ class CreateExperienciaLaboralTable extends Migration
             $table->integer('fecha_inicio_laboral');
             $table->integer('fecha_fin_laboral');
             $table->timestamps();
-
-            $table->primary('id_experiencia_laboral');
         });
     }
 

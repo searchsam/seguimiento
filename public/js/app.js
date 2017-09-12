@@ -773,7 +773,8 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(9);
-module.exports = __webpack_require__(40);
+__webpack_require__(40);
+module.exports = __webpack_require__(41);
 
 
 /***/ }),
@@ -798,10 +799,6 @@ window.Vue = __webpack_require__(35);
  */
 
 Vue.component('example', __webpack_require__(36));
-
-var app = new Vue({
-  el: '#app'
-});
 
 /***/ }),
 /* 10 */
@@ -41800,7 +41797,7 @@ var Component = __webpack_require__(37)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/home/sam/Documentos/mono/laralte/resources/assets/js/components/Example.vue"
+Component.options.__file = "/home/sam/Documentos/mono/PSG/seguimiento/resources/assets/js/components/Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -41811,9 +41808,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-38165f59", Component.options)
+    hotAPI.createRecord("data-v-e7898c2e", Component.options)
   } else {
-    hotAPI.reload("data-v-38165f59", Component.options)
+    hotAPI.reload("data-v-e7898c2e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -41974,12 +41971,18 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-38165f59", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-e7898c2e", module.exports)
   }
 }
 
 /***/ }),
 /* 40 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 41 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

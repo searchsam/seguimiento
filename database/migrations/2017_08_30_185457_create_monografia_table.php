@@ -21,8 +21,6 @@ class CreateMonografiaTable extends Migration
             $table->string('objetivo_general');
             $table->text('descripcion_monografia')->nullable();
             $table->timestamps();
-
-            $table->primary('id_monografia');
         });
     }
 

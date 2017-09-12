@@ -23,7 +23,7 @@ class CreateUsuarioTable extends Migration
             $table->integer('tipo_usuario_id')->unsigned();
             $table->timestamps();
 
-            $table->primary('id_usuario');
+            $table->foreign('tipo_usuario_id')->references('id_tipo_usuario')->on('tipo_usuario');
         });
     }
 

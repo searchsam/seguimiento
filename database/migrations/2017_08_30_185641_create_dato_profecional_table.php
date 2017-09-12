@@ -24,7 +24,10 @@ class CreateDatoProfecionalTable extends Migration
             $table->integer('facultad_id')->unsigned();
             $table->timestamps();
 
-            $table->primary('id_dato_profecional');
+            $table->foreign('monografia_id')->references('id_monografia')->on('monografia');
+            $table->foreign('experiencia_laboral_id')->references('id_experiencia_laboral')->on('experiencia_laboral');
+            $table->foreign('otro_estudio_id')->references('id_otro_estudio')->on('otro_estudio');
+            $table->foreign('facultad_id')->references('id_facultad')->on('facultad');
         });
     }
 

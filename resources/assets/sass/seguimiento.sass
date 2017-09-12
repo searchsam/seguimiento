@@ -1,0 +1,152 @@
+
+// Colores
+$celeste: #4D73BA
+$azul: #2E5097
+$azuloscuro: #1C3170
+
+$gris: #808080
+$grisclaro: #ecf0f5
+
+$hovercolor: rgba(0,0,0,0.1)
+
+// Fuente
+$titulo: "Saraun"
+$cuerpo: "OpenSans"
+$tam: 14px
+$titulotam: 40px
+$cuerpotam: 20px
+
+// Estilos Globales
+@font-face
+    font-family: $titulo
+    src: local("?"), url("../font/THSarabunNew.ttf")
+
+@font-face
+    font-family: $cuerpo
+    src: local("?"), url("../font/OpenSans.ttf")
+
+strong
+    font-weight: 500
+
+body
+    font-family: $cuerpo, sans-serif
+
+h1, h2, h3, h4, h5
+    font-family: $titulo, sans-serif
+    margin: 7px
+
+button
+    border: 0
+    border-radius: 0
+
+a
+    text-decoration: none
+
+// Pantalla Login
+#login
+    background-color: $azul
+    font-size: $cuerpotam
+
+.form-log-cont
+    position: absolute
+    top: 33%
+    left: 42%
+    margin-top: -50px
+    margin-left: -50px
+    width: 300px
+    height: 330px
+    background-color: white
+
+.form-log-header
+    width: 100%
+    overflow: hidden
+    background: $grisclaro
+    text-align: center
+    padding: 15px 0 15px 0
+    margin-bottom: 20px
+
+.form-log-body
+    margin-bottom: 20px
+    input
+        height: 50px
+        font-size: $cuerpotam
+        border-width: 2px 0 2px 0
+        border-style: solid
+        border-color: $grisclaro
+        text-align: center
+        box-shadow: none
+        display: block
+        width: 100%
+        &:hover
+            &::-webkit-input-placeholder
+                color: black
+                border-color: $grisclaro
+        &:focus, &:active, &:visited
+            border-width: 2px 0 2px 0
+            border-style: solid
+            border-color: $grisclaro
+            border-radius: 0
+        &::-webkit-input-placeholder
+            font-size: 20px
+            line-height: 3
+            color: $gris
+            text-align: center
+
+.form-log-footer
+    .form-log-btn
+        @extend button
+        width: 100%
+        background-color: $grisclaro
+        font-size: $cuerpotam
+        height: 50px
+        color: $gris
+        &:hover
+            color: black
+
+// Estilos del tablero
+.skin-blue .main-header .navbar
+    background-color: $celeste
+
+.skin-blue .main-header .logo
+    background-color: $azul
+    text-decoration: none
+    &:hover
+        background-color: $celeste
+
+.skin-blue .main-header .navbar .sidebar-toggle
+    text-decoration: none
+    &:hover
+        background-color: $hovercolor
+
+.skin-blue .main-header li.user-header
+    background-color: $celeste
+
+.img-circle
+        border: 3px solid
+        border-color: rgba(255, 255, 255, 0.2)
+
+.navbar-nav > .user-menu .user-image
+    @extend .img-circle
+
+    border: 1px solid
+
+.user-panel > .image > img
+    @extend .img-circle
+    border: 2px solid
+
+.skin-blue .sidebar-menu > li
+    &:hover > a, &.active > a
+        border-left-color: $celeste
+
+.box.box-primary
+    border-top-color: $celeste
+
+@media only screen and (max-width: 500px)
+    // Estilo Login
+    .form-log-cont
+        left: 26%
+
+@media only screen and (max-width: 700px)
+    // Estilo Login
+    .form-log-cont
+        left: 35%

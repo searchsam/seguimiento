@@ -21,7 +21,7 @@ class CreateOtroEstudioTable extends Migration
             $table->integer('tipo_estudio_id')->unsigned();
             $table->timestamps();
 
-            $table->primary('id_otro_estudio');
+            $table->foreign('tipo_estudio_id')->references('id_tipo_estudio')->on('tipo_estudio');
         });
     }
 

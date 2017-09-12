@@ -23,8 +23,6 @@ class CreateContactoTable extends Migration
             $table->string('telefono_institucional');
             $table->string('telefono_personal')->nullable();
             $table->timestamps();
-
-            $table->primary('id_contacto');
         });
     }
 
