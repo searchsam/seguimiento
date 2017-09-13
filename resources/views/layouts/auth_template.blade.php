@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ $page_title or "Seguimiento" }}</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- FavIcon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("img/favicon.png") }}">
+        <!-- Style -->
+        <link href="{{ asset("css/app.css") }}" rel="stylesheet" type="text/css" />
+        <!-- Font Awesome Icons -->
+        <link href="{{ asset("css/font-awesome.min.css") }}" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="{{ asset("css/ionicons.min.css") }}" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="{{ asset("css/seguimiento.css") }}" rel="stylesheet" type="text/css" />
+    </head>
+    <body id="login">
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Your Page Content Here -->
+            @yield('content')
+
+        </section><!-- /.content -->
+
+        <!-- REQUIRED JS SCRIPTS -->
+        <script src="{{ asset ("js/app.js") }}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ asset ("js/AdminLTE.min.js") }}" type="text/javascript"></script>
+        <!-- Estilo del Sistema -->
+        <script src="{{ asset ("js/seguimiento.js") }}"></script>
+    </body>
+</html>

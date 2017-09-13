@@ -31,7 +31,8 @@ button,
   border-radius: 0;
 }
 
-a {
+a,
+.form-reg a {
   text-decoration: none;
 }
 
@@ -119,12 +120,50 @@ a {
   color: black;
 }
 
+.form-reg {
+  position: absolute;
+  top: 85%;
+  left: 42%;
+  margin-top: -50px;
+  margin-left: -50px;
+  width: 300px;
+  text-align: center;
+}
+
+.form-reg a {
+  width: 100%;
+  padding: 10px 99px;
+  height: 50px;
+  border: 2px solid #ecf0f5;
+  border-radius: 0;
+  color: #ecf0f5;
+}
+
+.form-reg a:hover {
+  background-color: #808080;
+  border: 2px solid #808080;
+}
+
 .help-block {
   font-size: 12px;
   color: white;
   background-color: #dc3545;
   margin: 0;
   padding: 3px;
+}
+
+.alert,
+.alert-info {
+  position: absolute;
+  bottom: 0px;
+  border: 0;
+  width: 100%;
+  border-radius: 0;
+}
+
+.alert-info {
+  background-color: #4D73BA;
+  color: white;
 }
 
 .skin-blue .main-header .navbar {
@@ -168,7 +207,9 @@ a {
 }
 
 .skin-blue .sidebar-menu > li:hover > a,
-.skin-blue .sidebar-menu > li.active > a {
+.skin-blue .form-reg .sidebar-menu > li:hover > a,
+.skin-blue .sidebar-menu > li.active > a,
+.skin-blue .form-reg .sidebar-menu > li.active > a {
   border-left-color: #4D73BA;
 }
 

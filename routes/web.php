@@ -18,6 +18,7 @@ Route::prefix('autenticacion')->group(function () {
     // Autenticacion
     Route::post('acceder', 'Auth\LoginController@acceder')->name('acceder');
     Route::post('salir', 'Auth\LoginController@salir')->name('salir');
+    Route::view('registro', 'auth.registro')->name('registro')->middleware('guest');
 });
 
 Route::prefix('tablero')->group(function () {
