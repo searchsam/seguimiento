@@ -11,8 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::any('/', 'Auth\LoginController@acceso')->name('acceso');
+Route::any('/errata', 'AdminController@fecha')->name('errata');
+
+Route::prefix('autenticacion')->group(function () {
+    // Autenticacion
+    Route::post('acceder', 'Auth\LoginController@acceder')->name('acceder');
+    Route::post('salir', 'Auth\LoginController@salir')->name('salir');
 });
 
-Route::get('admin', 'AdminController@index');
+Route::prefix('tablero')->group(function () {
+    // Admin
+    Route::get('inicio', 'DashController@index')->name('inicio');
+});
+
+Route::prefix('usuario')->group(function () {
+    // Usuario
+});
+
+Route::prefix('admin')->group(function () {
+    // Usuario
+});

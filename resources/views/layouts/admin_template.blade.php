@@ -4,14 +4,15 @@
         <meta charset="UTF-8">
         <title>{{ $page_title or "Seguimiento" }}</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- FavIcon -->
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("img/favicon.png") }}">
         <!-- Style -->
         <link href="{{ asset("css/app.css") }}" rel="stylesheet" type="text/css" />
         <!-- Font Awesome Icons -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ asset("css/font-awesome.min.css") }}" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ asset("css/ionicons.min.css") }}" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="{{ asset("css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
         <!--

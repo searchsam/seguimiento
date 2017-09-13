@@ -42,13 +42,13 @@ a {
 
 .form-log-cont {
   position: absolute;
-  top: 33%;
+  top: 25%;
   left: 42%;
   margin-top: -50px;
   margin-left: -50px;
   width: 300px;
-  height: 330px;
   background-color: white;
+  text-align: center;
 }
 
 .form-log-header {
@@ -75,6 +75,7 @@ a {
           box-shadow: none;
   display: block;
   width: 100%;
+  border-radius: 0;
 }
 
 .form-log-body input:hover::-webkit-input-placeholder {
@@ -98,6 +99,14 @@ a {
   text-align: center;
 }
 
+.form-log-body .error {
+  border-color: #dc3545;
+}
+
+.form-log-body .error:hover::-webkit-input-placeholder {
+  color: #dc3545;
+}
+
 .form-log-footer .form-log-btn {
   width: 100%;
   background-color: #ecf0f5;
@@ -110,16 +119,15 @@ a {
   color: black;
 }
 
+.help-block {
+  font-size: 12px;
+  color: white;
+  background-color: #dc3545;
+  margin: 0;
+  padding: 3px;
+}
+
 .skin-blue .main-header .navbar {
-  background-color: #4D73BA;
-}
-
-.skin-blue .main-header .logo {
-  background-color: #2E5097;
-  text-decoration: none;
-}
-
-.skin-blue .main-header .logo:hover {
   background-color: #4D73BA;
 }
 
@@ -129,6 +137,15 @@ a {
 
 .skin-blue .main-header .navbar .sidebar-toggle:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.skin-blue .main-header .logo {
+  background-color: #2E5097;
+  text-decoration: none;
+}
+
+.skin-blue .main-header .logo:hover {
+  background-color: #4D73BA;
 }
 
 .skin-blue .main-header li.user-header {
@@ -157,6 +174,26 @@ a {
 
 .box.box-primary {
   border-top-color: #4D73BA;
+}
+
+.progress-bar-red,
+.progress-bar-danger {
+  background-color: #dc3545;
+}
+
+.progress-bar-yellow,
+.progress-bar-warning {
+  background-color: #ffc107;
+}
+
+.progress-bar-green,
+.progress-bar-success {
+  background-color: #28a745;
+}
+
+.progress-bar-aqua,
+.progress-bar-info {
+  background-color: #17a2b8;
 }
 
 @media only screen and (max-width: 500px) {
