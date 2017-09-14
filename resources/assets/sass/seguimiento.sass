@@ -37,9 +37,6 @@ $cuerpotam: 20px
     font-family: $cuerpo
     src: local("?"), url("../fonts/OpenSans.ttf")
 
-strong
-    font-weight: 500
-
 body
     font-family: $cuerpo, sans-serif
 
@@ -50,9 +47,31 @@ h1, h2, h3, h4, h5
 button
     border: 0
     +border-radius(0)
+    font-size: $cuerpotam
+    &:hover
+        color: black
+
+input
+    +border-radius(0)
+    border: 2px solid $grisclaro
+    height: 50px
+    text-align: center
+    box-shadow: none
+    &:hover
+        &::-webkit-input-placeholder
+            color: black
+    &:focus, &:active, &:visited
+        +border-radius(0)
+    &::-webkit-input-placeholder
+        font-size: $cuerpotam
+        color: $gris
+        text-align: center
 
 a
     text-decoration: none
+
+.spacer
+    height: 30px
 
 // Pantalla Login
 #login
@@ -81,30 +100,20 @@ a
     margin-bottom: 20px
 
     input
-        height: 50px
+        @extend input
         font-size: $cuerpotam
         border-width: 2px 0 2px 0
         border-style: solid
         border-color: $grisclaro
-        text-align: center
-        box-shadow: none
-        display: block
         width: 100%
         +border-radius(0)
         &:hover
             &::-webkit-input-placeholder
-                color: black
                 border-color: $grisclaro
         &:focus, &:active, &:visited
             border-width: 2px 0 2px 0
             border-style: solid
             border-color: $grisclaro
-            +border-radius(0)
-        &::-webkit-input-placeholder
-            font-size: 20px
-            line-height: 3
-            color: $gris
-            text-align: center
 
     .error
         border-color: $rojo
@@ -117,25 +126,16 @@ a
         @extend button
         width: 100%
         background-color: $grisclaro
-        font-size: $cuerpotam
         height: 50px
         color: $gris
-        &:hover
-            color: black
 
 .form-reg
-    position: absolute
-    top: 85%
-    left: 42%
-    margin-top: -50px
-    margin-left: -50px
-    width: 300px
-    text-align: center
+    background-color: $azul
 
     a
         @extend a
         width: 100%
-        padding: 10px 99px
+        padding: 10px 101px
         height: 50px
         border: 2px solid $grisclaro
         +border-radius(0)
@@ -164,6 +164,93 @@ a
     background-color: $celeste
     color: white
 
+
+// Registro
+.container
+    width: 60%
+
+.form-margin
+    padding: 0 15%
+
+#panel
+    @extend .container
+    background-color: white
+    height: 100%
+    padding: 0
+    .card
+        height: 100%
+
+        .card-header
+            height: 100px
+            background-color: $grisclaro
+
+            h1
+                margin: initial
+                padding: 2%
+                font-size: 60px
+
+        .card-body
+            align-content: center
+            input
+                @extend input
+                width: 100%
+            button
+                @extend button
+                width: 100%
+                height: 50px
+
+p.lead
+    color: $gris
+
+/* Toggle Switch
+.switch
+    position: relative
+    display: inline-block
+    width: 60px
+    height: 34px
+    input
+        display: none
+
+.slider
+    position: absolute
+    cursor: pointer
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: #ccc
+    -webkit-transition: .4s
+    transition: .4s
+    &:before
+        position: absolute
+        content: ""
+        height: 26px
+        width: 26px
+        left: 4px
+        bottom: 4px
+        background-color: white
+        -webkit-transition: .4s
+        transition: .4s
+
+input
+    &:checked + .slider
+        background-color: $celeste
+    &:focus + .slider
+        box-shadow: 0 0 1px $celeste
+    &:checked + .slider:before
+        -webkit-transform: translateX(26px)
+        -ms-transform: translateX(26px)
+        transform: translateX(26px)
+
+/* Rounded sliders
+.slider.round
+    border-radius: 34px
+    &:before
+        border-radius: 50%
+
+.tipo
+    text-align: left
+    padding: 30px
 
 // Estilos del tablero
 .skin-blue

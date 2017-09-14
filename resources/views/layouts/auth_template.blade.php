@@ -18,13 +18,8 @@
     </head>
     <body id="login">
 
-        <!-- Main content -->
-        <section class="content">
-
-            <!-- Your Page Content Here -->
-            @yield('content')
-
-        </section><!-- /.content -->
+        <!-- Your Page Content Here -->
+        @yield('content')
 
         <!-- REQUIRED JS SCRIPTS -->
         <script src="{{ asset ("js/app.js") }}"></script>

@@ -84,7 +84,7 @@ return [
     ],
     'string'               => 'El campo :attribute debe ser texto.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
+    'unique'               => 'El campo :attribute ya existe.',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
 

@@ -17,13 +17,12 @@
             <div class="form-log-footer">
                 <button type="submit" class="btn btn-light form-log-btn">Acceder</button>
             </div>
+            <div class="spacer" style="background-color:#2E5097; width:100%;"></div>
+            <div class="form-reg">
+                <a href="{{ route('registro') }}">Registrate</a>
+            </div>
         </div>
-
     </form>
-
-    <div class="form-reg">
-        <a href="{{ route('registro') }}">Registrate</a>
-    </div>
 
     @if (session()->has('flash'))
         <div class="alert alert-info" role="alert">
