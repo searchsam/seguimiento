@@ -183,6 +183,7 @@ a
         .card-header
             height: 100px
             background-color: $grisclaro
+            border-top: 4px solid $celeste
 
             h1
                 margin: initial
@@ -198,6 +199,12 @@ a
                 @extend button
                 width: 100%
                 height: 50px
+
+            .error
+                border-color: $rojo
+                &:hover
+                    &::-webkit-input-placeholder
+                        color: $rojo
 
 p.lead
     color: $gris
@@ -285,10 +292,17 @@ input
 
 .skin-blue .sidebar-menu > li
     &:hover > a, &.active > a
-        border-left-color: $celeste
+        border-left-color: $azuloscuro
 
 .box.box-primary
+    border-radius: 0
     border-top-color: $celeste
+
+.box-header.with-border
+    background-color: $grisclaro
+    border-radius: 0
+    border: 0
+    color: $gris
 
 .progress-bar-red, .progress-bar-danger
     background-color: $rojo
@@ -311,3 +325,7 @@ input
     // Estilo Login
     .form-log-cont
         left: 35%
+
+// Errores
+.flex-center .position-ref .full-height
+    background-color: $azul

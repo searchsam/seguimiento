@@ -16,6 +16,7 @@ class CreateUsuarioTable extends Migration
         Schema::create('usuario', function (Blueprint $table) {
             $table->increments('id_usuario');
             $table->string('nombre_usuario');
+            $table->string('apellido_usuario');
             $table->string('email_usuario')->unique();
             $table->string('contrasena');
             $table->boolean('estado_usuario');
@@ -24,7 +25,7 @@ class CreateUsuarioTable extends Migration
             $table->integer('tipo_usuario_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('tipo_usuario_id')->references('id_tipo_usuario')->on('tipo_usuario');
+            $table->foreign('tipo_usuario_id')->references('id_tipo_usuario')->on('tipo_usuario')->onDelete('cascade');
         });
     }
 

@@ -24,9 +24,9 @@ class CreateOfertaTable extends Migration
             $table->integer('tipo_oferta_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('empresa_id')->references('id_empresa')->on('empresa');
-            $table->foreign('detalle_oferta_id')->references('id_detalle_oferta')->on('detalle_oferta');
-            $table->foreign('tipo_oferta_id')->references('id_tipo_oferta')->on('tipo_oferta');
+            $table->foreign('empresa_id')->references('id_empresa')->on('empresa')->onDelete('cascade');
+            $table->foreign('detalle_oferta_id')->references('id_detalle_oferta')->on('detalle_oferta')->onDelete('cascade');
+            $table->foreign('tipo_oferta_id')->references('id_tipo_oferta')->on('tipo_oferta')->onDelete('cascade');
         });
     }
 

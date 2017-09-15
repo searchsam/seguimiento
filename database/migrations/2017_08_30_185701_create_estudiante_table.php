@@ -28,9 +28,9 @@ class CreateEstudianteTable extends Migration
             $table->integer('usuario_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('tipo_estudiante_id')->references('id_tipo_estudiante')->on('tipo_estudiante');
-            $table->foreign('dato_profecional_id')->references('id_dato_profecional')->on('dato_profecional');
-            $table->foreign('usuario_id')->references('id_usuario')->on('usuario');
+            $table->foreign('tipo_estudiante_id')->references('id_tipo_estudiante')->on('tipo_estudiante')->onDelete('cascade');
+            $table->foreign('dato_profecional_id')->references('id_dato_profecional')->on('dato_profecional')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id_usuario')->on('usuario')->onDelete('cascade');
         });
     }
 

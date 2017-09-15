@@ -19,7 +19,8 @@ Route::prefix('autenticacion')->group(function () {
     Route::post('acceder', 'Auth\LoginController@acceder')->name('acceder');
     Route::post('salir', 'Auth\LoginController@salir')->name('salir');
     Route::view('registro', 'auth.registro')->name('registro')->middleware('guest');
-    Route::post('registrar', 'Auth\LoginController@registrar')->name('registrar');
+    Route::post('registrar', 'Auth\RegisterController@register')->name('registrar');
+    Route::get('validar_confirmacion/{token}/{id}', 'Auth\RegisterController@confirmation')->name('validar_confirmacion');
 });
 
 Route::prefix('tablero')->group(function () {
@@ -33,4 +34,10 @@ Route::prefix('usuario')->group(function () {
 
 Route::prefix('admin')->group(function () {
     // Usuario
+});
+
+Route::prefix('error')->group(function () {
+    // Errores
+    Route::view('registro_confirmacion', 'errors.status')->name('registro_confirmacion');
+    Route::view('verify_token', 'errors.verifytoken')->name('verify_token');
 });

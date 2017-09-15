@@ -22,8 +22,8 @@ class CreateEmpresaTable extends Migration
             $table->integer('usuario_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('contacto_id')->references('id_contacto')->on('contacto')->onDelite('cascade');
-            $table->foreign('usuario_id')->references('id_usuario')->on('usuario');
+            $table->foreign('contacto_id')->references('id_contacto')->on('contacto')->onDelite('cascade')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id_usuario')->on('usuario')->onDelete('cascade');
         });
     }
 

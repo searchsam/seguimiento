@@ -44,9 +44,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-
-         if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
+         if ($exception instanceof \Illuminate\Auth\AuthenticationException)
+         {
              return redirect()->route('acceso')->with('flash', 'Por favor inicia sesión.');
+         }
+
+         if ($exception instanceof \Illuminate\Session\TokenMismatchException)
+         {
+             return redirect()->route('registro')->with('flash', 'La página ha caducado debido a la inactividad. Actualiza e inténtalo de nuevo.');
+             //return redirect('errors.verifytoken');
          }
 
         return parent::render($request, $exception);

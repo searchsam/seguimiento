@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use App\Usuario;
+use Carbon\Carbon;
+
+use App\Mail\Confirmacion;
+
 class RegisterController extends Controller
 {
     /*
@@ -27,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/error/registro_confirmacion';
 
     /**
      * Create a new controller instance.
@@ -40,6 +45,16 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('auth.registro');
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -48,9 +63,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name'      => 'required|string|max:255',
+            'lastname'  => 'required|string|max:255',
+            'email'     => 'required|string|email|max:255|unique:users',
+            'password'  => 'required|string|min:6|confirmed',
         ]);
     }
 
@@ -62,10 +78,48 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $data['empresa'] = isset($data['empresa']) ? TRUE : FALSE;
+
+        $user = User::create([
+            'name'      => $data['name'],
+            'lastname'  => $data['lastname'],
+            'email'     => $data['email'],
+            'password'  => bcrypt($data['password']),
         ]);
+
+        Usuario::create([
+            'nombre_usuario'    => $data['name'],
+            'apellido_usuario'  => $data['lastname'],
+            'email_usuario'     => $data['email'],
+            'contrasena'        => bcrypt($data['password']),
+            'estado_usuario'    => FALSE,
+            'fecha_registro'    => strtotime(Carbon::now()),
+            'foto_usuario'      => 'img/user.png',
+            'tipo_usuario_id'   => $data['empresa'] ? 4 : 3,
+        ]);
+
+        return $user;
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered($data, $user)
+    {
+        $usuario = Usuario::find($user['id']);
+
+        $user->remember_token = str_random(50);
+        $user->save();
+
+        \Mail::to($user)->send(new Confirmacion($user));
+    }
+
+    protected function confirmation()
+    {
+        return redirect()->route('inicio');
     }
 }

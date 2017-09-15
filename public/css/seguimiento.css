@@ -214,6 +214,7 @@ a,
 #panel .card .card-header {
   height: 100px;
   background-color: #ecf0f5;
+  border-top: 4px solid #4D73BA;
 }
 
 #panel .card .card-header h1 {
@@ -236,6 +237,14 @@ a,
 #panel .card .card-body button {
   width: 100%;
   height: 50px;
+}
+
+#panel .card .card-body .error {
+  border-color: #dc3545;
+}
+
+#panel .card .card-body .error:hover::-webkit-input-placeholder {
+  color: #dc3545;
 }
 
 p.lead {
@@ -360,11 +369,19 @@ input:checked + .slider:before,
 .skin-blue .form-reg .sidebar-menu > li:hover > a,
 .skin-blue .sidebar-menu > li.active > a,
 .skin-blue .form-reg .sidebar-menu > li.active > a {
-  border-left-color: #4D73BA;
+  border-left-color: #1C3170;
 }
 
 .box.box-primary {
+  border-radius: 0;
   border-top-color: #4D73BA;
+}
+
+.box-header.with-border {
+  background-color: #ecf0f5;
+  border-radius: 0;
+  border: 0;
+  color: #808080;
 }
 
 .progress-bar-red,
@@ -397,5 +414,9 @@ input:checked + .slider:before,
   .form-log-cont {
     left: 35%;
   }
+}
+
+.flex-center .position-ref .full-height {
+  background-color: #2E5097;
 }
 

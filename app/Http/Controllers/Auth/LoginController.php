@@ -41,17 +41,4 @@ class LoginController extends Controller
 
         return redirect()->route('acceso');
     }
-
-    public function registrar()
-    {
-        $this->validate(request(), [
-            'nombre'     => 'required|string',
-            'apellido'   => 'required|string',
-            'email'      => 'email|required|string|unique',
-            'password'   => 'required|string|confirmed',
-            'confirm'   => 'required|string|confirmed',
-        ]);
-
-        return back()->withInput(request(['nombre', 'apellido', 'email', 'password', 'confirm', 'empresa']));
-    }
 }

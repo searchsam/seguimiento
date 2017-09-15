@@ -19,7 +19,7 @@ class CreateTipoUsuarioTable extends Migration
             $table->integer('privilegio_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('privilegio_id')->references('id_privilegio')->on('privilegio');
+            $table->foreign('privilegio_id')->references('id_privilegio')->on('privilegio')->onDelete('cascade');
         });
     }
 

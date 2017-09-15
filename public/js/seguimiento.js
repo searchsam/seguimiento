@@ -77,6 +77,18 @@ module.exports = __webpack_require__(43);
 /***/ (function(module, exports) {
 
 
+var check = new Vue({
+    el: '#interruptor',
+    data: {
+        checkValue: 0,
+        checkToggle: checkToggle
+    },
+    methods: {
+        checkToggle: function checkToggle() {
+            this.checkValue == 0 ? 1 : 0;
+        }
+    }
+});
 
 /***/ })
 
