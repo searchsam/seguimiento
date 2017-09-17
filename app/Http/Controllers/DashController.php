@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class DashController extends Controller
 {
     /**
@@ -45,7 +47,9 @@ class DashController extends Controller
                 'color' => 'success'
             ]
         ];
-        return view('tablero/inicio')->with($data);
+        $data['usuario'] = session('usuario');
+        $data['page_title'] = 'INICIO';
+        return view('tablero.inicio', $data);
     }
 
 }

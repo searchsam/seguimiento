@@ -12,7 +12,9 @@
 
         <!-- Home tab content -->
         <div class="tab-pane active" id="control-sidebar-home-tab">
+
             <h3 class="control-sidebar-heading">Recent Activity</h3>
+
             <ul class="control-sidebar-menu">
                 <li>
                     <a href="javascript:;">
@@ -29,6 +31,7 @@
             <!-- /.control-sidebar-menu -->
 
             <h3 class="control-sidebar-heading">Tasks Progress</h3>
+
             <ul class="control-sidebar-menu">
                 <li>
                     <a href="javascript:;">
@@ -57,6 +60,7 @@
         <!-- Settings tab content -->
         <div class="tab-pane" id="control-sidebar-settings-tab">
             <form method="post">
+
                 <h3 class="control-sidebar-heading">General Settings</h3>
 
                 <div class="form-group">
@@ -64,7 +68,6 @@
                         Report panel usage
                         <input type="checkbox" class="pull-right" checked>
                     </label>
-
                     <p>
                         Some information about this general settings option
                     </p>

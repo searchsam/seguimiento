@@ -13,6 +13,7 @@ body {
 }
 
 h1,
+.content-header h1,
 h2,
 h3,
 h4,
@@ -251,8 +252,6 @@ p.lead {
   color: #808080;
 }
 
-/* Toggle Switch */
-
 .switch {
   position: relative;
   display: inline-block;
@@ -309,8 +308,6 @@ input:checked + .slider:before,
   -webkit-transform: translateX(26px);
   transform: translateX(26px);
 }
-
-/* Rounded sliders */
 
 .slider.round {
   border-radius: 34px;
@@ -402,6 +399,28 @@ input:checked + .slider:before,
 .progress-bar-aqua,
 .progress-bar-info {
   background-color: #17a2b8;
+}
+
+.dropdown-menu {
+  border: 0;
+  border-radius: 0;
+}
+
+.content-header h1 {
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+.copyleft {
+  display: inline-block;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.content-header h1 {
+  border-bottom: 1px solid #808080;
 }
 
 @media only screen and (max-width: 500px) {

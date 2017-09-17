@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
     <head>
         <meta charset="UTF-8">
-        <title>{{ $page_title or "Seguimiento" }}</title>
+        <title>{{ $page_title or config('app.name') }}</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- FavIcon -->
@@ -31,6 +32,7 @@
         <!-- Estilos de Seguimiento -->
         <link href="{{ asset("css/seguimiento.css") }}" rel="stylesheet" type="text/css" />
     </head>
+
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
 
@@ -48,11 +50,6 @@
                         {{ $page_title or "Page Title" }}
                         <small>{{ $page_description or null }}</small>
                     </h1>
-                    <!-- You can dynamically generate breadcrumbs here -->
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                        <li class="active">Here</li>
-                    </ol>
                 </section>
 
                 <!-- Main content -->
@@ -62,6 +59,7 @@
                     @yield('content')
 
                 </section><!-- /.content -->
+
             </div><!-- /.content-wrapper -->
 
             <!-- Footer -->
@@ -79,4 +77,5 @@
         <!-- Estilo de Seguimiento -->
         <script src="{{ asset ("js/seguimiento.js") }}"></script>
     </body>
+
 </html>

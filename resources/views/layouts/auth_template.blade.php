@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
     <head>
         <meta charset="UTF-8">
-        <title>{{ $page_title or "Seguimiento" }}</title>
+        <title>{{ $page_title or config('app.name') }}</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- FavIcon -->
@@ -16,6 +17,7 @@
         <!-- Theme style -->
         <link href="{{ asset("css/seguimiento.css") }}" rel="stylesheet" type="text/css" />
     </head>
+
     <body id="login">
 
         <!-- Your Page Content Here -->
@@ -28,4 +30,5 @@
         <!-- Estilo del Sistema -->
         <script src="{{ asset ("js/seguimiento.js") }}"></script>
     </body>
+
 </html>

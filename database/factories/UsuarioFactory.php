@@ -14,7 +14,7 @@ $factory->define(App\UsuarioFactory::class, function (Faker\Generator $faker) {
         'contrasena'        => $password ?: $password = bcrypt('secret'),
         'estado_usuario'    => 1,
         'fecha_registro'    => strtotime($carbon->now()),
-        'foto_usuario'      => 'img/user.png',
+        'foto_usuario'      => '/img/user.png',
         'tipo_usuario_id'   => 2,
     ];
 });

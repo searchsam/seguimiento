@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
     <head>
         <meta charset="UTF-8">
-        <title>{{ $page_title or "Seguimiento" }}</title>
+        <title>@yield('title')</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("img/favicon.png") }}">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -44,6 +47,7 @@
             }
         </style>
     </head>
+
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
@@ -53,4 +57,5 @@
             </div>
         </div>
     </body>
+
 </html>

@@ -10,7 +10,10 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Usuario;
 use Carbon\Carbon;
 
+use Mail;
 use App\Mail\Confirmacion;
+
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -94,7 +97,7 @@ class RegisterController extends Controller
             'contrasena'        => bcrypt($data['password']),
             'estado_usuario'    => FALSE,
             'fecha_registro'    => strtotime(Carbon::now()),
-            'foto_usuario'      => 'img/user.png',
+            'foto_usuario'      => '/img/estudiante.png',
             'tipo_usuario_id'   => $data['empresa'] ? 4 : 3,
         ]);
 
@@ -112,14 +115,35 @@ class RegisterController extends Controller
     {
         $usuario = Usuario::find($user['id']);
 
-        $user->remember_token = str_random(50);
+        $user->remember_token = str_random(25);
         $user->save();
 
-        \Mail::to($user)->send(new Confirmacion($user));
+        Mail::to($user)->send(new Confirmacion($user));
     }
 
-    protected function confirmation()
+    protected function confirmation($token, User $user)
     {
-        return redirect()->route('inicio');
+        static $usuario;
+
+        if(str_is($user->remember_token, $token))
+        {
+            if (Auth::check())
+            {
+                Auth::login($user);
+            }
+
+            $usuario = Usuario::find(Auth::id());
+            $usuario->estado_usuario = TRUE;
+            $usuario->save();
+
+            session(['usuario' => $usuario]);
+
+            if ($usuario->tipo_usuario_id == 4) {
+                return redirect()->route('registrar_entidad');
+            }
+
+            return redirect()->route('registrar_curriculum');
+        }
+        return redirect()->route('token_error');
     }
 }
