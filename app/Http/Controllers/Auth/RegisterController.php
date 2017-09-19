@@ -7,13 +7,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use Auth;
 use App\Usuario;
 use Carbon\Carbon;
-
-use Mail;
-use App\Mail\Confirmacion;
-
-use Auth;
+use App\Events\ConfirmarEmail;
+//use Mail;
+//use App\Mail\Confirmacion;
 
 class RegisterController extends Controller
 {
@@ -97,7 +96,7 @@ class RegisterController extends Controller
             'contrasena'        => bcrypt($data['password']),
             'estado_usuario'    => FALSE,
             'fecha_registro'    => strtotime(Carbon::now()),
-            'foto_usuario'      => '/img/estudiante.png',
+            'foto_usuario'      => '/img/cliente.png',
             'tipo_usuario_id'   => $data['empresa'] ? 4 : 3,
         ]);
 
@@ -113,12 +112,12 @@ class RegisterController extends Controller
      */
     protected function registered($data, $user)
     {
-        $usuario = Usuario::find($user['id']);
-
+        //$usuario = Usuario::find($user['id']);
         $user->remember_token = str_random(25);
         $user->save();
 
-        Mail::to($user)->send(new Confirmacion($user));
+        event(new ConfirmarEmail($user));
+        //Mail::to($user)->send(new Confirmacion($user));
     }
 
     protected function confirmation($token, User $user)
@@ -127,10 +126,7 @@ class RegisterController extends Controller
 
         if(str_is($user->remember_token, $token))
         {
-            if (Auth::check())
-            {
-                Auth::login($user);
-            }
+            Auth::login($user);
 
             $usuario = Usuario::find(Auth::id());
             $usuario->estado_usuario = TRUE;

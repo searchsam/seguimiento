@@ -16,10 +16,7 @@ class CreateFacultadTable extends Migration
         Schema::create('facultad', function (Blueprint $table) {
             $table->increments('id_facultad');
             $table->string('nombre_facultad');
-            $table->integer('carrera_id')->unsigned();
             $table->timestamps();
-
-            $table->foreign('carrera_id')->references('id_carrera')->on('carrera')->onDelete('cascade');
         });
     }
 

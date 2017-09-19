@@ -25,26 +25,35 @@
                 <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning">10</span>
+                    @if (count( auth()->user()->unreadNotifications ))
+                            <i class="fa fa-bell"></i>
+                        <span class="label notifications-warning">{{ count( auth()->user()->unreadNotifications ) }}</span>
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li class="header">You have 10 notifications</li>
+                        <li class="header">Tienes {{ count( auth()->user()->unreadNotifications ) }} notificaciones.</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
                             <ul class="menu">
-                                <li><!-- start notification -->
-                                    <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                    </a>
-                                </li>
-                                <!-- end notification -->
-
+                                @foreach (auth()->user()->unreadNotifications as $notificacion)
+                                    <li><!-- start notification -->
+                                        <a href="#">
+                                            <i class="fa fa-circle-o messages-warning"></i>{{ $notificacion->data }}
+                                        </a>
+                                    </li>
+                                    <!-- end notification -->
+                                @endforeach
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">View all</a></li>
+                        <!-- li class="footer"><a href="#">View all</a></li -->
                     </ul>
+                    @else
+                        <i class="fa fa-bell-o"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">No tienes notificaciones.</li>
+                    </ul>
+                    @endif
                 </li>
 
                 <!-- Tasks Menu -->
@@ -52,43 +61,36 @@
 
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-flag-o"></i>
-                        <span class="label label-danger">9</span>
+                    @if (count( auth()->user()->unreadNotifications ))
+                            <i class="fa fa-flag"></i>
+                        <span class="label notifications-error">{{ count( auth()->user()->unreadNotifications ) }}</span>
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li class="header">You have 9 tasks</li>
+                        <li class="header">Tienes {{ count( auth()->user()->unreadNotifications ) }} tareas pendientes.</li>
 
                         <li>
-
                             <!-- Inner menu: contains the tasks -->
                             <ul class="menu">
-                                <li><!-- Task item -->
-                                    <a href="#">
-                                        <!-- Task title and progress text -->
-                                        <h3>
-                                            Design some buttons
-                                            <small class="pull-right">20%</small>
-                                        </h3>
-                                        <!-- The progress bar -->
-                                        <div class="progress xs">
-                                            <!-- Change the css width attribute to simulate progress -->
-                                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                <span class="sr-only">20% Complete</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!-- end task item -->
+                                @foreach (auth()->user()->unreadNotifications as $notificacion)
+                                    <li><!-- start notification -->
+                                        <a href="#">
+                                            <i class="fa fa-circle-o messages-error"></i>{{ $notificacion->data }}
+                                        </a>
+                                    </li>
+                                    <!-- end notification -->
+                                @endforeach
                             </ul>
-
                         </li>
-
-                        <li class="footer">
-                            <a href="#">View all tasks</a>
-                        </li>
-
+                        <!-- li class="footer"><a href="#">View all tasks</a></li -->
                     </ul>
+                    @else
+                        <i class="fa fa-flag-o"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">No tienes tareas pendientes.</li>
+                    </ul>
+                    @endif
                 </li>
 
                 <!-- User Account Menu -->

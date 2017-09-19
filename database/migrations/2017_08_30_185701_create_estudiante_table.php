@@ -16,6 +16,7 @@ class CreateEstudianteTable extends Migration
         Schema::create('estudiante', function (Blueprint $table) {
             $table->increments('id_estudiante');
             $table->string('carnet');
+            $table->string('curriculum')->nullable();
             $table->string('nombre_estudiante');
             $table->string('apellido_estudiante');
             $table->string('cedula_estudiante');

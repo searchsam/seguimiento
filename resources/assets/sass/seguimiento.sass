@@ -224,7 +224,7 @@ p.lead
     left: 0
     right: 0
     bottom: 0
-    background-color: #ccc
+    background-color: $grisclaro
     -webkit-transition: .4s
     transition: .4s
     &:before
@@ -332,6 +332,64 @@ input
 
 .content-header h1
     border-bottom: 1px solid $gris
+
+.navbar-custom-menu
+    .navbar-nav
+        li
+            .dropdown-menu
+                border: 0
+                +border-radius(0)
+
+        .user-menu
+            .dropdown-menu
+                .user-body
+                    border: 0
+                    +border-radius(0)
+
+        .notifications-menu
+            .dropdown-menu
+                li.footer
+                    a
+                        border: 0
+                        +border-radius(0)
+
+        .messages-menu
+            .dropdown-menu
+                li.footer
+                    a
+                        border: 0
+                        +border-radius(0)
+
+        .tasks-menu
+            .dropdown-menu
+                li.footer
+                    a
+                        border: 0
+                        +border-radius(0)
+
+.box
+    +border-radius(0)
+    box-shadow: 0 0 0 0
+
+.box.box-default
+    border-color: $celeste
+
+.box-header.with-border
+    text-align: center
+    h3
+        font-size: 30px
+
+.messages-warning
+    color: $amarillo
+
+.notifications-warning
+    background-color: $amarillo
+
+.messages-error
+    color: $rojo
+
+.notifications-error
+    background-color: $rojo
 
 @media only screen and (max-width: 500px)
     // Estilo Login

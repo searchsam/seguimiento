@@ -12,7 +12,7 @@
             </div>
 
             <div class="pull-left info">
-                <p>{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</p>
+                <p>{{ $usuario->nombre_usuario }}</p>
 
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>

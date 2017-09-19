@@ -48,7 +48,7 @@ class DashController extends Controller
             ]
         ];
         $data['usuario'] = session('usuario');
-        $data['page_title'] = 'INICIO';
+        $data['page_title'] = 'Inicio';
         return view('tablero.inicio', $data);
     }
 
