@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use App\Events\ConfirmarEmail;
 //use Mail;
 //use App\Mail\Confirmacion;
+use App\Notifications\VerificacionEmail;
 
 class RegisterController extends Controller
 {
@@ -87,6 +88,7 @@ class RegisterController extends Controller
             'lastname'  => $data['lastname'],
             'email'     => $data['email'],
             'password'  => bcrypt($data['password']),
+            'phone_number' => '50582925145',
         ]);
 
         Usuario::create([
@@ -112,12 +114,10 @@ class RegisterController extends Controller
      */
     protected function registered($data, $user)
     {
-        //$usuario = Usuario::find($user['id']);
         $user->remember_token = str_random(25);
         $user->save();
 
         event(new ConfirmarEmail($user));
-        //Mail::to($user)->send(new Confirmacion($user));
     }
 
     protected function confirmation($token, User $user)

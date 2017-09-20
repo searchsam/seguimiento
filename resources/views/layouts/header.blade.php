@@ -38,7 +38,7 @@
                                 @foreach (auth()->user()->unreadNotifications as $notificacion)
                                     <li><!-- start notification -->
                                         <a href="#">
-                                            <i class="fa fa-circle-o messages-warning"></i>{{ $notificacion->data }}
+                                            <i class="fa fa-circle messages-warning"></i>{{ $notificacion->data['text'] }}
                                         </a>
                                     </li>
                                     <!-- end notification -->
@@ -75,7 +75,7 @@
                                 @foreach (auth()->user()->unreadNotifications as $notificacion)
                                     <li><!-- start notification -->
                                         <a href="#">
-                                            <i class="fa fa-circle-o messages-error"></i>{{ $notificacion->data }}
+                                            <i class="fa fa-circle messages-error"></i>{{ $notificacion->data['text'] }}
                                         </a>
                                     </li>
                                     <!-- end notification -->

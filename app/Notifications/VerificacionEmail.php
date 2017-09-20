@@ -2,11 +2,12 @@
 
 namespace App\Notifications;
 
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Carbon\Carbon;
+use Illuminate\Notifications\Messages\NexmoMessage;
 
 class VerificacionEmail extends Notification implements ShouldQueue
 {
@@ -30,7 +31,7 @@ class VerificacionEmail extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail', 'database', 'nexmo'];
     }
 
     /**
@@ -41,8 +42,7 @@ class VerificacionEmail extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        //return (new MailMessage)->view('emails.confirmacion', ['user' => $this->user]);
-        //Mail::to($user)->send(new Confirmacion($user));
+        return (new MailMessage)->markdown('emails.confirmacion', ['user' => $notifiable]);
     }
 
     /**
@@ -54,8 +54,20 @@ class VerificacionEmail extends Notification implements ShouldQueue
     public function toDatabase($notifiable)
     {
         return [
-            'repliedTime' => Carbon::now()
+            'id' => $notifiable->id,
+            'text' => 'Verificar Correo Electronico'
         ];
+    }
+
+    /**
+     * Get the Nexmo / SMS representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return NexmoMessage
+     */
+    public function toNexmo($notifiable)
+    {
+        return (new NexmoMessage)->content('Notificacion por sms.');
     }
 
     /**

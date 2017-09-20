@@ -130,3 +130,15 @@ Cuando [Gulp](http://gulpjs.com/) ya este instalado se ejecuta desde la terminal
 ## Licencia
 
 La framework [Laravel](https://laravel.com/) es software de código abierto bajo la licencia del Instituto Tecnológico de Massachusetts [MIT license](http://opensource.org/licenses/MIT).
+
+Elementos de cuentas de Usuarios creadas para este sistema:
+
+* Cuenta de Correo Electronico: (Gmail)
+    * Cuenta  -> seguimiento.psg@gmail.com
+    * Usuario -> Administrador Graduados
+    * Contra  -> psg321321
+* Cuenta de SMS: (Nexmo)
+    * Usuario -> Administrador Graduados
+    * Email   -> seguimiento.psg@gmail.com
+    * Telefono-> +505 8292 5145
+    * Contra  -> pSg321321

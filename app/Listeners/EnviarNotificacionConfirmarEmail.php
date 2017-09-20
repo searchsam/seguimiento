@@ -31,7 +31,7 @@ class EnviarNotificacionConfirmarEmail implements ShouldQueue
     public function handle(ConfirmarEmail $event)
     {
 
-        auth()->user()->notify(new VerificacionEmail());
+        auth()->user()->notify(new VerificacionEmail($event->user));
     }
 
     /**
