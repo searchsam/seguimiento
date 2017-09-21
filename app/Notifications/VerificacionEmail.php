@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -31,7 +30,7 @@ class VerificacionEmail extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail', 'database', 'nexmo'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -54,8 +53,8 @@ class VerificacionEmail extends Notification implements ShouldQueue
     public function toDatabase($notifiable)
     {
         return [
-            'id' => $notifiable->id,
-            'text' => 'Verificar Correo Electronico'
+            'tipo' => 'flag',
+            'text' => 'Verificar Correo Electronico.'
         ];
     }
 

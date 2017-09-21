@@ -16,6 +16,15 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ConfirmarEmail' => [
             'App\Listeners\EnviarNotificacionConfirmarEmail',
         ],
+        'App\Events\EmailConfirmado' => [
+            'App\Listeners\EnviarNotificacionEmailConfirmado',
+        ],
+        'App\Events\NotificacionesEstudiante' => [
+            'App\Listeners\CrearNotificacionesEstudiante',
+        ],
+        'App\Events\NotificacionesEmpresa' => [
+            'App\Listeners\CrearNotificacionesEmpresa',
+        ],
     ];
 
     /**

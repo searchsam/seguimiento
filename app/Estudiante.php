@@ -25,11 +25,5 @@ class Estudiante extends Model
         'dato_profecional_id',
         'usuario_id'
     ];
-    /**
-     * Get the user that owns the phone.
-     */
-    public function usuario()
-    {
-        return $this->belongsTo('App\Usuario');
-    }
+
 }

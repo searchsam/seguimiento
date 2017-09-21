@@ -12,10 +12,13 @@
             </div>
 
             <div class="pull-left info">
-                <p>{{ $usuario->nombre_usuario }}</p>
+                @php
+                    $user_name = explode(" ", $usuario->nombre_usuario);
+                @endphp
+                <p>{{ strtolower($user_name[0]) }}</p>
 
                 <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <!-- a href="#"><i class="fa fa-circle text-success"></i> Online</a -->
             </div>
 
         </div>

@@ -37,8 +37,10 @@ class LoginController extends Controller
 
     public function salir()
     {
-        Auth::logout();
+        Auth::user()->notifications()->delete();
         session()->flush();
+        Auth::logout();
+        
         return redirect()->route('acceso');
     }
 }

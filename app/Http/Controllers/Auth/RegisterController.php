@@ -11,9 +11,7 @@ use Auth;
 use App\Usuario;
 use Carbon\Carbon;
 use App\Events\ConfirmarEmail;
-//use Mail;
-//use App\Mail\Confirmacion;
-use App\Notifications\VerificacionEmail;
+use App\Events\EmailConfirmado;
 
 class RegisterController extends Controller
 {
@@ -88,7 +86,6 @@ class RegisterController extends Controller
             'lastname'  => $data['lastname'],
             'email'     => $data['email'],
             'password'  => bcrypt($data['password']),
-            'phone_number' => '50582925145',
         ]);
 
         Usuario::create([
@@ -131,6 +128,8 @@ class RegisterController extends Controller
             $usuario = Usuario::find(Auth::id());
             $usuario->estado_usuario = TRUE;
             $usuario->save();
+
+            event(new EmailConfirmado($user));
 
             session(['usuario' => $usuario]);
 

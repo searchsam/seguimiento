@@ -21,24 +21,50 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
+                @php
+                    $flags = array();
+                    $bells = array();
+
+                    if ( count( auth()->user()->unreadNotifications ) )
+                    {
+                        foreach (auth()->user()->unreadNotifications as $notificacion)
+                        {
+                            if ( str_is($notificacion->tipo, 'flag') )
+                            {
+                                $flags[] =  $notificacion;
+                            }
+                            else
+                            {
+                                $bells[] = $notificacion;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        $flags = NULL;
+                        $bells = NULL;
+                    }
+                @endphp
+
                 <!-- Notifications Menu -->
                 <li class="dropdown notifications-menu">
+
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    @if (count( auth()->user()->unreadNotifications ))
+                    @if ( !is_null( $bells ) )
                             <i class="fa fa-bell"></i>
-                        <span class="label notifications-warning">{{ count( auth()->user()->unreadNotifications ) }}</span>
+                        <span class="label notifications-warning">{{ count( $bells ) }}</span>
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li class="header">Tienes {{ count( auth()->user()->unreadNotifications ) }} notificaciones.</li>
+                        <li class="header">Tienes {{ count( $bells ) }} notificaciones.</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
                             <ul class="menu">
-                                @foreach (auth()->user()->unreadNotifications as $notificacion)
+                                @foreach ( $bells as $bell )
                                     <li><!-- start notification -->
                                         <a href="#">
-                                            <i class="fa fa-circle messages-warning"></i>{{ $notificacion->data['text'] }}
+                                            <i class="fa fa-circle messages-warning"></i>{{ $bell->data['text'] }}
                                         </a>
                                     </li>
                                     <!-- end notification -->
@@ -61,21 +87,21 @@
 
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    @if (count( auth()->user()->unreadNotifications ))
+                    @if ( !is_null( $flags ) )
                             <i class="fa fa-flag"></i>
-                        <span class="label notifications-error">{{ count( auth()->user()->unreadNotifications ) }}</span>
+                        <span class="label notifications-error">{{ count( $flags ) }}</span>
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li class="header">Tienes {{ count( auth()->user()->unreadNotifications ) }} tareas pendientes.</li>
+                        <li class="header">Tienes {{ count( $flags ) }} tareas pendientes.</li>
 
                         <li>
                             <!-- Inner menu: contains the tasks -->
                             <ul class="menu">
-                                @foreach (auth()->user()->unreadNotifications as $notificacion)
+                                @foreach ( $flags as $flag )
                                     <li><!-- start notification -->
                                         <a href="#">
-                                            <i class="fa fa-circle messages-error"></i>{{ $notificacion->data['text'] }}
+                                            <i class="fa fa-circle messages-error"></i>{{ $flag->data['text'] }}
                                         </a>
                                     </li>
                                     <!-- end notification -->
@@ -109,12 +135,12 @@
                         <li class="user-header">
                             <img src="{{ asset($usuario->foto_usuario) }}" class="img-circle" alt="User Image" />
                             <p>
-                                {{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }} <br> Web Developer
+                                {{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }} <br> {{ $usuario->tipousuario->tipo_usuario }}
                             </p>
                         </li>
 
                         <!-- Menu Body -->
-                        <li class="user-body">
+                        <!-- li class="user-body">
 
                             <div class="row">
                                 <div class="col-xs-4 text-center">
@@ -131,9 +157,9 @@
 
                             </div>
                             <!-- /.row -->
-                        </li>
+                        <!-- /li>
 
-                        <!-- Menu Footer-->
+                        <!-- Menu Footer -->
                         <li class="user-footer">
 
                             <div class="pull-left">
@@ -152,10 +178,11 @@
                 </li>
 
                 <!-- Control Sidebar Toggle Button -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                </li>
-
+                @if ($usuario->tipo_usuario_id == 1)
+                    <li>
+                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                    </li>
+                @endif
             </ul>
         </div>
     </nav>
