@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-use App\Estudiante;
 use App\Usuario;
+use App\Estudiante;
+use App\Events\NotificacionesEstudiante;
 
 class EstudianteController extends Controller
 {
@@ -25,6 +27,9 @@ class EstudianteController extends Controller
     {
         $data['usuario'] = session('usuario');
         $data['page_title'] = 'Registrar Plan de Estudios';
+
+        event(new NotificacionesEstudiante(Auth::user()));
+
         return view('tablero.curriculum', $data);
     }
 }

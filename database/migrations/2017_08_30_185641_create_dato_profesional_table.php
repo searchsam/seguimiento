@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDatoProfecionalTable extends Migration
+class CreateDatoProfesionalTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateDatoProfecionalTable extends Migration
      */
     public function up()
     {
-        Schema::create('dato_profecional', function (Blueprint $table) {
-            $table->increments('id_dato_profecional');
+        Schema::create('dato_profesional', function (Blueprint $table) {
+            $table->increments('id_dato_profesional');
             $table->string('especializacion');
             $table->string('grado_especializacion');
             $table->boolean('situacion_laraboral');
@@ -38,6 +38,6 @@ class CreateDatoProfecionalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dato_profecional');
+        Schema::dropIfExists('dato_profesional');
     }
 }

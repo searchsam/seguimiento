@@ -29,9 +29,9 @@
                     {
                         foreach (auth()->user()->unreadNotifications as $notificacion)
                         {
-                            if ( str_is($notificacion->tipo, 'flag') )
+                            if ( str_is($notificacion->data['tipo'], 'flag') )
                             {
-                                $flags[] =  $notificacion;
+                                $flags[] = $notificacion;
                             }
                             else
                             {

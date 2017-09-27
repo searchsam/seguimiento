@@ -28,6 +28,32 @@ $cuerpotam: 20px
     -ms-border-radius:     $radius
     border-radius:         $radius
 
+=placeholder($size, $color, $aling)
+    &::placeholder
+        font-size: $size
+        color: $color
+        text-align: $aling
+
+    &::-webkit-input-placeholder
+        font-size: $size
+        color: $color
+        text-align: $aling
+
+    &::-moz-placeholder
+        font-size: $size
+        color: $color
+        text-align: $aling
+
+    &:-ms-input-placeholder
+        font-size: $size
+        color: $color
+        text-align: $aling
+
+    &:-moz-placeholder
+        font-size: $size
+        color: $color
+        text-align: $aling
+
 // Estilos Globales
 @font-face
     font-family: $titulo
@@ -57,15 +83,16 @@ input
     height: 50px
     text-align: center
     box-shadow: none
+    +placeholder($cuerpotam, $grisclaro, center)
     &:hover
-        &::-webkit-input-placeholder
-            color: black
+        +placeholder($cuerpotam, $gris, center)
     &:focus, &:active, &:visited
         +border-radius(0)
-    &::-webkit-input-placeholder
-        font-size: $cuerpotam
-        color: $gris
-        text-align: center
+
+ textarea
+    @extend input
+    text-align: left
+    height: 200px
 
 a
     text-decoration: none
@@ -118,8 +145,7 @@ a
     .error
         border-color: $rojo
         &:hover
-            &::-webkit-input-placeholder
-                color: $rojo
+            +placeholder($cuerpotam, $rojo, center)
 
 .form-log-footer
     .form-log-btn
@@ -203,8 +229,7 @@ a
             .error
                 border-color: $rojo
                 &:hover
-                    &::-webkit-input-placeholder
-                        color: $rojo
+                    +placeholder($cuerpotam, $rojo, center)
 
 p.lead
     color: $gris
@@ -390,6 +415,34 @@ input
 
 .notifications-error
     background-color: $rojo
+
+.form-check-label
+    font-size: $cuerpotam
+    padding: 10px
+    font-family: $cuerpo
+
+#curriculum-form
+    label
+        font-weight: normal
+    input
+        font-size: $cuerpotam
+        +placeholder($cuerpotam, $grisclaro, center)
+
+.form-check-input
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  border-radius: 50%
+  width: 16px
+  height: 16px
+  border: 2px solid $grisclaro
+  transition: 0.2s all linear
+  outline: none
+  margin-right: 10px
+  position: relative
+  &:checked
+      border: 6px solid $azul
+      border-radius: 50%
 
 @media only screen and (max-width: 500px)
     // Estilo Login

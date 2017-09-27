@@ -23,14 +23,15 @@ class CreateEstudianteTable extends Migration
             $table->string('telefono_estudiante');
             $table->string('direccion_estudiante');
             $table->string('email_estudiante');
+            $table->boolean('sexo_estudiante');
             $table->integer('edad_estudiante');
             $table->integer('tipo_estudiante_id')->unsigned();
-            $table->integer('dato_profecional_id')->unsigned();
+            $table->integer('dato_profesional_id')->unsigned();
             $table->integer('usuario_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('tipo_estudiante_id')->references('id_tipo_estudiante')->on('tipo_estudiante')->onDelete('cascade');
-            $table->foreign('dato_profecional_id')->references('id_dato_profecional')->on('dato_profecional')->onDelete('cascade');
+            $table->foreign('dato_profesional_id')->references('id_dato_profesional')->on('dato_profesional')->onDelete('cascade');
             $table->foreign('usuario_id')->references('id_usuario')->on('usuario')->onDelete('cascade');
         });
     }

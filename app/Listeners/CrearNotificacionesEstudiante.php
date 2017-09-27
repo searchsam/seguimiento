@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use Illuminate\Support\Facades\DB;
 use App\Events\NotificacionesEstudiante;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -12,7 +13,7 @@ use App\Notifications\SubirCurriculum;
 use App\Notifications\RegistrarPlanEstudios;
 
 class CrearNotificacionesEstudiante
-{}
+{
 
     /**
      * Create the event listener.
@@ -34,17 +35,45 @@ class CrearNotificacionesEstudiante
     {
         $usuario = Usuario::find($event->user->id);
 
-        if ( !isset($usuario->estudiante) )
+        if ( count( auth()->user()->unreadNotifications ) )
         {
-            $event->user->notify(new RegistrarPlanEstudios());
-            $event->user->notify(new SubirCurriculum());
-        }
-        else
-        {
-            if ( is_null($usuario->estudiante->curriculum) )
+            if ( !DB::table('notifications')->where([ ['notifiable_id', '=', $event->user->id], ['type', 'LIKE', '*RegistrarPlanEstudios'], ])->get())
             {
-                $event->user->notify(new SubirCurriculum());
+                if ( !isset($usuario->estudiante) )
+                {
+                    $event->user->notify(new RegistrarPlanEstudios());
+                }
+            }
+
+            if ( !DB::table('notifications')->where([ ['notifiable_id', '=', $event->user->id], ['type', 'LIKE', '*SubirCurriculum'], ])->get())
+            {
+                if ( !isset($usuario->estudiante) )
+                {
+                    $event->user->notify(new SubirCurriculum());
+                }
+                else
+                {
+                    if ( is_null( $usuario->estudiante->curriculum ) )
+                    {
+                        $event->user->notify(new SubirCurriculum());
+                    }
+                }
             }
         }
+        else {
+            if ( !isset($usuario->estudiante) )
+            {
+                $event->user->notify(new RegistrarPlanEstudios());
+                $event->user->notify(new SubirCurriculum());
+            }
+            else
+            {
+                if ( is_null( $usuario->estudiante->curriculum ) )
+                {
+                    $event->user->notify(new SubirCurriculum());
+                }
+            }
+        }
+
     }
 }
