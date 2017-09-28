@@ -66,7 +66,7 @@ class VerificacionEmail extends Notification implements ShouldQueue
      */
     public function toNexmo($notifiable)
     {
-        return (new NexmoMessage)->content('Notificacion por sms.');
+        return (new NexmoMessage)->content('Notificacion por sms del PSG.');
     }
 
     /**

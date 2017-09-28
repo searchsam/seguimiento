@@ -27,7 +27,10 @@ button,
 #panel .card .card-body button {
   border: 0;
   border-radius: 0;
-  font-size: 20px;
+  font-size: 17px;
+  background-color: #ECF0F5;
+  height: 50px;
+  color: #808080;
 }
 
 button:hover,
@@ -37,42 +40,140 @@ button:hover,
 }
 
 input,
-.form-log-body input,
 #panel .card .card-body input,
-textarea {
+#curriculum-form input[type="text"],
+#curriculum-form textarea {
+  width: 100%;
   border-radius: 0;
   border: 2px solid #ECF0F5;
   height: 50px;
   text-align: center;
   -webkit-box-shadow: none;
           box-shadow: none;
+  font-size: 17px;
+}
+
+input::-webkit-input-placeholder,
+#panel .card .card-body input::-webkit-input-placeholder,
+#curriculum-form input[type="text"]::-webkit-input-placeholder,
+#curriculum-form textarea::-webkit-input-placeholder {
+  font-size: 17px;
+  color: #808080;
+  text-align: center;
+}
+
+input:-ms-input-placeholder,
+#panel .card .card-body input:-ms-input-placeholder,
+#curriculum-form input[type="text"]:-ms-input-placeholder,
+#curriculum-form textarea:-ms-input-placeholder {
+  font-size: 17px;
+  color: #808080;
+  text-align: center;
+}
+
+input::placeholder,
+#panel .card .card-body input::placeholder,
+#curriculum-form input[type="text"]::placeholder,
+#curriculum-form textarea::placeholder {
+  font-size: 17px;
+  color: #808080;
+  text-align: center;
+}
+
+input::-webkit-input-placeholder,
+#panel .card .card-body input::-webkit-input-placeholder,
+#curriculum-form input[type="text"]::-webkit-input-placeholder,
+#curriculum-form textarea::-webkit-input-placeholder {
+  font-size: 17px;
+  color: #808080;
+  text-align: center;
+}
+
+input:-ms-input-placeholder,
+#panel .card .card-body input:-ms-input-placeholder,
+#curriculum-form input[type="text"]:-ms-input-placeholder,
+#curriculum-form textarea:-ms-input-placeholder {
+  font-size: 17px;
+  color: #808080;
+  text-align: center;
 }
 
 input:hover::-webkit-input-placeholder,
 #panel .card .card-body input:hover::-webkit-input-placeholder,
-textarea:hover::-webkit-input-placeholder {
+#curriculum-form input[type="text"]:hover::-webkit-input-placeholder,
+#curriculum-form textarea:hover::-webkit-input-placeholder {
+  font-size: 17px;
   color: black;
+  text-align: center;
+}
+
+input:hover:-ms-input-placeholder,
+#panel .card .card-body input:hover:-ms-input-placeholder,
+#curriculum-form input[type="text"]:hover:-ms-input-placeholder,
+#curriculum-form textarea:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: black;
+  text-align: center;
+}
+
+input:hover::placeholder,
+#panel .card .card-body input:hover::placeholder,
+#curriculum-form input[type="text"]:hover::placeholder,
+#curriculum-form textarea:hover::placeholder {
+  font-size: 17px;
+  color: black;
+  text-align: center;
+}
+
+input:hover::-webkit-input-placeholder,
+#panel .card .card-body input:hover::-webkit-input-placeholder,
+#curriculum-form input[type="text"]:hover::-webkit-input-placeholder,
+#curriculum-form textarea:hover::-webkit-input-placeholder {
+  font-size: 17px;
+  color: black;
+  text-align: center;
+}
+
+input:hover::-moz-placeholder,
+#panel .card .card-body input:hover::-moz-placeholder,
+#curriculum-form input[type="text"]:hover::-moz-placeholder,
+#curriculum-form textarea:hover::-moz-placeholder {
+  font-size: 17px;
+  color: black;
+  text-align: center;
+}
+
+input:hover:-ms-input-placeholder,
+#panel .card .card-body input:hover:-ms-input-placeholder,
+#curriculum-form input[type="text"]:hover:-ms-input-placeholder,
+#curriculum-form textarea:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: black;
+  text-align: center;
+}
+
+input:hover:-moz-placeholder,
+#panel .card .card-body input:hover:-moz-placeholder,
+#curriculum-form input[type="text"]:hover:-moz-placeholder,
+#curriculum-form textarea:hover:-moz-placeholder {
+  font-size: 17px;
+  color: black;
+  text-align: center;
 }
 
 input:focus,
 #panel .card .card-body input:focus,
+#curriculum-form input[type="text"]:focus,
+#curriculum-form textarea:focus,
 input:active,
 #panel .card .card-body input:active,
+#curriculum-form input[type="text"]:active,
+#curriculum-form textarea:active,
 input:visited,
 #panel .card .card-body input:visited,
-textarea:focus,
-textarea:active,
-textarea:visited {
+#curriculum-form input[type="text"]:visited,
+#curriculum-form textarea:visited {
   border-radius: 0;
-}
-
-input::-webkit-input-placeholder,
-.form-log-body input::-webkit-input-placeholder,
-#panel .card .card-body input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-  font-size: 20px;
-  color: #808080;
-  text-align: center;
 }
 
 a,
@@ -86,7 +187,7 @@ a,
 
 #login {
   background-color: #2E5097;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .form-log-cont {
@@ -113,50 +214,54 @@ a,
   margin-bottom: 20px;
 }
 
-.form-log-body input,
-.form-log-body #panel .card .card-body input,
-#panel .card .card-body .form-log-body input {
-  font-size: 20px;
-  border-width: 2px 0 2px 0;
-  border-style: solid;
-  border-color: #ECF0F5;
-  width: 100%;
-  border-radius: 0;
-}
-
-.form-log-body input:hover::-webkit-input-placeholder,
-.form-log-body #panel .card .card-body input:hover::-webkit-input-placeholder,
-#panel .card .card-body .form-log-body input:hover::-webkit-input-placeholder {
-  border-color: #ECF0F5;
-}
-
-.form-log-body input:focus,
-.form-log-body #panel .card .card-body input:focus,
-#panel .card .card-body .form-log-body input:focus,
-.form-log-body input:active,
-.form-log-body #panel .card .card-body input:active,
-#panel .card .card-body .form-log-body input:active,
-.form-log-body input:visited,
-.form-log-body #panel .card .card-body input:visited,
-#panel .card .card-body .form-log-body input:visited {
-  border-width: 2px 0 2px 0;
-  border-style: solid;
-  border-color: #ECF0F5;
-}
-
 .form-log-body .error {
   border-color: #DC3545;
 }
 
 .form-log-body .error:hover::-webkit-input-placeholder {
+  font-size: 17px;
   color: #DC3545;
+  text-align: center;
+}
+
+.form-log-body .error:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+.form-log-body .error:hover::placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+.form-log-body .error:hover::-webkit-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+.form-log-body .error:hover::-moz-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+.form-log-body .error:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+.form-log-body .error:hover:-moz-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
 }
 
 .form-log-footer .form-log-btn {
   width: 100%;
-  background-color: #ECF0F5;
-  height: 50px;
-  color: #808080;
 }
 
 .form-reg {
@@ -165,11 +270,12 @@ a,
 
 .form-reg a {
   width: 100%;
-  padding: 10px 101px;
+  padding: 10px 107px;
   height: 50px;
   border: 2px solid #ECF0F5;
   border-radius: 0;
   color: #ECF0F5;
+  font-size: 17px;
 }
 
 .form-reg a:hover {
@@ -178,7 +284,7 @@ a,
 }
 
 .help-block {
-  font-size: 12px;
+  font-size: 11px;
   color: white;
   background-color: #DC3545;
   margin: 0;
@@ -235,15 +341,10 @@ a,
       align-content: center;
 }
 
-#panel .card .card-body input {
-  width: 100%;
-}
-
 #panel .card .card-body .form-log-footer .form-log-btn,
 .form-log-footer #panel .card .card-body .form-log-btn,
 #panel .card .card-body button {
   width: 100%;
-  height: 50px;
 }
 
 #panel .card .card-body .error {
@@ -251,7 +352,45 @@ a,
 }
 
 #panel .card .card-body .error:hover::-webkit-input-placeholder {
+  font-size: 17px;
   color: #DC3545;
+  text-align: center;
+}
+
+#panel .card .card-body .error:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#panel .card .card-body .error:hover::placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#panel .card .card-body .error:hover::-webkit-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#panel .card .card-body .error:hover::-moz-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#panel .card .card-body .error:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#panel .card .card-body .error:hover:-moz-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
 }
 
 p.lead {
@@ -267,7 +406,11 @@ p.lead {
 
 .switch input,
 .switch #panel .card .card-body input,
-#panel .card .card-body .switch input {
+#panel .card .card-body .switch input,
+.switch #curriculum-form input[type="text"],
+#curriculum-form .switch input[type="text"],
+.switch #curriculum-form textarea,
+#curriculum-form .switch textarea {
   display: none;
 }
 
@@ -296,21 +439,24 @@ p.lead {
 }
 
 input:checked + .slider,
-.form-log-body input:checked + .slider,
-#panel .card .card-body input:checked + .slider {
+#panel .card .card-body input:checked + .slider,
+#curriculum-form input[type="text"]:checked + .slider,
+#curriculum-form textarea:checked + .slider {
   background-color: #4D73BA;
 }
 
 input:focus + .slider,
-.form-log-body input:focus + .slider,
-#panel .card .card-body input:focus + .slider {
+#panel .card .card-body input:focus + .slider,
+#curriculum-form input[type="text"]:focus + .slider,
+#curriculum-form textarea:focus + .slider {
   -webkit-box-shadow: 0 0 1px #4D73BA;
           box-shadow: 0 0 1px #4D73BA;
 }
 
 input:checked + .slider:before,
-.form-log-body input:checked + .slider:before,
-#panel .card .card-body input:checked + .slider:before {
+#panel .card .card-body input:checked + .slider:before,
+#curriculum-form input[type="text"]:checked + .slider:before,
+#curriculum-form textarea:checked + .slider:before {
   -webkit-transform: translateX(26px);
   transform: translateX(26px);
 }
@@ -489,7 +635,7 @@ input:checked + .slider:before,
 }
 
 .form-check-label {
-  font-size: 20px;
+  font-size: 17px;
   padding: 10px;
   font-family: "OpenSans";
 }
@@ -498,52 +644,8 @@ input:checked + .slider:before,
   font-weight: normal;
 }
 
-#curriculum-form input,
-#curriculum-form #panel .card .card-body input,
-#panel .card .card-body #curriculum-form input {
-  font-size: 20px;
-}
-
-#curriculum-form input::-webkit-input-placeholder,
-#curriculum-form #panel .card .card-body input::-webkit-input-placeholder,
-#panel .card .card-body #curriculum-form input::-webkit-input-placeholder {
-  font-size: 20px;
-}
-
-#curriculum-form input:-ms-input-placeholder,
-#curriculum-form #panel .card .card-body input:-ms-input-placeholder,
-#panel .card .card-body #curriculum-form input:-ms-input-placeholder {
-  font-size: 20px;
-}
-
-#curriculum-form input::placeholder,
-#curriculum-form #panel .card .card-body input::placeholder,
-#panel .card .card-body #curriculum-form input::placeholder {
-  font-size: 20px;
-}
-
-#curriculum-form input::-webkit-input-placeholder,
-#curriculum-form #panel .card .card-body input::-webkit-input-placeholder,
-#panel .card .card-body #curriculum-form input::-webkit-input-placeholder {
-  font-size: 20px;
-}
-
-#curriculum-form input::-moz-placeholder,
-#curriculum-form #panel .card .card-body input::-moz-placeholder,
-#panel .card .card-body #curriculum-form input::-moz-placeholder {
-  font-size: 20px;
-}
-
-#curriculum-form input:-ms-input-placeholder,
-#curriculum-form #panel .card .card-body input:-ms-input-placeholder,
-#panel .card .card-body #curriculum-form input:-ms-input-placeholder {
-  font-size: 20px;
-}
-
-#curriculum-form input:-moz-placeholder,
-#curriculum-form #panel .card .card-body input:-moz-placeholder,
-#panel .card .card-body #curriculum-form input:-moz-placeholder {
-  font-size: 20px;
+#curriculum-form textarea {
+  height: 100px;
 }
 
 .form-check-input {

@@ -33,7 +33,8 @@
         <link href="{{ asset("css/seguimiento.css") }}" rel="stylesheet" type="text/css" />
     </head>
 
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-blue sidebar-collapse fixed sidebar-mini">
+        <!-- Site wrapper -->
         <div class="wrapper">
 
             <!-- Header -->

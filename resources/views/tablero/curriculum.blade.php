@@ -1,9 +1,9 @@
 @extends('layouts/admin_template')
 
 @section('content')
-    <div class="box box-default">
-        <form id="curriculum-form" class="" action="index.html" method="post">
+    <form id="curriculum-form" class="" action="index.html" method="post">
 
+        <div class="box box-default">
             <div class="box-header with-border">
                 <h3 class="box-title">DATOS PERSONALES</h3>
                 <div class="box-tools pull-right">
@@ -38,19 +38,50 @@
                             <input type="text" name="ciudad" style="width:100%" placeholder="Ciudad">
                         </div>
                         <div class="form-group">
-                            <textarea rows="5" style="width:100%"></textarea>
+                            <textarea rows="5" name="direccion" style="width:100%" placeholder="Direcci&oacute;n"></textarea>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <h1>FOTO</h1>
+                            <img src="{{ asset('/img/cliente.png') }}" class="rounded-circle">
+                            <input type="text" name="foto" hidden="true">
+                            <h1 class="display-3">Codigo usuario</h1>
                         </div>
                     </div>
 
                 </div>
             </div>
+        </div>
 
-        </form>
-    </div>
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">FORMACI&Oacute;N ACAD&Eacute;MICA</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+
+            <div class="box-body">
+
+
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <input type="text" name="estudio" style="width:100%" placeholder="Estudio/Carrera">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="institucion" style="width:100%" placeholder="Institucion de Estudio">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="ciudad" style="width:100%" placeholder="Ciudad">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="ano" style="width:100%" placeholder="Año">
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+
+    </form>
 @endsection

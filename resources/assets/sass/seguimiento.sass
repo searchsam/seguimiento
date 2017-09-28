@@ -17,9 +17,9 @@ $hovercolor: rgba(0,0,0,0.1)
 // Fuente
 $titulo: "Saraun"
 $cuerpo: "OpenSans"
-$tam: 14px
+$tam: 17px
 $titulotam: 40px
-$cuerpotam: 20px
+$cuerpotam: 11px
 
 // Mixins
 =border-radius($radius)
@@ -73,26 +73,26 @@ h1, h2, h3, h4, h5
 button
     border: 0
     +border-radius(0)
-    font-size: $cuerpotam
+    font-size: $tam
+    background-color: $grisclaro
+    height: 50px
+    color: $gris
     &:hover
         color: black
 
 input
+    width: 100%
     +border-radius(0)
     border: 2px solid $grisclaro
     height: 50px
     text-align: center
     box-shadow: none
-    +placeholder($cuerpotam, $grisclaro, center)
+    font-size: $tam
+    +placeholder($tam, $gris, center)
     &:hover
-        +placeholder($cuerpotam, $gris, center)
+        +placeholder($tam, black, center)
     &:focus, &:active, &:visited
         +border-radius(0)
-
- textarea
-    @extend input
-    text-align: left
-    height: 200px
 
 a
     text-decoration: none
@@ -103,7 +103,7 @@ a
 // Pantalla Login
 #login
     background-color: $azul
-    font-size: $cuerpotam
+    font-size: $tam
 
 .form-log-cont
     position: absolute
@@ -125,54 +125,35 @@ a
 
 .form-log-body
     margin-bottom: 20px
-
-    input
-        @extend input
-        font-size: $cuerpotam
-        border-width: 2px 0 2px 0
-        border-style: solid
-        border-color: $grisclaro
-        width: 100%
-        +border-radius(0)
-        &:hover
-            &::-webkit-input-placeholder
-                border-color: $grisclaro
-        &:focus, &:active, &:visited
-            border-width: 2px 0 2px 0
-            border-style: solid
-            border-color: $grisclaro
-
     .error
         border-color: $rojo
         &:hover
-            +placeholder($cuerpotam, $rojo, center)
+            +placeholder($tam, $rojo, center)
 
 .form-log-footer
     .form-log-btn
         @extend button
         width: 100%
-        background-color: $grisclaro
-        height: 50px
-        color: $gris
+
 
 .form-reg
     background-color: $azul
-
     a
         @extend a
         width: 100%
-        padding: 10px 101px
+        padding: 10px 107px
         height: 50px
         border: 2px solid $grisclaro
         +border-radius(0)
         color: $grisclaro
+        font-size: $tam
         &:hover
             background-color: $gris
             border: 2px solid $gris
 
 
 .help-block
-    font-size: 12px
+    font-size: $cuerpotam
     color: white
     background-color: $rojo
     margin: 0
@@ -220,16 +201,13 @@ a
             align-content: center
             input
                 @extend input
-                width: 100%
             button
                 @extend button
                 width: 100%
-                height: 50px
-
             .error
                 border-color: $rojo
                 &:hover
-                    +placeholder($cuerpotam, $rojo, center)
+                    +placeholder($tam, $rojo, center)
 
 p.lead
     color: $gris
@@ -417,16 +395,19 @@ input
     background-color: $rojo
 
 .form-check-label
-    font-size: $cuerpotam
+    font-size: $tam
     padding: 10px
     font-family: $cuerpo
 
+// curriculum
 #curriculum-form
     label
         font-weight: normal
-    input
-        font-size: $cuerpotam
-        +placeholder($cuerpotam, $grisclaro, center)
+    input[type="text"]
+        @extend input
+    textarea
+        @extend input
+        height: 100px
 
 .form-check-input
   -webkit-appearance: none
