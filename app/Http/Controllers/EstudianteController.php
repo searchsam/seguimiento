@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Usuario;
 use App\Estudiante;
+use App\TipoEstudio;
 use App\Events\NotificacionesEstudiante;
 
 class EstudianteController extends Controller
@@ -25,8 +26,9 @@ class EstudianteController extends Controller
 
     public function registrar()
     {
-        $data['usuario'] = session('usuario');
-        $data['page_title'] = 'Registrar Plan de Estudios';
+        $data['usuario']        = session('usuario');
+        $data['tipo_estudio']   = TipoEstudio::all(); 
+        $data['page_title']     = 'Registrar Plan de Estudios';
 
         event(new NotificacionesEstudiante(Auth::user()));
 

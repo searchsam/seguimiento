@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @font-face {
   font-family: "Saraun";
   src: local("?"), url(/fonts/THSarabunNew.ttf?45905ce12b4739c794a5ebdaee506202);
@@ -42,7 +44,9 @@ button:hover,
 input,
 #panel .card .card-body input,
 #curriculum-form input[type="text"],
-#curriculum-form textarea {
+#curriculum-form textarea,
+#curriculum-form .form-select,
+#curriculum-form .form-select select {
   width: 100%;
   border-radius: 0;
   border: 2px solid #ECF0F5;
@@ -56,7 +60,9 @@ input,
 input::-webkit-input-placeholder,
 #panel .card .card-body input::-webkit-input-placeholder,
 #curriculum-form input[type="text"]::-webkit-input-placeholder,
-#curriculum-form textarea::-webkit-input-placeholder {
+#curriculum-form textarea::-webkit-input-placeholder,
+#curriculum-form .form-select::-webkit-input-placeholder,
+#curriculum-form .form-select select::-webkit-input-placeholder {
   font-size: 17px;
   color: #808080;
   text-align: center;
@@ -65,7 +71,9 @@ input::-webkit-input-placeholder,
 input:-ms-input-placeholder,
 #panel .card .card-body input:-ms-input-placeholder,
 #curriculum-form input[type="text"]:-ms-input-placeholder,
-#curriculum-form textarea:-ms-input-placeholder {
+#curriculum-form textarea:-ms-input-placeholder,
+#curriculum-form .form-select:-ms-input-placeholder,
+#curriculum-form .form-select select:-ms-input-placeholder {
   font-size: 17px;
   color: #808080;
   text-align: center;
@@ -74,7 +82,9 @@ input:-ms-input-placeholder,
 input::placeholder,
 #panel .card .card-body input::placeholder,
 #curriculum-form input[type="text"]::placeholder,
-#curriculum-form textarea::placeholder {
+#curriculum-form textarea::placeholder,
+#curriculum-form .form-select::placeholder,
+#curriculum-form .form-select select::placeholder {
   font-size: 17px;
   color: #808080;
   text-align: center;
@@ -83,7 +93,9 @@ input::placeholder,
 input::-webkit-input-placeholder,
 #panel .card .card-body input::-webkit-input-placeholder,
 #curriculum-form input[type="text"]::-webkit-input-placeholder,
-#curriculum-form textarea::-webkit-input-placeholder {
+#curriculum-form textarea::-webkit-input-placeholder,
+#curriculum-form .form-select::-webkit-input-placeholder,
+#curriculum-form .form-select select::-webkit-input-placeholder {
   font-size: 17px;
   color: #808080;
   text-align: center;
@@ -92,7 +104,9 @@ input::-webkit-input-placeholder,
 input:-ms-input-placeholder,
 #panel .card .card-body input:-ms-input-placeholder,
 #curriculum-form input[type="text"]:-ms-input-placeholder,
-#curriculum-form textarea:-ms-input-placeholder {
+#curriculum-form textarea:-ms-input-placeholder,
+#curriculum-form .form-select:-ms-input-placeholder,
+#curriculum-form .form-select select:-ms-input-placeholder {
   font-size: 17px;
   color: #808080;
   text-align: center;
@@ -101,7 +115,9 @@ input:-ms-input-placeholder,
 input:hover::-webkit-input-placeholder,
 #panel .card .card-body input:hover::-webkit-input-placeholder,
 #curriculum-form input[type="text"]:hover::-webkit-input-placeholder,
-#curriculum-form textarea:hover::-webkit-input-placeholder {
+#curriculum-form textarea:hover::-webkit-input-placeholder,
+#curriculum-form .form-select:hover::-webkit-input-placeholder,
+#curriculum-form .form-select select:hover::-webkit-input-placeholder {
   font-size: 17px;
   color: black;
   text-align: center;
@@ -110,7 +126,9 @@ input:hover::-webkit-input-placeholder,
 input:hover:-ms-input-placeholder,
 #panel .card .card-body input:hover:-ms-input-placeholder,
 #curriculum-form input[type="text"]:hover:-ms-input-placeholder,
-#curriculum-form textarea:hover:-ms-input-placeholder {
+#curriculum-form textarea:hover:-ms-input-placeholder,
+#curriculum-form .form-select:hover:-ms-input-placeholder,
+#curriculum-form .form-select select:hover:-ms-input-placeholder {
   font-size: 17px;
   color: black;
   text-align: center;
@@ -119,7 +137,9 @@ input:hover:-ms-input-placeholder,
 input:hover::placeholder,
 #panel .card .card-body input:hover::placeholder,
 #curriculum-form input[type="text"]:hover::placeholder,
-#curriculum-form textarea:hover::placeholder {
+#curriculum-form textarea:hover::placeholder,
+#curriculum-form .form-select:hover::placeholder,
+#curriculum-form .form-select select:hover::placeholder {
   font-size: 17px;
   color: black;
   text-align: center;
@@ -128,7 +148,9 @@ input:hover::placeholder,
 input:hover::-webkit-input-placeholder,
 #panel .card .card-body input:hover::-webkit-input-placeholder,
 #curriculum-form input[type="text"]:hover::-webkit-input-placeholder,
-#curriculum-form textarea:hover::-webkit-input-placeholder {
+#curriculum-form textarea:hover::-webkit-input-placeholder,
+#curriculum-form .form-select:hover::-webkit-input-placeholder,
+#curriculum-form .form-select select:hover::-webkit-input-placeholder {
   font-size: 17px;
   color: black;
   text-align: center;
@@ -137,7 +159,9 @@ input:hover::-webkit-input-placeholder,
 input:hover::-moz-placeholder,
 #panel .card .card-body input:hover::-moz-placeholder,
 #curriculum-form input[type="text"]:hover::-moz-placeholder,
-#curriculum-form textarea:hover::-moz-placeholder {
+#curriculum-form textarea:hover::-moz-placeholder,
+#curriculum-form .form-select:hover::-moz-placeholder,
+#curriculum-form .form-select select:hover::-moz-placeholder {
   font-size: 17px;
   color: black;
   text-align: center;
@@ -146,7 +170,9 @@ input:hover::-moz-placeholder,
 input:hover:-ms-input-placeholder,
 #panel .card .card-body input:hover:-ms-input-placeholder,
 #curriculum-form input[type="text"]:hover:-ms-input-placeholder,
-#curriculum-form textarea:hover:-ms-input-placeholder {
+#curriculum-form textarea:hover:-ms-input-placeholder,
+#curriculum-form .form-select:hover:-ms-input-placeholder,
+#curriculum-form .form-select select:hover:-ms-input-placeholder {
   font-size: 17px;
   color: black;
   text-align: center;
@@ -155,7 +181,9 @@ input:hover:-ms-input-placeholder,
 input:hover:-moz-placeholder,
 #panel .card .card-body input:hover:-moz-placeholder,
 #curriculum-form input[type="text"]:hover:-moz-placeholder,
-#curriculum-form textarea:hover:-moz-placeholder {
+#curriculum-form textarea:hover:-moz-placeholder,
+#curriculum-form .form-select:hover:-moz-placeholder,
+#curriculum-form .form-select select:hover:-moz-placeholder {
   font-size: 17px;
   color: black;
   text-align: center;
@@ -165,14 +193,20 @@ input:focus,
 #panel .card .card-body input:focus,
 #curriculum-form input[type="text"]:focus,
 #curriculum-form textarea:focus,
+#curriculum-form .form-select:focus,
+#curriculum-form .form-select select:focus,
 input:active,
 #panel .card .card-body input:active,
 #curriculum-form input[type="text"]:active,
 #curriculum-form textarea:active,
+#curriculum-form .form-select:active,
+#curriculum-form .form-select select:active,
 input:visited,
 #panel .card .card-body input:visited,
 #curriculum-form input[type="text"]:visited,
-#curriculum-form textarea:visited {
+#curriculum-form textarea:visited,
+#curriculum-form .form-select:visited,
+#curriculum-form .form-select select:visited {
   border-radius: 0;
 }
 
@@ -410,7 +444,11 @@ p.lead {
 .switch #curriculum-form input[type="text"],
 #curriculum-form .switch input[type="text"],
 .switch #curriculum-form textarea,
-#curriculum-form .switch textarea {
+#curriculum-form .switch textarea,
+.switch #curriculum-form .form-select,
+#curriculum-form .switch .form-select,
+.switch #curriculum-form .form-select select,
+#curriculum-form .form-select .switch select {
   display: none;
 }
 
@@ -441,14 +479,18 @@ p.lead {
 input:checked + .slider,
 #panel .card .card-body input:checked + .slider,
 #curriculum-form input[type="text"]:checked + .slider,
-#curriculum-form textarea:checked + .slider {
+#curriculum-form textarea:checked + .slider,
+#curriculum-form .form-select:checked + .slider,
+#curriculum-form .form-select select:checked + .slider {
   background-color: #4D73BA;
 }
 
 input:focus + .slider,
 #panel .card .card-body input:focus + .slider,
 #curriculum-form input[type="text"]:focus + .slider,
-#curriculum-form textarea:focus + .slider {
+#curriculum-form textarea:focus + .slider,
+#curriculum-form .form-select:focus + .slider,
+#curriculum-form .form-select select:focus + .slider {
   -webkit-box-shadow: 0 0 1px #4D73BA;
           box-shadow: 0 0 1px #4D73BA;
 }
@@ -456,7 +498,9 @@ input:focus + .slider,
 input:checked + .slider:before,
 #panel .card .card-body input:checked + .slider:before,
 #curriculum-form input[type="text"]:checked + .slider:before,
-#curriculum-form textarea:checked + .slider:before {
+#curriculum-form textarea:checked + .slider:before,
+#curriculum-form .form-select:checked + .slider:before,
+#curriculum-form .form-select select:checked + .slider:before {
   -webkit-transform: translateX(26px);
   transform: translateX(26px);
 }
@@ -645,7 +689,65 @@ input:checked + .slider:before,
 }
 
 #curriculum-form textarea {
-  height: 100px;
+  height: 75px;
+  text-align: left;
+}
+
+#curriculum-form .form-select {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+#curriculum-form .form-select:after {
+  content: "\25BC";
+  padding: 12px 8px;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  z-index: 1;
+  text-align: center;
+  width: 10%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#curriculum-form .form-select select {
+  border: none;
+  background: white;
+  text-align: left;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+#curriculum-form .agregar {
+  width: 100%;
+  /*font-size: 30px */
+}
+
+#datos-personales {
+  border-color: #1C3170;
+}
+
+#formacion-academica {
+  border-color: #28A745;
+}
+
+#experiencia {
+  border-color: #17A2B8;
+}
+
+#desarrollo-personal {
+  border-color: #001F3F;
+}
+
+#reconocimientos {
+  border-color: #FF851B;
+}
+
+#referencia {
+  border-color: #605CA8;
 }
 
 .form-check-input {
@@ -666,6 +768,131 @@ input:checked + .slider:before,
 .form-check-input:checked {
   border: 6px solid #2E5097;
   border-radius: 50%;
+}
+
+#user-foto {
+  background: #1C3170;
+  /*width: 100% */
+  height: 470px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#user-foto:hover a {
+  opacity: 1;
+  top: 0;
+  z-index: 5;
+}
+
+#user-foto:hover a i {
+  font-size: 50px;
+  top: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+#user-foto img {
+  display: inline-block;
+  padding: 20px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#user-foto img:hover {
+  opacity: 0.5;
+}
+
+#user-foto a {
+  display: block;
+  position: absolute;
+  top: -100%;
+  opacity: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  color: inherit;
+}
+
+.tags {
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.tags li {
+  float: left;
+  background-color: #808080;
+  color: white;
+  padding: 0 20px 0 23px;
+  margin: 0 10px 10px 0;
+  display: inline-block;
+}
+
+.tags li:hover,
+.tags li::after {
+  background-color: #ECF0F5;
+  color: #808080;
+}
+
+.tags li label {
+  float: left;
+  margin-right: 20px;
+}
+
+.tags li span {
+  padding: 5px;
+  float: right;
+}
+
+.tags li span:hover {
+  color: #DC3545;
+}
+
+.tags li .tag {
+  height: 26px;
+  line-height: 26px;
+  position: relative;
+  -webkit-transition: color 0.2s;
+}
+
+.tags .hab {
+  background-color: #0E1031;
+}
+
+.tags .ido {
+  background-color: #001F3F;
+}
+
+.tags .otr {
+  background-color: #64657F;
+}
+
+#excel-table th {
+  text-align: center;
+}
+
+#excel-table input,
+#excel-table #panel .card .card-body input,
+#panel .card .card-body #excel-table input,
+#excel-table #curriculum-form input[type="text"],
+#curriculum-form #excel-table input[type="text"],
+#excel-table #curriculum-form textarea,
+#curriculum-form #excel-table textarea,
+#excel-table #curriculum-form .form-select,
+#curriculum-form #excel-table .form-select,
+#excel-table #curriculum-form .form-select select,
+#curriculum-form .form-select #excel-table select {
+  text-align: left;
+  height: 25px;
+  border: none;
 }
 
 @media only screen and (max-width: 500px) {
