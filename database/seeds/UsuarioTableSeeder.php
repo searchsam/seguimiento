@@ -20,7 +20,7 @@ class UsuarioTableSeeder extends Seeder
             'contrasena'        => bcrypt('321321'),
             'estado_usuario'    => TRUE,
             'fecha_registro'    => strtotime(Carbon::now()),
-            'foto_usuario'      => '/img/admin.png',
+            'foto_usuario'      => 'storage/admin.svg',
             'tipo_usuario_id'   => 1,
             'created_at'        => Carbon::now(),
             'updated_at'        => Carbon::now(),

@@ -24,14 +24,19 @@ class EstudianteController extends Controller
         $this->middleware('auth');
     }
 
-    public function registrar()
+    public function registro()
     {
         $data['usuario']        = session('usuario');
-        $data['tipo_estudio']   = TipoEstudio::all(); 
+        $data['tipo_estudio']   = TipoEstudio::all();
         $data['page_title']     = 'Registrar Plan de Estudios';
 
         event(new NotificacionesEstudiante(Auth::user()));
 
         return view('tablero.curriculum', $data);
+    }
+
+    public function registrar()
+    {
+        
     }
 }

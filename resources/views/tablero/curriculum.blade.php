@@ -1,7 +1,8 @@
 @extends('layouts/admin_template')
 
 @section('content')
-    <form id="curriculum-form" class="" action="index.html" method="post">
+
+    <form id="curriculum-form" class="" action="{{ route('registrar_curriculum') }}" method="post" enctype="multipart/form-data">
 
         <div class="box box-default" id="datos-presonales">
             <div class="box-header with-border">
@@ -47,9 +48,10 @@
 
                     <div class="col-md-6">
                         <div class="text-center" id="user-foto">
-                            <img src="{{ asset('/img/cliente.png') }}" class="rounded-circle img-fluid">
-                            <input type="text" name="foto" hidden="true">
-                            <a href="#"><i class="fa fa-camera" aria-hidden="true"></i></a>
+                            <img :src="image" class="rounded-circle img-fluid">
+                            <input type="text" value="{{ asset($usuario->foto_usuario) }}" style="visibility: hidden;" id="default">
+                            <input type="file" name="foto" @change="onFileChange">
+                            <label><i class="fa fa-camera" aria-hidden="true"></i> @{{ message }}</label>
                         </div>
                     </div>
 
@@ -65,47 +67,48 @@
                 </div>
             </div>
 
-            <div class="box-body">
-
-                <div class="row">
-                    <div class="col-md-2 col-sm-12">
-                        <div class="form-group">
-                            <div class="form-select">
-                                <select name="tipo_estudio" class="custom-select">
-                                    <option value="0">Tipo de Estudio</option>
-                                    @foreach ($tipo_estudio as $estudio)
-                                        <option value="{{ $estudio->id_tipo_estudio }}">{{ $estudio->tipo_estudio }}</option>
-                                    @endforeach
-                                </select>
+            <div class="box-body" id="estudio-form">
+                <div id="estudio-row">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12">
+                            <div class="form-group">
+                                <div class="form-select">
+                                    <select name="tipo_estudio" class="custom-select">
+                                        <option value="0">Tipo de Estudio</option>
+                                        @foreach ($tipo_estudio as $estudio)
+                                            <option value="{{ $estudio->id_tipo_estudio }}">{{ $estudio->tipo_estudio }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="estudio" placeholder="Estudio/Carrera">
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="estudio" placeholder="Estudio/Carrera">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="escuela" placeholder="Instituci&oacute;n de Estudio">
+                        <div class="col-md-2 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="escuela" placeholder="Instituci&oacute;n de Estudio">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="ciudad" placeholder="Ciudad">
+                        <div class="col-md-2 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="ciudad" placeholder="Ciudad">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="ano" placeholder="A&ntilde;o">
+                        <div class="col-md-2 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="ano" placeholder="A&ntilde;o">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-1 col-sm-12">
-                        <div class="form-group">
-                            <button class="agregar"><i class="fa fa-plus"></i></button>
+                        <div class="col-md-1 col-sm-12">
+                            <a class="agregar" v-on:click="addEstudioform()"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
                 </div>
+
+                <estudio-row v-for="n in range"></estudio-row>
 
             </div>
         </div>
@@ -143,7 +146,7 @@
                     </div>
                     <div class="col-md-1 col-sm-12">
                         <div class="form-group">
-                            <button class="agregar"><i class="fa fa-plus"></i></button>
+                            <a class="agregar"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
                 </div>
@@ -173,7 +176,7 @@
                             <div class="input-group">
                                 <input type="text" placeholder="Habilidades">
                                 <span class="input-group-btn">
-                                    <button class="btn" type="button">Agregar</button>
+                                    <button type="button">Agregar</button>
                                 </span>
                             </div>
                         </div>
@@ -190,7 +193,7 @@
                             <div class="input-group">
                                 <input type="text" placeholder="Idiomas">
                                 <span class="input-group-btn">
-                                    <button class="btn" type="button">Agregar</button>
+                                    <button type="button">Agregar</button>
                                 </span>
                             </div>
                         </div>
@@ -207,7 +210,7 @@
                             <div class="input-group">
                                 <input type="text" placeholder="Otra Informaci&oacute;n">
                                 <span class="input-group-btn">
-                                    <button class="btn" type="button">Agregar</button>
+                                    <button type="button">Agregar</button>
                                 </span>
                             </div>
                         </div>
@@ -250,7 +253,7 @@
                     </div>
                     <div class="col-md-1 col-sm-12">
                         <div class="form-group">
-                            <button class="agregar"><i class="fa fa-plus"></i></button>
+                            <a class="agregar"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
                 </div>
@@ -260,7 +263,7 @@
 
         <div class="box box-default" id="referencia">
             <div class="box-header with-border">
-                <h3 class="box-title">DATOS PERSONALES</h3>
+                <h3 class="box-title">CONTACTOS DE REFERENCIA</h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 </div>
@@ -293,7 +296,7 @@
                                     <td><input type="text" name="" value=""></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2</th>
+                                    <th scope="row">3</th>
                                     <td><input type="text" name="" value=""></td>
                                     <td><input type="text" name="" value=""></td>
                                     <td><input type="text" name="" value=""></td>
@@ -303,6 +306,12 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+
+        <div class="row float-right">
+            <div class="col-md-12 ">
+                <button type="submit" name="button" class="notifications-success messages-success" style="float:right;">Guardar</button>
             </div>
         </div>
 

@@ -32,8 +32,8 @@
                         <input type="password" name="password_confirmation" placeholder="Confirmar Contraseña" class="{{ $errors->has('password') ? 'error' : '' }}">
 
                         <div class="tipo" id="interruptor">
-                            <label class="switch" :click="checkToggle">
-                                <input type="checkbox" id="validador" name="empresa" v-modal="checkValue">
+                            <label class="switch" @click="checkToggle">
+                                <input type="checkbox" id="validador" name="empresa" :value="checkValue">
                                 <span class="slider round"></span>
                                 <div class="label" style="display:block; margin-left:70px;">
                                     <p class="lead">Empresa</p>

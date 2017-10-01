@@ -95,7 +95,7 @@ class RegisterController extends Controller
             'contrasena'        => bcrypt($data['password']),
             'estado_usuario'    => FALSE,
             'fecha_registro'    => strtotime(Carbon::now()),
-            'foto_usuario'      => '/img/cliente.png',
+            'foto_usuario'      => 'storage/cliente.svg',
             'tipo_usuario_id'   => $data['empresa'] ? 4 : 3,
         ]);
 

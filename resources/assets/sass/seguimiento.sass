@@ -403,8 +403,14 @@ input
 .messages-error
     color: $rojo
 
+.messages-success
+    color: white
+
 .notifications-error
     background-color: $rojo
+
+.notifications-success
+    background-color: $verde
 
 .form-check-label
     font-size: $tam
@@ -444,8 +450,11 @@ input
             text-align: left
             +appearance(none)
     .agregar
-        width: 100%
-        /*font-size: 30px
+        @extend button
+        display: block
+        text-align: center
+        i
+            +vertical-align()
 
 #datos-personales
     border-color: $azuloscuro
@@ -457,7 +466,7 @@ input
     border-color: $azulalternativo
 
 #desarrollo-personal
-    border-color: #001F3F
+    border-color: #D81B60
 
 #reconocimientos
     border-color: #FF851B
@@ -482,14 +491,13 @@ input
       border-radius: 50%
 
 #user-foto
-    background: $azuloscuro
-    /*width: 100%
+    background: $celeste
     height: 470px
     text-align: center
     position: relative
     overflow: hidden
     &:hover
-        a
+        label
             opacity: 1
             top: 0
             z-index: 5
@@ -500,13 +508,16 @@ input
                 left: 0
                 right: 0
                 transform: translateY(-50%)
+        input[type="file"]
+            z-index: 6
     img
         display: inline-block
         padding: 20px
-        @include vertical-align()
+        height: 100%
+        +vertical-align()
         &:hover
             opacity: 0.5
-    a
+    label
         display: block
         position: absolute
         top: -100%
@@ -516,6 +527,12 @@ input
         right: 0
         text-align: center
         color: inherit
+    input[type="file"]
+        opacity: 0
+        top: 0
+        position: absolute
+        height: 470px
+        width: 100%
 
 .tags
     list-style: none
@@ -547,11 +564,11 @@ input
             -webkit-transition: color 0.2s
 
     .hab
-        background-color: #0E1031
+        background-color: #CA195A
     .ido
-        background-color: #001F3F
+        background-color: #D81B60
     .otr
-        background-color: #64657F
+        background-color: #E56A97
 
 #excel-table
     th

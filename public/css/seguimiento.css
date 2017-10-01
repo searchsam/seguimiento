@@ -26,7 +26,8 @@ h5 {
 
 button,
 .form-log-footer .form-log-btn,
-#panel .card .card-body button {
+#panel .card .card-body button,
+#curriculum-form .agregar {
   border: 0;
   border-radius: 0;
   font-size: 17px;
@@ -37,7 +38,8 @@ button,
 
 button:hover,
 .form-log-footer .form-log-btn:hover,
-#panel .card .card-body button:hover {
+#panel .card .card-body button:hover,
+#curriculum-form .agregar:hover {
   color: black;
 }
 
@@ -377,7 +379,9 @@ a,
 
 #panel .card .card-body .form-log-footer .form-log-btn,
 .form-log-footer #panel .card .card-body .form-log-btn,
-#panel .card .card-body button {
+#panel .card .card-body button,
+#panel .card .card-body #curriculum-form .agregar,
+#curriculum-form #panel .card .card-body .agregar {
   width: 100%;
 }
 
@@ -674,8 +678,16 @@ input:checked + .slider:before,
   color: #DC3545;
 }
 
+.messages-success {
+  color: white;
+}
+
 .notifications-error {
   background-color: #DC3545;
+}
+
+.notifications-success {
+  background-color: #28A745;
 }
 
 .form-check-label {
@@ -722,8 +734,15 @@ input:checked + .slider:before,
 }
 
 #curriculum-form .agregar {
-  width: 100%;
-  /*font-size: 30px */
+  display: block;
+  text-align: center;
+}
+
+#curriculum-form .agregar i {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 #datos-personales {
@@ -739,7 +758,7 @@ input:checked + .slider:before,
 }
 
 #desarrollo-personal {
-  border-color: #001F3F;
+  border-color: #D81B60;
 }
 
 #reconocimientos {
@@ -771,21 +790,20 @@ input:checked + .slider:before,
 }
 
 #user-foto {
-  background: #1C3170;
-  /*width: 100% */
+  background: #4D73BA;
   height: 470px;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-#user-foto:hover a {
+#user-foto:hover label {
   opacity: 1;
   top: 0;
   z-index: 5;
 }
 
-#user-foto:hover a i {
+#user-foto:hover label i {
   font-size: 50px;
   top: 50%;
   position: absolute;
@@ -795,9 +813,20 @@ input:checked + .slider:before,
           transform: translateY(-50%);
 }
 
+#user-foto:hover input[type="file"],
+#user-foto:hover #curriculum-form textarea[type="file"],
+#curriculum-form #user-foto:hover textarea[type="file"],
+#user-foto:hover #curriculum-form [type="file"].form-select,
+#curriculum-form #user-foto:hover [type="file"].form-select,
+#user-foto:hover #curriculum-form .form-select select[type="file"],
+#curriculum-form .form-select #user-foto:hover select[type="file"] {
+  z-index: 6;
+}
+
 #user-foto img {
   display: inline-block;
   padding: 20px;
+  height: 100%;
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -808,7 +837,7 @@ input:checked + .slider:before,
   opacity: 0.5;
 }
 
-#user-foto a {
+#user-foto label {
   display: block;
   position: absolute;
   top: -100%;
@@ -818,6 +847,22 @@ input:checked + .slider:before,
   right: 0;
   text-align: center;
   color: inherit;
+}
+
+#user-foto input[type="file"],
+#user-foto #panel .card .card-body input[type="file"],
+#panel .card .card-body #user-foto input[type="file"],
+#user-foto #curriculum-form textarea[type="file"],
+#curriculum-form #user-foto textarea[type="file"],
+#user-foto #curriculum-form [type="file"].form-select,
+#curriculum-form #user-foto [type="file"].form-select,
+#user-foto #curriculum-form .form-select select[type="file"],
+#curriculum-form .form-select #user-foto select[type="file"] {
+  opacity: 0;
+  top: 0;
+  position: absolute;
+  height: 470px;
+  width: 100%;
 }
 
 .tags {
@@ -864,15 +909,15 @@ input:checked + .slider:before,
 }
 
 .tags .hab {
-  background-color: #0E1031;
+  background-color: #CA195A;
 }
 
 .tags .ido {
-  background-color: #001F3F;
+  background-color: #D81B60;
 }
 
 .tags .otr {
-  background-color: #64657F;
+  background-color: #E56A97;
 }
 
 #excel-table th {

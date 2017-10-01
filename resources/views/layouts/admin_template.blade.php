@@ -33,7 +33,7 @@
         <link href="{{ asset("css/seguimiento.css") }}" rel="stylesheet" type="text/css" />
     </head>
 
-    <body class="hold-transition skin-blue sidebar-collapse fixed sidebar-mini">
+    <body class="hold-transition skin-blue fixed sidebar-collapse sidebar-mini">
         <!-- Site wrapper -->
         <div class="wrapper">
 
@@ -72,11 +72,15 @@
         </div><!-- ./wrapper -->
 
         <!-- REQUIRED JS SCRIPTS -->
-        <script src="{{ asset ("js/app.js") }}"></script>
+        <script src="{{ asset("js/app.js") }}"></script>
+        <!-- SlimScroll -->
+        <script src="{{ asset("js/slimscroll.min.js") }}"></script>
+        <!-- FastClick -->
+        <script src="{{ asset("js/fastclick.js") }}"></script>
         <!-- AdminLTE App -->
-        <script src="{{ asset ("js/AdminLTE.min.js") }}" type="text/javascript"></script>
+        <script src="{{ asset("js/AdminLTE.min.js") }}"></script>
         <!-- Estilo de Seguimiento -->
-        <script src="{{ asset ("js/seguimiento.js") }}"></script>
+        <script src="{{ asset("js/seguimiento.js") }}"></script>
     </body>
 
 </html>

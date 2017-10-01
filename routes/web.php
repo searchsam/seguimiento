@@ -29,8 +29,9 @@ Route::prefix('tablero')->group(function () {
     Route::get('inicio', 'DashController@index')->name('inicio');
 
     Route::prefix('estudiante')->group(function () {
+        Route::get('registro_curriculum', 'EstudianteController@registro')->name('registro_curriculum');
         Route::get('registrar_curriculum', 'EstudianteController@registrar')->name('registrar_curriculum');
-        Route::get('perfil', 'EstudianteController@registrar')->name('perfil');
+        Route::get('perfil', 'EstudianteController@registro')->name('perfil');
     });
 
     Route::prefix('empresa')->group(function () {
