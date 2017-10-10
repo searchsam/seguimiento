@@ -53,3 +53,9 @@ Route::prefix('error')->group(function () {
     Route::view('verify_token', 'errors.verifytoken')->name('verify_token');
     Route::view('token_error', 'errors.tokenerror')->name('token_error');
 });
+
+Route::prefix('ajax')->group(function () {
+    // Ajax
+    Route::any('add_academico', 'AjaxController@add_academico')->name('add_academico');
+    Route::any('add_laboral', 'AjaxController@add_laboral')->name('add_laboral');
+});

@@ -103,54 +103,51 @@
                             </div>
                         </div>
                         <div class="col-md-1 col-sm-12">
-                            <a class="agregar" v-on:click="addEstudioform()"><i class="fa fa-plus"></i></a>
+                            <a id="agregar-academico" class="agregar"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
                 </div>
-
-                <estudio-row v-for="n in range"></estudio-row>
-
             </div>
         </div>
 
         <div class="box box-default" id="experiencia">
             <div class="box-header with-border">
-                <h3 class="box-title">EXPERIENCIA</h3>
+                <h3 class="box-title">EXPERIENCIA LABORAL</h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 </div>
             </div>
 
             <div class="box-body">
-
-                <div class="row">
-                    <div class="col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="cargo" placeholder="Cargo">
+                <div id="laboral-row">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="cargo" placeholder="Cargo">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="institucion" placeholder="Instituci&oacute;n">
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="institucion" placeholder="Instituci&oacute;n">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="ciudad" placeholder="Ciudad">
+                        <div class="col-md-2 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="ciudad" placeholder="Ciudad">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="periodo" placeholder="Per&iacute;odo">
+                        <div class="col-md-2 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="periodo" placeholder="Per&iacute;odo">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-1 col-sm-12">
-                        <div class="form-group">
-                            <a class="agregar"><i class="fa fa-plus"></i></a>
+                        <div class="col-md-1 col-sm-12">
+                            <div class="form-group">
+                                <a class="agregar" id="agregar-laraboral"><i class="fa fa-plus"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -165,52 +162,46 @@
             <div class="box-body">
                 <div class="row">
 
-                    <div class="col-md-4">
-                        <textarea name="habilidad" rows="8"></textarea>
+                    <div class="col-md-4" id="habilidades">
+                        <textarea id="hab-all" name="habilidad" rows="8" hidden="true"></textarea>
                         <ul class="tags">
-                            <li class="hab"><label class="tag">HTML</label> <span><i class="fa fa-minus"></i></span></li>
-                            <li class="hab"><label class="tag">CSS</label> <span><i class="fa fa-minus"></i></span></li>
-                            <li class="hab"><label class="tag">JavaScript</label> <span><i class="fa fa-minus"></i></span></li>
+                            <li class="hab" v-for="(value, key) in habilidades"><label class="tag"> @{{ value }} </label> <span @click="rmHabilidad(key)"><i class="fa fa-minus"></i></span></li>
                         </ul>
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" placeholder="Habilidades">
+                                <input id="text-hab" type="text" placeholder="Habilidades">
                                 <span class="input-group-btn">
-                                    <button type="button">Agregar</button>
+                                    <button type="button" @click="addHabilidad()">Agregar</button>
                                 </span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <textarea name="idioma" rows="8"></textarea>
+                    <div class="col-md-4" id="idiomas">
+                        <textarea id="ido-all" name="idioma" rows="8" hidden="true"></textarea>
                         <ul class="tags">
-                            <li class="ido"><label class="tag">HTML</label> <span><i class="fa fa-minus"></i></span></li>
-                            <li class="ido"><label class="tag">CSS</label> <span><i class="fa fa-minus"></i></span></li>
-                            <li class="ido"><label class="tag">JavaScript</label> <span><i class="fa fa-minus"></i></span></li>
+                            <li class="ido" v-for="(value, key) in idiomas" :key="key"><label class="tag"> @{{ value }} </label> <span @click="rmIdioma(key)"><i class="fa fa-minus"></i></span></li>
                         </ul>
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" placeholder="Idiomas">
+                                <input id="text-ido" type="text" placeholder="Idiomas">
                                 <span class="input-group-btn">
-                                    <button type="button">Agregar</button>
+                                    <button type="button" @click="addIdioma()">Agregar</button>
                                 </span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <textarea name="otro" rows="8"></textarea>
+                    <div class="col-md-4" id="informacion">
+                        <textarea id="info-all" name="otro" rows="8" hidden="true"></textarea>
                         <ul class="tags">
-                            <li class="otr"><label class="tag">HTML</label> <span><i class="fa fa-minus"></i></span></li>
-                            <li class="otr"><label class="tag">CSS</label> <span><i class="fa fa-minus"></i></span></li>
-                            <li class="otr"><label class="tag">JavaScript</label> <span><i class="fa fa-minus"></i></span></li>
+                            <li class="otr" v-for="(value, key) in informacion" :key="key"><label class="tag"> @{{ value }} </label> <span @click="rmInfo(key)"><i class="fa fa-minus"></i></span></li>
                         </ul>
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" placeholder="Otra Informaci&oacute;n">
+                                <input id="text-info" type="text" placeholder="Otra Informaci&oacute;n">
                                 <span class="input-group-btn">
-                                    <button type="button">Agregar</button>
+                                    <button type="button" @click="addInfo()">Agregar</button>
                                 </span>
                             </div>
                         </div>
@@ -229,35 +220,35 @@
             </div>
 
             <div class="box-body">
-
-                <div class="row">
-                    <div class="col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="merito" placeholder="Merito">
+                <div id="reconocimiento-row">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="merito" placeholder="Merito">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="organizacion" placeholder="Organizaci&oacute;">
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="organizacion" placeholder="Organizaci&oacute;">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="ciudad" placeholder="Ciudad">
+                        <div class="col-md-2 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="ciudad" placeholder="Ciudad">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" name="periodo" placeholder="A&ntilde;o">
+                        <div class="col-md-2 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="periodo" placeholder="A&ntilde;o">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-1 col-sm-12">
-                        <div class="form-group">
-                            <a class="agregar"><i class="fa fa-plus"></i></a>
+                        <div class="col-md-1 col-sm-12">
+                            <div class="form-group">
+                                <a id="agregar-reconocimiento" class="agregar"><i class="fa fa-plus"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
