@@ -30,7 +30,7 @@ Route::prefix('tablero')->group(function () {
 
     Route::prefix('estudiante')->group(function () {
         Route::get('registro_curriculum', 'EstudianteController@registro')->name('registro_curriculum');
-        Route::get('registrar_curriculum', 'EstudianteController@registrar')->name('registrar_curriculum');
+        Route::post('registrar_curriculum', 'EstudianteController@registrar')->name('registrar_curriculum');
         Route::get('perfil', 'EstudianteController@registro')->name('perfil');
     });
 

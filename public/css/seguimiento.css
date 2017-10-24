@@ -45,7 +45,7 @@ button:hover,
 
 input,
 #panel .card .card-body input,
-#curriculum-form input[type="text"],
+#curriculum-form input,
 #curriculum-form textarea,
 #curriculum-form .form-select,
 #curriculum-form .form-select select {
@@ -61,7 +61,7 @@ input,
 
 input::-webkit-input-placeholder,
 #panel .card .card-body input::-webkit-input-placeholder,
-#curriculum-form input[type="text"]::-webkit-input-placeholder,
+#curriculum-form input::-webkit-input-placeholder,
 #curriculum-form textarea::-webkit-input-placeholder,
 #curriculum-form .form-select::-webkit-input-placeholder,
 #curriculum-form .form-select select::-webkit-input-placeholder {
@@ -72,7 +72,7 @@ input::-webkit-input-placeholder,
 
 input:-ms-input-placeholder,
 #panel .card .card-body input:-ms-input-placeholder,
-#curriculum-form input[type="text"]:-ms-input-placeholder,
+#curriculum-form input:-ms-input-placeholder,
 #curriculum-form textarea:-ms-input-placeholder,
 #curriculum-form .form-select:-ms-input-placeholder,
 #curriculum-form .form-select select:-ms-input-placeholder {
@@ -83,7 +83,7 @@ input:-ms-input-placeholder,
 
 input::placeholder,
 #panel .card .card-body input::placeholder,
-#curriculum-form input[type="text"]::placeholder,
+#curriculum-form input::placeholder,
 #curriculum-form textarea::placeholder,
 #curriculum-form .form-select::placeholder,
 #curriculum-form .form-select select::placeholder {
@@ -94,7 +94,7 @@ input::placeholder,
 
 input::-webkit-input-placeholder,
 #panel .card .card-body input::-webkit-input-placeholder,
-#curriculum-form input[type="text"]::-webkit-input-placeholder,
+#curriculum-form input::-webkit-input-placeholder,
 #curriculum-form textarea::-webkit-input-placeholder,
 #curriculum-form .form-select::-webkit-input-placeholder,
 #curriculum-form .form-select select::-webkit-input-placeholder {
@@ -105,7 +105,7 @@ input::-webkit-input-placeholder,
 
 input:-ms-input-placeholder,
 #panel .card .card-body input:-ms-input-placeholder,
-#curriculum-form input[type="text"]:-ms-input-placeholder,
+#curriculum-form input:-ms-input-placeholder,
 #curriculum-form textarea:-ms-input-placeholder,
 #curriculum-form .form-select:-ms-input-placeholder,
 #curriculum-form .form-select select:-ms-input-placeholder {
@@ -116,7 +116,7 @@ input:-ms-input-placeholder,
 
 input:hover::-webkit-input-placeholder,
 #panel .card .card-body input:hover::-webkit-input-placeholder,
-#curriculum-form input[type="text"]:hover::-webkit-input-placeholder,
+#curriculum-form input:hover::-webkit-input-placeholder,
 #curriculum-form textarea:hover::-webkit-input-placeholder,
 #curriculum-form .form-select:hover::-webkit-input-placeholder,
 #curriculum-form .form-select select:hover::-webkit-input-placeholder {
@@ -127,7 +127,7 @@ input:hover::-webkit-input-placeholder,
 
 input:hover:-ms-input-placeholder,
 #panel .card .card-body input:hover:-ms-input-placeholder,
-#curriculum-form input[type="text"]:hover:-ms-input-placeholder,
+#curriculum-form input:hover:-ms-input-placeholder,
 #curriculum-form textarea:hover:-ms-input-placeholder,
 #curriculum-form .form-select:hover:-ms-input-placeholder,
 #curriculum-form .form-select select:hover:-ms-input-placeholder {
@@ -138,7 +138,7 @@ input:hover:-ms-input-placeholder,
 
 input:hover::placeholder,
 #panel .card .card-body input:hover::placeholder,
-#curriculum-form input[type="text"]:hover::placeholder,
+#curriculum-form input:hover::placeholder,
 #curriculum-form textarea:hover::placeholder,
 #curriculum-form .form-select:hover::placeholder,
 #curriculum-form .form-select select:hover::placeholder {
@@ -149,7 +149,7 @@ input:hover::placeholder,
 
 input:hover::-webkit-input-placeholder,
 #panel .card .card-body input:hover::-webkit-input-placeholder,
-#curriculum-form input[type="text"]:hover::-webkit-input-placeholder,
+#curriculum-form input:hover::-webkit-input-placeholder,
 #curriculum-form textarea:hover::-webkit-input-placeholder,
 #curriculum-form .form-select:hover::-webkit-input-placeholder,
 #curriculum-form .form-select select:hover::-webkit-input-placeholder {
@@ -160,7 +160,7 @@ input:hover::-webkit-input-placeholder,
 
 input:hover::-moz-placeholder,
 #panel .card .card-body input:hover::-moz-placeholder,
-#curriculum-form input[type="text"]:hover::-moz-placeholder,
+#curriculum-form input:hover::-moz-placeholder,
 #curriculum-form textarea:hover::-moz-placeholder,
 #curriculum-form .form-select:hover::-moz-placeholder,
 #curriculum-form .form-select select:hover::-moz-placeholder {
@@ -171,7 +171,7 @@ input:hover::-moz-placeholder,
 
 input:hover:-ms-input-placeholder,
 #panel .card .card-body input:hover:-ms-input-placeholder,
-#curriculum-form input[type="text"]:hover:-ms-input-placeholder,
+#curriculum-form input:hover:-ms-input-placeholder,
 #curriculum-form textarea:hover:-ms-input-placeholder,
 #curriculum-form .form-select:hover:-ms-input-placeholder,
 #curriculum-form .form-select select:hover:-ms-input-placeholder {
@@ -182,7 +182,7 @@ input:hover:-ms-input-placeholder,
 
 input:hover:-moz-placeholder,
 #panel .card .card-body input:hover:-moz-placeholder,
-#curriculum-form input[type="text"]:hover:-moz-placeholder,
+#curriculum-form input:hover:-moz-placeholder,
 #curriculum-form textarea:hover:-moz-placeholder,
 #curriculum-form .form-select:hover:-moz-placeholder,
 #curriculum-form .form-select select:hover:-moz-placeholder {
@@ -193,23 +193,39 @@ input:hover:-moz-placeholder,
 
 input:focus,
 #panel .card .card-body input:focus,
-#curriculum-form input[type="text"]:focus,
+#curriculum-form input:focus,
 #curriculum-form textarea:focus,
 #curriculum-form .form-select:focus,
 #curriculum-form .form-select select:focus,
 input:active,
 #panel .card .card-body input:active,
-#curriculum-form input[type="text"]:active,
+#curriculum-form input:active,
 #curriculum-form textarea:active,
 #curriculum-form .form-select:active,
 #curriculum-form .form-select select:active,
 input:visited,
 #panel .card .card-body input:visited,
-#curriculum-form input[type="text"]:visited,
+#curriculum-form input:visited,
 #curriculum-form textarea:visited,
 #curriculum-form .form-select:visited,
 #curriculum-form .form-select select:visited {
   border-radius: 0;
+}
+
+input .error,
+#panel .card .card-body input .error,
+#curriculum-form input .error,
+#curriculum-form textarea .error,
+#curriculum-form .form-select .error {
+  border-color: #DC3545;
+}
+
+input .error:hover,
+#panel .card .card-body input .error:hover,
+#curriculum-form input .error:hover,
+#curriculum-form textarea .error:hover,
+#curriculum-form .form-select .error:hover {
+  color: #DC3545;
 }
 
 a,
@@ -445,8 +461,8 @@ p.lead {
 .switch input,
 .switch #panel .card .card-body input,
 #panel .card .card-body .switch input,
-.switch #curriculum-form input[type="text"],
-#curriculum-form .switch input[type="text"],
+.switch #curriculum-form input,
+#curriculum-form .switch input,
 .switch #curriculum-form textarea,
 #curriculum-form .switch textarea,
 .switch #curriculum-form .form-select,
@@ -482,7 +498,7 @@ p.lead {
 
 input:checked + .slider,
 #panel .card .card-body input:checked + .slider,
-#curriculum-form input[type="text"]:checked + .slider,
+#curriculum-form input:checked + .slider,
 #curriculum-form textarea:checked + .slider,
 #curriculum-form .form-select:checked + .slider,
 #curriculum-form .form-select select:checked + .slider {
@@ -491,7 +507,7 @@ input:checked + .slider,
 
 input:focus + .slider,
 #panel .card .card-body input:focus + .slider,
-#curriculum-form input[type="text"]:focus + .slider,
+#curriculum-form input:focus + .slider,
 #curriculum-form textarea:focus + .slider,
 #curriculum-form .form-select:focus + .slider,
 #curriculum-form .form-select select:focus + .slider {
@@ -501,7 +517,7 @@ input:focus + .slider,
 
 input:checked + .slider:before,
 #panel .card .card-body input:checked + .slider:before,
-#curriculum-form input[type="text"]:checked + .slider:before,
+#curriculum-form input:checked + .slider:before,
 #curriculum-form textarea:checked + .slider:before,
 #curriculum-form .form-select:checked + .slider:before,
 #curriculum-form .form-select select:checked + .slider:before {
@@ -696,6 +712,150 @@ input:checked + .slider:before,
   font-family: "OpenSans";
 }
 
+#curriculum-form .error {
+  border-color: #DC3545;
+}
+
+#curriculum-form .error:hover::-webkit-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form .error:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form .error:hover::placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form .error:hover::-webkit-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form .error:hover::-moz-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form .error:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form .error:hover:-moz-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form input[type="radio"].error,
+#curriculum-form textarea[type="radio"].error,
+#curriculum-form [type="radio"].error.form-select,
+#curriculum-form .form-select select[type="radio"].error {
+  border-color: #DC3545;
+}
+
+#curriculum-form input[type="radio"].error:hover::-webkit-input-placeholder,
+#curriculum-form textarea[type="radio"].error:hover::-webkit-input-placeholder,
+#curriculum-form [type="radio"].error.form-select:hover::-webkit-input-placeholder,
+#curriculum-form .form-select select[type="radio"].error:hover::-webkit-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form input[type="radio"].error:hover:-ms-input-placeholder,
+#curriculum-form textarea[type="radio"].error:hover:-ms-input-placeholder,
+#curriculum-form [type="radio"].error.form-select:hover:-ms-input-placeholder,
+#curriculum-form .form-select select[type="radio"].error:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form input[type="radio"].error:hover::placeholder,
+#curriculum-form textarea[type="radio"].error:hover::placeholder,
+#curriculum-form [type="radio"].error.form-select:hover::placeholder,
+#curriculum-form .form-select select[type="radio"].error:hover::placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form input[type="radio"].error:hover::-webkit-input-placeholder,
+#curriculum-form textarea[type="radio"].error:hover::-webkit-input-placeholder,
+#curriculum-form [type="radio"].error.form-select:hover::-webkit-input-placeholder,
+#curriculum-form .form-select select[type="radio"].error:hover::-webkit-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form input[type="radio"].error:hover::-moz-placeholder,
+#curriculum-form textarea[type="radio"].error:hover::-moz-placeholder,
+#curriculum-form [type="radio"].error.form-select:hover::-moz-placeholder,
+#curriculum-form .form-select select[type="radio"].error:hover::-moz-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form input[type="radio"].error:hover:-ms-input-placeholder,
+#curriculum-form textarea[type="radio"].error:hover:-ms-input-placeholder,
+#curriculum-form [type="radio"].error.form-select:hover:-ms-input-placeholder,
+#curriculum-form .form-select select[type="radio"].error:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form input[type="radio"].error:hover:-moz-placeholder,
+#curriculum-form textarea[type="radio"].error:hover:-moz-placeholder,
+#curriculum-form [type="radio"].error.form-select:hover:-moz-placeholder,
+#curriculum-form .form-select select[type="radio"].error:hover:-moz-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+#curriculum-form #panel .card .card-body input[type="radio"],
+#panel .card .card-body #curriculum-form input[type="radio"],
+#curriculum-form input[type="radio"],
+#curriculum-form textarea[type="radio"],
+#curriculum-form [type="radio"].form-select,
+#curriculum-form .form-select select[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ECF0F5;
+  -webkit-transition: 0.2s all linear;
+  transition: 0.2s all linear;
+  outline: none;
+  margin-right: 10px;
+  position: relative;
+}
+
+#curriculum-form input[type="radio"]:checked,
+#curriculum-form textarea[type="radio"]:checked,
+#curriculum-form [type="radio"].form-select:checked,
+#curriculum-form .form-select select[type="radio"]:checked {
+  border: 6px solid #2E5097;
+  border-radius: 50%;
+}
+
 #curriculum-form label {
   font-weight: normal;
 }
@@ -733,6 +893,14 @@ input:checked + .slider:before,
   -webkit-appearance: none;
 }
 
+#curriculum-form .form-select select .error {
+  border-color: #DC3545;
+}
+
+#curriculum-form .form-select select .error:hover {
+  color: #DC3545;
+}
+
 #curriculum-form .agregar {
   display: block;
   text-align: center;
@@ -767,26 +935,6 @@ input:checked + .slider:before,
 
 #referencia {
   border-color: #605CA8;
-}
-
-.form-check-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
-  border: 2px solid #ECF0F5;
-  -webkit-transition: 0.2s all linear;
-  transition: 0.2s all linear;
-  outline: none;
-  margin-right: 10px;
-  position: relative;
-}
-
-.form-check-input:checked {
-  border: 6px solid #2E5097;
-  border-radius: 50%;
 }
 
 #user-foto {
@@ -927,8 +1075,6 @@ input:checked + .slider:before,
 #excel-table input,
 #excel-table #panel .card .card-body input,
 #panel .card .card-body #excel-table input,
-#excel-table #curriculum-form input[type="text"],
-#curriculum-form #excel-table input[type="text"],
 #excel-table #curriculum-form textarea,
 #curriculum-form #excel-table textarea,
 #excel-table #curriculum-form .form-select,
@@ -938,6 +1084,52 @@ input:checked + .slider:before,
   text-align: left;
   height: 25px;
   border: none;
+}
+
+.error {
+  border-color: #DC3545;
+}
+
+.error:hover::-webkit-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+.error:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+.error:hover::placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+.error:hover::-webkit-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+.error:hover::-moz-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+.error:hover:-ms-input-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
+}
+
+.error:hover:-moz-placeholder {
+  font-size: 17px;
+  color: #DC3545;
+  text-align: center;
 }
 
 @media only screen and (max-width: 500px) {

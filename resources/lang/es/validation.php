@@ -76,6 +76,7 @@ return [
     'required_without'     => 'El campo :attribute es obligatorio cuando :values no está presente.',
     'required_without_all' => 'El campo :attribute es obligatorio cuando ninguno de :values estén presentes.',
     'same'                 => ':attribute y :other deben coincidir.',
+    'Selectnumeric'        => 'Escoja una opción para :attribute.',
     'size'                 => [
         'numeric' => 'El tamaño de :attribute debe ser :size.',
         'file'    => 'El tamaño de :attribute debe ser :size kilobytes.',
@@ -149,7 +150,7 @@ return [
         'date'                  => 'fecha',
         'time'                  => 'hora',
         'subject'               => 'asunto',
-        'message'               => 'mensaje',
+        'message'               => 'mensaje'
     ],
 
 ];

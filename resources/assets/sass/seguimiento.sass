@@ -105,6 +105,10 @@ input
         +placeholder($tam, black, center)
     &:focus, &:active, &:visited
         +border-radius(0)
+    .error
+        border-color: $rojo
+        &:hover
+            color: $rojo
 
 a
     text-decoration: none
@@ -419,9 +423,32 @@ input
 
 // curriculum
 #curriculum-form
+    .error
+        border-color: $rojo
+        &:hover
+            +placeholder($tam, $rojo, center)
+    input[type="radio"].error
+        border-color: $rojo
+        &:hover
+            +placeholder($tam, $rojo, center)
+    input[type="radio"]
+        -webkit-appearance: none
+        -moz-appearance: none
+        appearance: none
+        border-radius: 50%
+        width: 16px
+        height: 16px
+        border: 2px solid $grisclaro
+        transition: 0.2s all linear
+        outline: none
+        margin-right: 10px
+        position: relative
+        &:checked
+            border: 6px solid $azul
+            border-radius: 50%
     label
         font-weight: normal
-    input[type="text"]
+    input
         @extend input
     textarea
         @extend input
@@ -449,6 +476,10 @@ input
             background: white
             text-align: left
             +appearance(none)
+            .error
+                border-color: $rojo
+                &:hover
+                    color: $rojo
     .agregar
         @extend button
         display: block
@@ -473,22 +504,6 @@ input
 
 #referencia
     border-color: #605CA8
-
-.form-check-input
-  -webkit-appearance: none
-  -moz-appearance: none
-  appearance: none
-  border-radius: 50%
-  width: 16px
-  height: 16px
-  border: 2px solid $grisclaro
-  transition: 0.2s all linear
-  outline: none
-  margin-right: 10px
-  position: relative
-  &:checked
-      border: 6px solid $azul
-      border-radius: 50%
 
 #user-foto
     background: $celeste
@@ -577,6 +592,11 @@ input
         text-align: left
         height: 25px
         border: none
+
+.error
+    border-color: $rojo
+    &:hover
+        +placeholder($tam, $rojo, center)
 
 @media only screen and (max-width: 500px)
     // Estilo Login

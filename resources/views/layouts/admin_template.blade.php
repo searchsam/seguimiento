@@ -79,6 +79,8 @@
         <script src="{{ asset("js/fastclick.js") }}"></script>
         <!-- AdminLTE App -->
         <script src="{{ asset("js/AdminLTE.min.js") }}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ asset("js/demo.js") }}"></script>
         <!-- Estilo de Seguimiento -->
         <script src="{{ asset("js/seguimiento.js") }}"></script>
     </body>

@@ -2,7 +2,9 @@
 
 @section('content')
 
-    <form id="curriculum-form" class="" action="{{ route('registrar_curriculum') }}" method="post" enctype="multipart/form-data">
+    <form id="curriculum-form" action="{{ route('registrar_curriculum') }}" method="post" enctype="multipart/form-data">
+
+        {{ csrf_field() }}
 
         <div class="box box-default" id="datos-presonales">
             <div class="box-header with-border">
@@ -18,31 +20,39 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="sexo" value="1">
+                                <input class="form-check-input {{ $errors->has('sexo') ? 'error' : '' }}" type="radio" name="sexo" value="1" {{ old('sexo')==1 ? 'checked' : ' ' }}>
+                                {!! $errors->first('sexo', '<span class="help-block"><b>:message</b></span>') !!}
                                 Masculino
                             </label>
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="sexo" value="0">
+                                <input class="form-check-input {{ $errors->has('sexo') ? 'error' : '' }}" type="radio" name="sexo" value="0" {{ (old('sexo')==0 and !is_null(old('sexo'))) ? 'checked' : ' ' }}>
+                                {!! $errors->first('sexo', '<span class="help-block"><b>:message</b></span>') !!}
                                 Femenino
                             </label>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="cedula" style="width:100%" placeholder="C&eacute;dula">
+                            <input type="text" name="cedula" style="width:100%" placeholder="C&eacute;dula" class="{{ $errors->has('cedula') ? 'error' : '' }}" value="{{ old('cedula') }}">
+                            {!! $errors->first('cedula', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
-                            <input type="text" name="celular" style="width:100%" placeholder="Celular">
+                            <input type="text" name="celular" style="width:100%" placeholder="Celular" class="{{ $errors->has('celular') ? 'error' : '' }}" value="{{ old('celular') }}">
+                            {!! $errors->first('celular', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
-                            <input type="text" name="telefono" style="width:100%" placeholder="Tel&eacute;fono">
+                            <input type="text" name="telefono" style="width:100%" placeholder="Tel&eacute;fono" class="{{ $errors->has('telefono') ? 'error' : '' }}" value="{{ old('telefono') }}">
+                            {!! $errors->first('telefono', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
-                            <input type="text" name="correo" style="width:100%" placeholder="Email" value="{{ $usuario->email_usuario }}">
+                            <input type="text" name="correo" style="width:100%" placeholder="Email" value="{{ $usuario->email_usuario }}" class="{{ $errors->has('correo') ? 'error' : '' }}">
+                            {!! $errors->first('correo', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
-                            <input type="text" name="ciudad" style="width:100%" placeholder="Ciudad">
+                            <input type="text" name="ciudad" style="width:100%" placeholder="Ciudad" class="{{ $errors->has('ciudad') ? 'error' : '' }}" value="{{ old('ciudad') }}">
+                            {!! $errors->first('ciudad', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
-                            <textarea rows="5" name="direccion" style="width:100%" placeholder="Direcci&oacute;n"></textarea>
+                            <textarea rows="5" name="direccion" style="width:100%" placeholder="Direcci&oacute;n" class="{{ $errors->has('direccion') ? 'error' : '' }}">{{ old('direccion') }}</textarea>
+                            {!! $errors->first('direccion', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                     </div>
 
@@ -50,7 +60,8 @@
                         <div class="text-center" id="user-foto">
                             <img :src="image" class="rounded-circle img-fluid">
                             <input type="text" value="{{ asset($usuario->foto_usuario) }}" style="visibility: hidden;" id="default">
-                            <input type="file" name="foto" @change="onFileChange">
+                            <input type="file" name="foto" @change="onFileChange" class="{{ $errors->has('foto') ? 'error' : '' }}" value="{{ !is_null(old('foto')) ? old('foto') : ' ' }}">
+                            {!! $errors->first('foto', '<span class="help-block"><b>:message</b></span>') !!}
                             <label><i class="fa fa-camera" aria-hidden="true"></i> @{{ message }}</label>
                         </div>
                     </div>
@@ -72,38 +83,43 @@
                     <div class="row">
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <div class="form-select">
-                                    <select name="tipo_estudio" class="custom-select">
+                                <div class="form-select {{ $errors->has('tipo_estudio') ? 'error' : '' }}">
+                                    <select name="tipo_estudio[]" class="custom-select {{ $errors->has('tipo_estudio') ? 'error' : '' }}">
                                         <option value="0">Tipo de Estudio</option>
                                         @foreach ($tipo_estudio as $estudio)
-                                            <option value="{{ $estudio->id_tipo_estudio }}">{{ $estudio->tipo_estudio }}</option>
+                                            <option value="{{ $estudio->id_tipo_estudio }}" {{ (old('tipo_estudio')==$estudio->id_tipo_estudio) ? 'selected' : '' }}>{{ $estudio->tipo_estudio }}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                                {!! $errors->first('tipo_estudio', '<span class="help-block"><b>:message</b></span>') !!}
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="estudio" placeholder="Estudio/Carrera">
+                                <input type="text" name="estudio_academico[]" placeholder="Estudio/Carrera" class="{{ $errors->has('estudio_academico') ? 'error' : '' }}" value="{{ old('estudio_academico') }}">
+                                {!! $errors->first('estudio_academico', '<span class="help-block"><b>:message</b></span>') !!}
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="escuela" placeholder="Instituci&oacute;n de Estudio">
+                                <input type="text" name="institucion_academica[]" placeholder="Instituci&oacute;n de Estudio" class="{{ $errors->has('institucion_academica') ? 'error' : '' }}" value="{{ old('institucion_academica') }}">
+                                {!! $errors->first('institucion_academica', '<span class="help-block"><b>:message</b></span>') !!}
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="ciudad" placeholder="Ciudad">
+                                <input type="text" name="localidad_estudio[]" placeholder="Ciudad" class="{{ $errors->has('localidad_estudio') ? 'error' : '' }}" value="{{ old('localidad_estudio') }}">
+                                {!! $errors->first('localidad_estudio', '<span class="help-block"><b>:message</b></span>') !!}
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="ano" placeholder="A&ntilde;o">
+                                <input type="text" name="fecha_estudio[]" placeholder="A&ntilde;o" class="{{ $errors->has('fecha_estudio') ? 'error' : '' }}" value="{{ old('fecha_estudio') }}">
+                                {!! $errors->first('fecha_estudio', '<span class="help-block"><b>:message</b></span>') !!}
                             </div>
                         </div>
                         <div class="col-md-1 col-sm-12">
-                            <a id="agregar-academico" class="agregar"><i class="fa fa-plus"></i></a>
+                            <a class="agregar" id="agregar-academico"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
                 </div>
@@ -123,22 +139,22 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="cargo" placeholder="Cargo">
+                                <input type="text" name="cargo_laboral[]" placeholder="Cargo">
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="institucion" placeholder="Instituci&oacute;n">
+                                <input type="text" name="institucion_laboral[]" placeholder="Instituci&oacute;n">
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="ciudad" placeholder="Ciudad">
+                                <input type="text" name="ciudad_empresa[]" placeholder="Ciudad">
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="periodo" placeholder="Per&iacute;odo">
+                                <input type="text" name="periodo_laboral[]" placeholder="Per&iacute;odo">
                             </div>
                         </div>
                         <div class="col-md-1 col-sm-12">
@@ -224,22 +240,22 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="merito" placeholder="Merito">
+                                <input type="text" name="merito_reconocimiento[]" placeholder="Merito">
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="organizacion" placeholder="Organizaci&oacute;">
+                                <input type="text" name="organizacion_reconocimiento[]" placeholder="Organizaci&oacute;">
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="ciudad" placeholder="Ciudad">
+                                <input type="text" name="ciudad_reconocimiento[]" placeholder="Ciudad">
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="periodo" placeholder="A&ntilde;o">
+                                <input type="text" name="periodo_reconicimiento[]" placeholder="A&ntilde;o">
                             </div>
                         </div>
                         <div class="col-md-1 col-sm-12">
@@ -276,21 +292,21 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="nombre_referencia[0]"></td>
+                                    <td><input type="text" name="cargo_referencia[0]"></td>
+                                    <td><input type="text" name="telefono_referencia[0]"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="nombre_referencia[1]"></td>
+                                    <td><input type="text" name="cargo_referencia[1]"></td>
+                                    <td><input type="text" name="telefono_referencia[1]"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">3</th>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="nombre_referencia[2]"></td>
+                                    <td><input type="text" name="cargo_referencia[2]"></td>
+                                    <td><input type="text" name="telefono_referencia[2]"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -307,4 +323,14 @@
         </div>
 
     </form>
+
+    @if (session()->has('flash'))
+        <div class="alert alert-info" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ session('flash') }}
+        </div>
+    @endif
+
 @endsection

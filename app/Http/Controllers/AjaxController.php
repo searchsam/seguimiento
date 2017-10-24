@@ -26,7 +26,7 @@ class AjaxController extends Controller
             <div class="col-md-2 col-sm-12">
                 <div class="form-group">
                     <div class="form-select">
-                        <select name="tipo_estudio" class="custom-select">
+                        <select name="tipo_estudio[]" class="custom-select">
                             <option value="0">Tipo de Estudio</option>';
                             foreach ($tipo_estudio as $estudio)
                             {
@@ -38,26 +38,26 @@ class AjaxController extends Controller
             </div>
             <div class="col-md-3 col-sm-12">
                 <div class="form-group">
-                    <input type="text" name="estudio" placeholder="Estudio/Carrera">
+                    <input type="text" name="estudio_academico[]" placeholder="Estudio/Carrera">
                 </div>
             </div>
             <div class="col-md-2 col-sm-12">
                 <div class="form-group">
-                    <input type="text" name="escuela" placeholder="Instituci&oacute;n de Estudio">
+                    <input type="text" name="institucion_academica[]" placeholder="Instituci&oacute;n de Estudio">
                 </div>
             </div>
             <div class="col-md-2 col-sm-12">
                 <div class="form-group">
-                    <input type="text" name="ciudad" placeholder="Ciudad">
+                    <input type="text" name="localidad_estudio[]" placeholder="Ciudad">
                 </div>
             </div>
             <div class="col-md-2 col-sm-12">
                 <div class="form-group">
-                    <input type="text" name="ano" placeholder="A&ntilde;o">
+                    <input type="text" name="fecha_estudio[]" placeholder="A&ntilde;o">
                 </div>
             </div>
             <div class="col-md-1 col-sm-12">
-                <a id="agregar-academico" class="agregar" v-on:click="addEstudioform()"><i class="fa fa-plus"></i></a>
+                <a id="agregar-academico" class="agregar"><i class="fa fa-plus"></i></a>
             </div>
         </div>';
     }
@@ -67,22 +67,22 @@ class AjaxController extends Controller
         echo '<div class="row">
             <div class="col-md-4 col-sm-12">
                 <div class="form-group">
-                    <input type="text" name="cargo" placeholder="Cargo">
+                    <input type="text" name="cargo_laboral[]" placeholder="Cargo">
                 </div>
             </div>
             <div class="col-md-3 col-sm-12">
                 <div class="form-group">
-                    <input type="text" name="institucion" placeholder="Instituci&oacute;n">
+                    <input type="text" name="institucion_laboral[]" placeholder="Instituci&oacute;n">
                 </div>
             </div>
             <div class="col-md-2 col-sm-12">
                 <div class="form-group">
-                    <input type="text" name="ciudad" placeholder="Ciudad">
+                    <input type="text" name="ciudad_empresa[]" placeholder="Ciudad">
                 </div>
             </div>
             <div class="col-md-2 col-sm-12">
                 <div class="form-group">
-                    <input type="text" name="periodo" placeholder="Per&iacute;odo">
+                    <input type="text" name="periodo_laboral[]" placeholder="Per&iacute;odo">
                 </div>
             </div>
             <div class="col-md-1 col-sm-12">

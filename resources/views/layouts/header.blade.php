@@ -51,7 +51,7 @@
 
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    @if ( !is_null( $bells ) )
+                    @if ( !is_null( $bells ) AND (count( $bells ) >= 1) )
                             <i class="fa fa-bell"></i>
                         <span class="label notifications-warning">{{ count( $bells ) }}</span>
                     </a>
@@ -87,7 +87,7 @@
 
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    @if ( !is_null( $flags ) )
+                    @if ( !is_null( $flags ) AND (count( $flags ) >= 1) )
                             <i class="fa fa-flag"></i>
                         <span class="label notifications-error">{{ count( $flags ) }}</span>
                     </a>
@@ -163,7 +163,7 @@
                         <li class="user-footer">
 
                             <div class="pull-left">
-                                <a href="{{ route('perfil') }}" class="btn btn-default btn-flat">Perfil</a>
+                                <a href="{{ route('inicio') }}" class="btn btn-default btn-flat">Perfil</a>
                             </div>
 
                             <div class="pull-right">
