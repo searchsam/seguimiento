@@ -69,6 +69,8 @@ class EstudianteController extends Controller
         $estudiante->sexo_estudiante        = $request->sexo;
         $estudiante->usuario_id             = Auth::id();
         $estudiante->save();
+
+        
     }
 
     public function codigo_estudiante()
