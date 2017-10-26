@@ -15,13 +15,13 @@ class CreateDatoProfesionalTable extends Migration
     {
         Schema::create('dato_profesional', function (Blueprint $table) {
             $table->increments('id_dato_profesional');
-            $table->string('especializacion');
-            $table->string('grado_especializacion');
-            $table->boolean('situacion_laraboral');
-            $table->integer('monografia_id')->unsigned();
+            $table->string('especializacion')->nullable();
+            $table->string('grado_especializacion')->nullable();
+            $table->boolean('situacion_laraboral')->nullable() ;
+            $table->integer('monografia_id')->unsigned()->nullable($value = true);
             $table->integer('experiencia_laboral_id')->unsigned();
             $table->integer('otro_estudio_id')->unsigned();
-            $table->integer('facultad_id')->unsigned();
+            $table->integer('facultad_id')->unsigned()->nullable($value = true);
             $table->timestamps();
 
             $table->foreign('monografia_id')->references('id_monografia')->on('monografia')->onDelete('cascade');

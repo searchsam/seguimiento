@@ -24,9 +24,8 @@ class CreateEstudianteTable extends Migration
             $table->string('direccion_estudiante');
             $table->string('email_estudiante');
             $table->boolean('sexo_estudiante');
-            $table->integer('edad_estudiante');
-            $table->integer('tipo_estudiante_id')->unsigned();
-            $table->integer('dato_profesional_id')->unsigned();
+            $table->integer('tipo_estudiante_id')->unsigned()->default('1');
+            $table->integer('dato_profesional_id')->unsigned()->nullable($value = true);
             $table->integer('usuario_id')->unsigned();
             $table->timestamps();
 

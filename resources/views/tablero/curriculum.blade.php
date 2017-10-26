@@ -84,7 +84,7 @@
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
                                 <div class="form-select {{ $errors->has('tipo_estudio') ? 'error' : '' }}">
-                                    <select name="tipo_estudio[]" class="custom-select {{ $errors->has('tipo_estudio') ? 'error' : '' }}">
+                                    <select name="tipo_estudio[0]" class="custom-select {{ $errors->has('tipo_estudio') ? 'error' : '' }}">
                                         <option value="0">Tipo de Estudio</option>
                                         @foreach ($tipo_estudio as $estudio)
                                             <option value="{{ $estudio->id_tipo_estudio }}" {{ (old('tipo_estudio')==$estudio->id_tipo_estudio) ? 'selected' : '' }}>{{ $estudio->tipo_estudio }}</option>
@@ -96,25 +96,25 @@
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="estudio_academico[]" placeholder="Estudio/Carrera" class="{{ $errors->has('estudio_academico') ? 'error' : '' }}" value="{{ old('estudio_academico') }}">
+                                <input type="text" name="estudio_academico[0]" placeholder="Estudio/Carrera" class="{{ $errors->has('estudio_academico') ? 'error' : '' }}" value="{{ old('estudio_academico') }}">
                                 {!! $errors->first('estudio_academico', '<span class="help-block"><b>:message</b></span>') !!}
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="institucion_academica[]" placeholder="Instituci&oacute;n de Estudio" class="{{ $errors->has('institucion_academica') ? 'error' : '' }}" value="{{ old('institucion_academica') }}">
+                                <input type="text" name="institucion_academica[0]" placeholder="Instituci&oacute;n de Estudio" class="{{ $errors->has('institucion_academica') ? 'error' : '' }}" value="{{ old('institucion_academica') }}">
                                 {!! $errors->first('institucion_academica', '<span class="help-block"><b>:message</b></span>') !!}
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="localidad_estudio[]" placeholder="Ciudad" class="{{ $errors->has('localidad_estudio') ? 'error' : '' }}" value="{{ old('localidad_estudio') }}">
+                                <input type="text" name="localidad_estudio[0]" placeholder="Ciudad" class="{{ $errors->has('localidad_estudio') ? 'error' : '' }}" value="{{ old('localidad_estudio') }}">
                                 {!! $errors->first('localidad_estudio', '<span class="help-block"><b>:message</b></span>') !!}
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="fecha_estudio[]" placeholder="A&ntilde;o" class="{{ $errors->has('fecha_estudio') ? 'error' : '' }}" value="{{ old('fecha_estudio') }}">
+                                <input type="text" name="fecha_estudio[0]" placeholder="A&ntilde;o" class="{{ $errors->has('fecha_estudio') ? 'error' : '' }}" value="{{ old('fecha_estudio') }}">
                                 {!! $errors->first('fecha_estudio', '<span class="help-block"><b>:message</b></span>') !!}
                             </div>
                         </div>
@@ -139,22 +139,22 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="cargo_laboral[]" placeholder="Cargo">
+                                <input type="text" name="cargo_laboral[0]" placeholder="Cargo">
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="institucion_laboral[]" placeholder="Instituci&oacute;n">
+                                <input type="text" name="institucion_laboral[0]" placeholder="Instituci&oacute;n">
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="ciudad_empresa[]" placeholder="Ciudad">
+                                <input type="text" name="ciudad_empresa[0]" placeholder="Ciudad">
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="periodo_laboral[]" placeholder="Per&iacute;odo">
+                                <input type="text" name="periodo_laboral[0]" placeholder="Per&iacute;odo">
                             </div>
                         </div>
                         <div class="col-md-1 col-sm-12">
@@ -240,22 +240,22 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="merito_reconocimiento[]" placeholder="Merito">
+                                <input type="text" name="merito_reconocimiento[0]" placeholder="Merito">
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="organizacion_reconocimiento[]" placeholder="Organizaci&oacute;">
+                                <input type="text" name="organizacion_reconocimiento[0]" placeholder="Organizaci&oacute;">
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="ciudad_reconocimiento[]" placeholder="Ciudad">
+                                <input type="text" name="ciudad_reconocimiento[0]" placeholder="Ciudad">
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="periodo_reconicimiento[]" placeholder="A&ntilde;o">
+                                <input type="text" name="periodo_reconicimiento[0]" placeholder="A&ntilde;o">
                             </div>
                         </div>
                         <div class="col-md-1 col-sm-12">
