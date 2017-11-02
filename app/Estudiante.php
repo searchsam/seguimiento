@@ -10,20 +10,28 @@ class Estudiante extends Model
     protected $primaryKey   = 'id_estudiante'; // Identicador
 
     /**
-     * Campos de la tabla de usuario para asignacion masiva
+     * Campos de la tabla de estudiante para asignacion masiva
      */
     protected $fillable = [
-        'carnet',
+        'codigo_estudiante',
         'nombre_estudiante',
         'apellido_estudiante',
         'cedula_estudiante',
+        'celular_estudiante',
         'telefono_estudiante',
         'direccion_estudiante',
         'email_estudiante',
-        'edad_estudiante',
+        'sexo_estudiante',
         'tipo_estudiante_id',
         'dato_profecional_id',
         'usuario_id'
     ];
 
+    /**
+     * Obtiene el usuario que es un estudiante
+     */
+    public function usuario()
+    {
+        return $this->belongsTo('App\Usuario');
+    }
 }

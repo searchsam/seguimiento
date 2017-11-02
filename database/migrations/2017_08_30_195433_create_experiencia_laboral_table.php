@@ -17,9 +17,12 @@ class CreateExperienciaLaboralTable extends Migration
             $table->increments('id_experiencia_laboral');
             $table->string('institucion_laboral');
             $table->string('cargo_laboral');
-            $table->integer('fecha_inicio_laboral');
-            $table->integer('fecha_fin_laboral');
+            $table->string('cuidad_laboral');
+            $table->string('periodo_laboral');
+            $table->integer('estudiante_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('estudiante_id')->references('id_estudiante')->on('estudiante')->onDelete('cascade');
         });
     }
 

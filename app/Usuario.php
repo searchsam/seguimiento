@@ -45,7 +45,7 @@ class Usuario extends Model
     }
 
     /**
-     * Obtener el registro del estudiante asociado con el usuario.
+     * Obtener el registro de la empresa asociado con el usuario.
      */
     public function empresa()
     {

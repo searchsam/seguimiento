@@ -20,7 +20,10 @@ class CreateMonografiaTable extends Migration
             $table->string('fecha_monografia');
             $table->string('objetivo_general');
             $table->text('descripcion_monografia')->nullable();
+            $table->integer('estudiante_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('estudiante_id')->references('id_estudiante')->on('estudiante')->onDelete('cascade');
         });
     }
 

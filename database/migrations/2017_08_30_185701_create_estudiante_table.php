@@ -19,18 +19,17 @@ class CreateEstudianteTable extends Migration
             $table->string('curriculum')->nullable();
             $table->string('nombre_estudiante');
             $table->string('apellido_estudiante');
-            $table->string('cedula_estudiante');
+            $table->string('cedula_estudiante')->unique();
+            $table->string('celular_estudiante');
             $table->string('telefono_estudiante');
             $table->string('direccion_estudiante');
             $table->string('email_estudiante');
             $table->boolean('sexo_estudiante');
             $table->integer('tipo_estudiante_id')->unsigned()->default('1');
-            $table->integer('dato_profesional_id')->unsigned()->nullable($value = true);
             $table->integer('usuario_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('tipo_estudiante_id')->references('id_tipo_estudiante')->on('tipo_estudiante')->onDelete('cascade');
-            $table->foreign('dato_profesional_id')->references('id_dato_profesional')->on('dato_profesional')->onDelete('cascade');
             $table->foreign('usuario_id')->references('id_usuario')->on('usuario')->onDelete('cascade');
         });
     }

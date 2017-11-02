@@ -13,6 +13,6 @@ class EmpresaController extends Controller
 
     public function registrar()
     {
-        return View::('tablero.curriculum');
+        return view('tablero.curriculum');
     }
 }

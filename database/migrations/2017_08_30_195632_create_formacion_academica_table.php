@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOtroEstudioTable extends Migration
+class CreateFormacionAcademicaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateOtroEstudioTable extends Migration
      */
     public function up()
     {
-        Schema::create('otro_estudio', function (Blueprint $table) {
-            $table->increments('id_otro_estudio');
+        Schema::create('formacion_academica', function (Blueprint $table) {
+            $table->increments('id_formacion_academica');
             $table->string('nombre_estudio');
-            $table->string('institucion');
+            $table->string('institucion_estudio');
+            $table->string('localidad_estudio');
             $table->string('fecha_estudio');
             $table->integer('tipo_estudio_id')->unsigned();
+            $table->integer('estudiante_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('tipo_estudio_id')->references('id_tipo_estudio')->on('tipo_estudio')->onDelete('cascade');
+            $table->foreign('estudiante_id')->references('id_estudiante')->on('estudiante')->onDelete('cascade');
         });
     }
 
@@ -32,6 +35,6 @@ class CreateOtroEstudioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('otro_estudio');
+        Schema::dropIfExists('formacion_academica');
     }
 }
