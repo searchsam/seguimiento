@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 
 use Auth;
 use App\Usuario;
+use App\Events\NotificacionesEmpresa;
+use App\Events\NotificacionesEstudiante;
 
 class LoginController extends Controller
 {
@@ -27,7 +29,16 @@ class LoginController extends Controller
             $usuario = Usuario::find(Auth::id());
             session(['usuario' => $usuario]);
 
-            return redirect()->route('inicio');
+            if ( $usuario->tipo_usuario_id == 3 )
+            {
+                event(new NotificacionesEstudiante(Auth::user()));
+                return redirect()->route( 'perfil_estudiante' );
+            }
+            if ( $usuario->tipo_usuario_id == 4 )
+            {
+                event(new NotificacionesEmpresa(Auth::user()));
+                return redirect()->route( 'perfil_empresa' );
+            }
         }
 
         return back()
@@ -40,7 +51,7 @@ class LoginController extends Controller
         Auth::user()->notifications()->delete();
         session()->flush();
         Auth::logout();
-        
+
         return redirect()->route('acceso');
     }
 }

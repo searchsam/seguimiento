@@ -598,6 +598,21 @@ input
     &:hover
         +placeholder($tam, $rojo, center)
 
+.flex-center
+    position: relative
+    align-items: center
+    display: flex
+    justify-content: center
+    height: 60vh
+    .content
+        min-height: 250px
+        padding: 15px
+        margin-right: auto
+        margin-left: auto
+        .title
+            font-size: 36px
+            padding: 20px
+
 @media only screen and (max-width: 500px)
     // Estilo Login
     .form-log-cont

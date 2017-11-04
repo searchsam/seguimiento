@@ -163,7 +163,12 @@
                         <li class="user-footer">
 
                             <div class="pull-left">
-                                <a href="{{ route('inicio') }}" class="btn btn-default btn-flat">Perfil</a>
+                                @if ($usuario->tipo_usuario_id == 3)
+                                    <a href="{{ route('perfil_estudiante') }}" class="btn btn-default btn-flat">Perfil</a>
+                                @endif
+                                @if ($usuario->tipo_usuario_id == 4)
+                                    <a href="{{ route('perfil_empresa') }}" class="btn btn-default btn-flat">Perfil</a>
+                                @endif
                             </div>
 
                             <div class="pull-right">

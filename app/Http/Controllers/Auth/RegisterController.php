@@ -134,11 +134,12 @@ class RegisterController extends Controller
             session(['usuario' => $usuario]);
 
             if ($usuario->tipo_usuario_id == 4) {
-                return redirect()->route('registrar_entidad');
+                return redirect()->route('registro_entidad');
             }
 
-            return redirect()->route('registrar_curriculum');
+            return redirect()->route('registro_curriculum');
         }
+        
         return redirect()->route('token_error');
     }
 }

@@ -21,8 +21,10 @@ class CreateContactoTable extends Migration
             $table->string('cargo_contacto');
             $table->string('email');
             $table->string('telefono_institucional');
-            $table->string('telefono_personal')->nullable();
+            $table->integer('empresa_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('empresa_id')->references('id_empresa')->on('empresa')->onDelite('cascade');
         });
     }
 

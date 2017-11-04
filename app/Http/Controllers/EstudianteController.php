@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Rules\Selectnumeric;
 use Illuminate\Support\Facades\Storage;
+
+// Eventos
+use App\Events\ActualizarSession;
 use App\Events\NotificacionesEstudiante;
 
 // Modelos
@@ -34,13 +37,19 @@ class EstudianteController extends Controller
         $this->middleware('auth');
     }
 
+    public function index()
+    {
+        $data['usuario'] = session('usuario');
+        $data['cliente'] = Estudiante::where('usuario_id', Auth::id())->get();
+        $data['page_title'] = 'Perfil de Estudiante';
+        return view('tablero.perfil_estudiante', $data);
+    }
+
     public function registro()
     {
         $data['usuario']        = session('usuario');
         $data['tipo_estudio']   = TipoEstudio::all();
         $data['page_title']     = 'Registrar Plan de Estudios';
-
-        event(new NotificacionesEstudiante(Auth::user()));
 
         return view('tablero.curriculum', $data);
     }
@@ -67,9 +76,9 @@ class EstudianteController extends Controller
         ]);*/
 
         // Guardar Estudiante
+        $estudiante = new Estudiante;
         if ( !empty($request->cedula) and !empty($request->celular) and !empty($request->telefono) and !empty($request->direccion) and !empty($request->correo) and isset($request->sexo) )
         {
-            $estudiante = new Estudiante;
             $estudiante->codigo_estudiante      = $this->gen_codestudiante();
             $estudiante->nombre_estudiante      = Auth::user()->name;
             $estudiante->apellido_estudiante    = Auth::user()->lastname;
@@ -94,7 +103,7 @@ class EstudianteController extends Controller
             $usuario->foto_usuario = 'storage/' . $img_dir;
             $usuario->save();
 
-            $this->refrescar_sesion_usuario( $usuario->id_usuario );
+            event(new ActualizarSession($usuario));
         }
 
         // Guardar datos de formacion academica
@@ -168,7 +177,7 @@ class EstudianteController extends Controller
             }
         }
 
-        return redirect()->route('inicio');
+        return redirect()->route( 'perfil_estudiante' );
     }
 
     // Generar codigo de curriculum de estudiante
@@ -338,10 +347,4 @@ class EstudianteController extends Controller
         return ($contador_vacios>0) ? $variable : false;
     }
 
-    public function refrescar_sesion_usuario( $id )
-    {
-        $usuario = Usuario::find( $id );
-        session(['usuario' => $usuario]);
-        return true;
-    }
 }

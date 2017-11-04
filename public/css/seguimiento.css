@@ -1132,6 +1132,32 @@ input:checked + .slider:before,
   text-align: center;
 }
 
+.flex-center {
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 60vh;
+}
+
+.flex-center .content {
+  min-height: 250px;
+  padding: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.flex-center .content .title {
+  font-size: 36px;
+  padding: 20px;
+}
+
 @media only screen and (max-width: 500px) {
   .form-log-cont {
     left: 26%;
