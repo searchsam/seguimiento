@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Auth;
 use App\Usuario;
+use App\Events\ActualizarSession;
 use App\Events\NotificacionesEmpresa;
 use App\Events\NotificacionesEstudiante;
 
@@ -27,7 +28,7 @@ class LoginController extends Controller
         if(Auth::attempt($credentials))
         {
             $usuario = Usuario::find(Auth::id());
-            session(['usuario' => $usuario]);
+            event(new ActualizarSession(Auth::user()));
 
             if ( $usuario->tipo_usuario_id == 3 )
             {

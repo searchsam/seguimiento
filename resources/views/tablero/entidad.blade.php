@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form id="curriculum-form" action="{{ route('registrar_curriculum') }}" method="post" enctype="multipart/form-data">
+    <form id="curriculum-form" action="{{ route('registrar_entidad') }}" method="POST" enctype="multipart/form-data">
 
         {{ csrf_field() }}
 
@@ -19,8 +19,8 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" name="nombre" style="width:100%" placeholder="Nombre de la Empresa" class="{{ $errors->has('nombre') ? 'error' : '' }}" value="{{ old('nombre') }}">
-                            {!! $errors->first('nombre', '<span class="help-block"><b>:message</b></span>') !!}
+                            <input type="text" name="nombre_empresa" style="width:100%" placeholder="Nombre de la Empresa" class="{{ $errors->has('nombre_empresa') ? 'error' : '' }}" value="{{ old('nombre_empresa') }}">
+                            {!! $errors->first('nombre_empresa', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
                             <input type="text" name="ruc" style="width:100%" placeholder="N&uacute;mero RUC" class="{{ $errors->has('ruc') ? 'error' : '' }}" value="{{ old('ruc') }}">
@@ -31,11 +31,11 @@
                             {!! $errors->first('direccion', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
-                            <input type="text" name="nombre" style="width:100%" placeholder="Nombre del Contacto" class="{{ $errors->has('nombre') ? 'error' : '' }}" value="{{ old('nombre') }}">
+                            <input type="text" name="nombre" style="width:100%" placeholder="Nombre del Contacto" value="{{ $usuario->nombre_usuario }}" class="{{ $errors->has('nombre') ? 'error' : '' }}">
                             {!! $errors->first('nombre', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
-                            <input type="text" name="apellido" style="width:100%" placeholder="Apellido del Contacto" class="{{ $errors->has('apellido') ? 'error' : '' }}" value="{{ old('apellido') }}">
+                            <input type="text" name="apellido" style="width:100%" placeholder="Apellido del Contacto" value="{{ $usuario->apellido_usuario }}" class="{{ $errors->has('apellido') ? 'error' : '' }}">
                             {!! $errors->first('apellido', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
@@ -47,7 +47,7 @@
                             {!! $errors->first('cargo', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
-                            <input type="text" name="email" style="width:100%" placeholder="Correo Institucional" class="{{ $errors->has('email') ? 'error' : '' }}" value="{{ old('email') }}">
+                            <input type="text" name="email" style="width:100%" placeholder="Correo Institucional" value="{{ $usuario->email_usuario }}" class="{{ $errors->has('email') ? 'error' : '' }}">
                             {!! $errors->first('email', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">

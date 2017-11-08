@@ -11,6 +11,7 @@ use App\Rules\Selectnumeric;
 use Illuminate\Support\Facades\Storage;
 
 // Eventos
+use App\Events\MarcarComoLeida;
 use App\Events\ActualizarSession;
 use App\Events\NotificacionesEstudiante;
 
@@ -39,8 +40,8 @@ class EstudianteController extends Controller
 
     public function index()
     {
-        $data['usuario'] = session('usuario');
-        $data['cliente'] = Estudiante::where('usuario_id', Auth::id())->get();
+        $data['usuario']    = session('usuario');
+        $data['cliente']    = Estudiante::where('usuario_id', Auth::id())->get();
         $data['page_title'] = 'Perfil de Estudiante';
         return view('tablero.perfil_estudiante', $data);
     }
@@ -176,7 +177,7 @@ class EstudianteController extends Controller
                 $referencia_laboral->save();
             }
         }
-
+        event(new MarcarComoLeida(Auth::user(), 'RegistrarPlanEstudios'));
         return redirect()->route( 'perfil_estudiante' );
     }
 
@@ -198,7 +199,7 @@ class EstudianteController extends Controller
         else
         {
             // Si existe codigo previo
-            $codigo_actual = $codigo->codigo_estudiante;
+            $codigo_actual       = $codigo->codigo_estudiante;
             $consecutivo_literal = substr( $codigo_actual, 1, 1 );
             $consecutivo_numeral = (int) substr( $codigo_actual, 3, 4 );
             // Verificacion de las partes secuenciles del codigo
@@ -214,7 +215,7 @@ class EstudianteController extends Controller
             if ( $consecutivo_literal_key >= 25 )
             {
                 $consecutivo_literal_key = 0;
-                $consecutivo_numeral = 0001;
+                $consecutivo_numeral     = 0001;
             }
             else
             {
@@ -255,7 +256,7 @@ class EstudianteController extends Controller
     public function formacion_academica_ordered( array $tipo_estudio, $estudio_academico, $institucion_academica, $localidad_estudio, $fecha_estudio )
     {
         $contador_vacios = 0;
-        $variable = array();
+        $variable        = array();
         // Ciclo de la cantidad de elementos de los arreglos
         for ($i=0; $i<count($tipo_estudio); $i++)
         {

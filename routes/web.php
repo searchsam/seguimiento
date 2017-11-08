@@ -37,7 +37,7 @@ Route::prefix( 'tablero' )->group( function () {
     Route::prefix( 'empresa')->group( function () {
         Route::get( 'inicio', 'EmpresaController@index' )->name( 'perfil_empresa' );
         Route::get( 'registro_entidad', 'EmpresaController@registro' )->name( 'registro_entidad' );
-        Route::get( 'registrar_entidad', 'EmpresaController@registrar' )->name( 'registrar_entidad' );
+        Route::post( 'registrar_entidad', 'EmpresaController@registrar' )->name( 'registrar_entidad' );
     });
 });
 

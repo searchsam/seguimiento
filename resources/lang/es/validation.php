@@ -88,6 +88,7 @@ return [
     'unique'               => ':attribute ya ha sido registrado.',
     'uploaded'             => 'Subir :attribute ha fallado.',
     'url'                  => 'El formato :attribute es inválido.',
+    'cedula'               => ':attribute no es una Cedula valida',
 
     /*
     |--------------------------------------------------------------------------
@@ -100,7 +101,7 @@ return [
     |
     */
 
-    'custom'               => [
+    'custom' => [
         'password' => [
             'min' => 'La :attribute debe contener más de :min caracteres',
         ],
@@ -150,7 +151,8 @@ return [
         'date'                  => 'fecha',
         'time'                  => 'hora',
         'subject'               => 'asunto',
-        'message'               => 'mensaje'
+        'message'               => 'mensaje',
+        'cedula'                => 'celula'
     ],
 
 ];

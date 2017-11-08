@@ -12,6 +12,8 @@ use App\Usuario;
 use Carbon\Carbon;
 use App\Events\ConfirmarEmail;
 use App\Events\EmailConfirmado;
+use App\Events\NotificacionesEmpresa;
+use App\Events\NotificacionesEstudiante;
 
 class RegisterController extends Controller
 {
@@ -133,13 +135,18 @@ class RegisterController extends Controller
 
             session(['usuario' => $usuario]);
 
-            if ($usuario->tipo_usuario_id == 4) {
+            if ($usuario->tipo_usuario_id == 4)
+            {
+                event(new NotificacionesEmpresa(Auth::user()));
                 return redirect()->route('registro_entidad');
             }
-
-            return redirect()->route('registro_curriculum');
+            if ($usuario->tipo_usuario_id == 3)
+            {
+                event(new NotificacionesEstudiante(Auth::user()));
+                return redirect()->route('registro_curriculum');
+            }
         }
-        
+
         return redirect()->route('token_error');
     }
 }

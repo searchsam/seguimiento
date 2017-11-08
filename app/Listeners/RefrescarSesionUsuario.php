@@ -6,7 +6,9 @@ use App\Events\ActualizarSession;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class RefrescarSesionUsuario
+use App\Usuario;
+
+class RefrescarSesionUsuario implements ShouldQueue
 {
     /**
      * Create the event listener.

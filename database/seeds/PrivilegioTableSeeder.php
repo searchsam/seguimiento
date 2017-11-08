@@ -16,18 +16,18 @@ class PrivilegioTableSeeder extends Seeder
         DB::table('privilegio')->insert([
             [
                 'privilegio' => 'crud',
-                'created_at'    => Carbon::now(),
-                'updated_at'    => Carbon::now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'privilegio' => 'cru',
-                'created_at'    => Carbon::now(),
-                'updated_at'    => Carbon::now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'privilegio' => 'ru',
-                'created_at'    => Carbon::now(),
-                'updated_at'    => Carbon::now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]
         ]);
     }

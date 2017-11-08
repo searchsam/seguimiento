@@ -19,7 +19,7 @@ class CreateContactoTable extends Migration
             $table->string('apellido_contacto');
             $table->string('cedula_contacto');
             $table->string('cargo_contacto');
-            $table->string('email');
+            $table->string('email_contacto');
             $table->string('telefono_institucional');
             $table->integer('empresa_id')->unsigned();
             $table->timestamps();

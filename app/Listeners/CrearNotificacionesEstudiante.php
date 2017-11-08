@@ -2,17 +2,18 @@
 
 namespace App\Listeners;
 
-use Illuminate\Support\Facades\DB;
 use App\Events\NotificacionesEstudiante;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+
+use Illuminate\Support\Facades\DB;
 
 use App\Usuario;
 use Notification;
 use App\Notifications\SubirCurriculum;
 use App\Notifications\RegistrarPlanEstudios;
 
-class CrearNotificacionesEstudiante
+class CrearNotificacionesEstudiante implements ShouldQueue
 {
 
     /**

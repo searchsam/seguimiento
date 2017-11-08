@@ -2,13 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\EmailConfirmado;
+use App\Events\MarcarComoLeida;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 use Notification;
 
-class EnviarNotificacionEmailConfirmado implements ShouldQueue
+class MarcarNotificacion implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -23,13 +23,15 @@ class EnviarNotificacionEmailConfirmado implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  EmailConfirmado  $event
+     * @param  MarcarComoMeida  $event
      * @return void
      */
-    public function handle(EmailConfirmado $event)
+    public function handle(MarcarComoLeida $event)
     {
-        foreach ($event->user->unreadNotifications as $notificacion) {
-            if ( str_is($notificacion->type, 'App\Notifications\VerificacionEmail') ) {
+        $tipo_notificacion = 'App\Notifications\\' . $event->notificacion;
+        
+        foreach ( $event->user->unreadNotifications as $notificacion ) {
+            if ( str_is( $notificacion->type, $tipo_notificacion ) ) {
                 $notificacion->markAsRead();
             }
         }

@@ -10,6 +10,17 @@ class Empresa extends Model
     protected $primaryKey   = 'id_empresa'; // Identicador
 
     /**
+     * Campos de la tabla de empresa para asignacion masiva
+     */
+    protected $fillable = [
+        'nombre_empresa',
+        'ruc_empresa',
+        'logo_empresa',
+        'direccion_empresa',
+        'usuario_id'
+    ];
+
+    /**
      * Obtener el registro del estudiante asociado con el usuario.
      */
     public function oferta()

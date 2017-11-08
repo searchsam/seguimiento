@@ -35,10 +35,10 @@
                         </a>
                         <ul class="treeview-menu">
                             @if ($usuario->tipo_usuario_id == 3)
-                                <li><a href="{{ route( 'registro_curriculum' ) }}"><i class="fa fa-circle-o"></i> Regitrar Plan de Estudio</a></li>
+                                <li><a href="{{ route( 'registro_curriculum' ) }}"><i class="fa fa-circle-o"></i>Regitrar Plan de Estudio</a></li>
                             @endif
                             @if ($usuario->tipo_usuario_id == 4)
-                                <li><a href="{{ route( 'registro_entidad' ) }}"><i class="fa fa-circle-o"></i> Regitrar Entidad de Empresa</a></li>
+                                <li><a href="{{ route( 'registro_entidad' ) }}"><i class="fa fa-circle-o"></i>Regitrar Entidad de Empresa</a></li>
                             @endif
                             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
                         </ul>

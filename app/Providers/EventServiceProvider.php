@@ -28,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ActualizarSession' => [
             'App\Listeners\RefrescarSesionUsuario',
         ],
+        'App\Events\MarcarComoLeida' => [
+            'App\Listeners\MarcarNotificacion',
+        ],
     ];
 
     /**
