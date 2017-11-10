@@ -1,4 +1,4 @@
-
+k
 // Colores
 $celeste: #4D73BA
 $azul: #2E5097
@@ -612,6 +612,66 @@ input
         .title
             font-size: 36px
             padding: 20px
+
+// Oferta
+#mostrar-oferta
+    .card
+        transition: 0.3s
+        width: 100%
+        margin-top: 10px
+        border-top: 3px solid $gris
+        border-left: 1px solid $grisclaro
+        border-right: 1px solid $grisclaro
+        border-bottom: 1px solid $grisclaro
+        position: relative
+        &:hover
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2)
+        .triangle-container
+            position: absolute
+            bottom: 0px
+            right: 0px
+            width: 0px
+            height: 0px
+            border-bottom: 0px solid transparent
+            border-top: 30px solid transparent
+            border-right: 30px solid $gris
+            font-size: 0px
+            line-height: 0px
+        .warning
+            border-right-color: $amarillo
+        .success
+            border-right-color: $verde
+
+        .card-body
+          padding: 2px 16px
+    .add-oferta
+        +border-radius(0)
+        background-color: transparent
+        border: 2px solid $gris
+        color: $gris
+        width: 100%
+        &:hover
+            background-color: $gris
+            color: white
+
+.modal
+    .modal-header
+        background-color: $azul
+        color: white
+    .seccess
+        margin-right: 0
+        padding-right: 0
+        button
+            width: 100%
+            background-color: $verde
+            color: white
+            &:hover
+                color: black
+    .cancel
+        margin-left: 0
+        padding-left: 0
+        button
+            width: 100%
 
 @media only screen and (max-width: 500px)
     // Estilo Login

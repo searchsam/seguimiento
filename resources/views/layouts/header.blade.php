@@ -63,7 +63,7 @@
                             <ul class="menu">
                                 @foreach ( $bells as $bell )
                                     <li><!-- start notification -->
-                                        <a href="#">
+                                        <a href="{{ route($bell->data['ruta']) }}">
                                             <i class="fa fa-circle messages-warning"></i>{{ $bell->data['text'] }}
                                         </a>
                                     </li>
@@ -100,7 +100,7 @@
                             <ul class="menu">
                                 @foreach ( $flags as $flag )
                                     <li><!-- start notification -->
-                                        <a href="#">
+                                        <a href="{{ route($flag->data['ruta']) }}">
                                             <i class="fa fa-circle messages-error"></i>{{ $flag->data['text'] }}
                                         </a>
                                     </li>

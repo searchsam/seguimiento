@@ -42,7 +42,8 @@ class RegistrarPlanEstudios extends Notification
     {
         return [
             'tipo' => 'flag',
-            'text' => 'No creado su Plan de Estudios.'
+            'text' => 'No ha creado su Plan de Estudios.',
+            'ruta' => 'registro_curriculum'
         ];
     }
 }

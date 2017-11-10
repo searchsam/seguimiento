@@ -38,6 +38,9 @@ Route::prefix( 'tablero' )->group( function () {
         Route::get( 'inicio', 'EmpresaController@index' )->name( 'perfil_empresa' );
         Route::get( 'registro_entidad', 'EmpresaController@registro' )->name( 'registro_entidad' );
         Route::post( 'registrar_entidad', 'EmpresaController@registrar' )->name( 'registrar_entidad' );
+        Route::get( 'ofertas', 'OfertaController@index' )->name( 'ofertas' );
+        Route::get( 'registro_oferta', 'OfertaController@registro' )->name( 'registro_oferta' );
+        Route::post( 'registrar_oferta', 'OfertaController@registrar' )->name( 'registrar_oferta' );
     });
 });
 

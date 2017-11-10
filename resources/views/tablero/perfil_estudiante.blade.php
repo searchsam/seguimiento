@@ -1,8 +1,8 @@
-@extends('layouts/admin_template')
+@extends('layouts.admin_template')
 
 @section('content')
     <div class='row'>
-        @if (!isset($cliente))
+        @if (count($cliente))
             <div class='col-md-6'>
                 <!-- Box -->
                 <div class="box box-primary">

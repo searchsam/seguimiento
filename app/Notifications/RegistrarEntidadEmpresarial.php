@@ -42,7 +42,8 @@ class RegistrarEntidadEmpresarial extends Notification
     {
         return [
             'tipo' => 'flag',
-            'text' => 'No creado la Identidad de la Empresa.'
+            'text' => 'No ha creado la Identidad de la Empresa.',
+            'ruta' => 'registro_entidad'
         ];
     }
 }

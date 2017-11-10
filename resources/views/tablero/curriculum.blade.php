@@ -1,4 +1,4 @@
-@extends('layouts/admin_template')
+@extends('layouts.admin_template')
 
 @section('content')
 
@@ -20,12 +20,12 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="form-check-label">
-                                <input class="form-check-input {{ $errors->has('sexo') ? 'error' : '' }}" type="radio" name="sexo" value="1" {{ old('sexo')==1 ? 'checked' : ' ' }}>
+                                <input class="form-check-input {{ $errors->has('sexo') ? 'error' : '' }}" type="radio" name="sexo" value="{{ old('sexo', 1) }}" {{ old('sexo')==1 ? 'checked' : ' ' }}>
                                 {!! $errors->first('sexo', '<span class="help-block"><b>:message</b></span>') !!}
                                 Masculino
                             </label>
                             <label class="form-check-label">
-                                <input class="form-check-input {{ $errors->has('sexo') ? 'error' : '' }}" type="radio" name="sexo" value="0" {{ (old('sexo')==0 and !is_null(old('sexo'))) ? 'checked' : ' ' }}>
+                                <input class="form-check-input {{ $errors->has('sexo') ? 'error' : '' }}" type="radio" name="sexo" value="{{ old('sexo', 0) }}" {{ (old('sexo')==0 and !is_null(old('sexo'))) ? 'checked' : ' ' }}>
                                 {!! $errors->first('sexo', '<span class="help-block"><b>:message</b></span>') !!}
                                 Femenino
                             </label>
@@ -43,7 +43,7 @@
                             {!! $errors->first('telefono', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
-                            <input type="text" name="correo" style="width:100%" placeholder="Email" value="{{ $usuario->email_usuario }}" class="{{ $errors->has('correo') ? 'error' : '' }}">
+                            <input type="text" name="correo" style="width:100%" placeholder="Email" value="{{ old('correo', $usuario->email_usuario) }}" class="{{ $errors->has('correo') ? 'error' : '' }}">
                             {!! $errors->first('correo', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
@@ -59,7 +59,7 @@
                     <div class="col-md-6">
                         <div class="text-center" id="user-foto">
                             <img :src="image" class="rounded-circle img-fluid">
-                            <input type="text" value="{{ asset($usuario->foto_usuario) }}" style="visibility: hidden;" id="default">
+                            <input type="text" value="{{ old('foto', asset($usuario->foto_usuario)) }}" style="visibility: hidden;" id="default">
                             <input type="file" name="foto" @change="onFileChange" class="{{ $errors->has('foto') ? 'error' : '' }}" value="{{ !is_null(old('foto')) ? old('foto') : ' ' }}">
                             {!! $errors->first('foto', '<span class="help-block"><b>:message</b></span>') !!}
                             <label><i class="fa fa-camera" aria-hidden="true"></i> @{{ message }}</label>

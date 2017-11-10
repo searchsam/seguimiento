@@ -42,7 +42,8 @@ class GenerarOferta extends Notification
     {
         return [
             'tipo' => 'flag',
-            'text' => 'No creado una Oferta.'
+            'text' => 'No ha creado una Oferta.',
+            'ruta' => 'registro_oferta'
         ];
     }
 }

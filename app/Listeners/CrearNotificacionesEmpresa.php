@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\DB;
 
 use App\Usuario;
+use App\Empresa;
 use Notification;
 use App\Notifications\GenerarOferta;
 use App\Notifications\RegistrarEntidadEmpresarial;

@@ -1158,6 +1158,108 @@ input:checked + .slider:before,
   padding: 20px;
 }
 
+#mostrar-oferta .card {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 100%;
+  margin-top: 10px;
+  border-top: 3px solid #808080;
+  border-left: 1px solid #ECF0F5;
+  border-right: 1px solid #ECF0F5;
+  border-bottom: 1px solid #ECF0F5;
+  position: relative;
+}
+
+#mostrar-oferta .card:hover {
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+#mostrar-oferta .card .triangle-container {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 0px;
+  height: 0px;
+  border-bottom: 0px solid transparent;
+  border-top: 30px solid transparent;
+  border-right: 30px solid #808080;
+  font-size: 0px;
+  line-height: 0px;
+}
+
+#mostrar-oferta .card .warning {
+  border-right-color: #FFC107;
+}
+
+#mostrar-oferta .card .success {
+  border-right-color: #28A745;
+}
+
+#mostrar-oferta .card .card-body {
+  padding: 2px 16px;
+}
+
+#mostrar-oferta .add-oferta {
+  border-radius: 0;
+  background-color: transparent;
+  border: 2px solid #808080;
+  color: #808080;
+  width: 100%;
+}
+
+#mostrar-oferta .add-oferta:hover {
+  background-color: #808080;
+  color: white;
+}
+
+.modal .modal-header {
+  background-color: #2E5097;
+  color: white;
+}
+
+.modal .seccess {
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.modal .seccess button,
+.modal .seccess .form-log-footer .form-log-btn,
+.form-log-footer .modal .seccess .form-log-btn,
+.modal .seccess #panel .card .card-body button,
+#panel .card .card-body .modal .seccess button,
+.modal .seccess #curriculum-form .agregar,
+#curriculum-form .modal .seccess .agregar {
+  width: 100%;
+  background-color: #28A745;
+  color: white;
+}
+
+.modal .seccess button:hover,
+.modal .seccess .form-log-footer .form-log-btn:hover,
+.form-log-footer .modal .seccess .form-log-btn:hover,
+.modal .seccess #panel .card .card-body button:hover,
+#panel .card .card-body .modal .seccess button:hover,
+.modal .seccess #curriculum-form .agregar:hover,
+#curriculum-form .modal .seccess .agregar:hover {
+  color: black;
+}
+
+.modal .cancel {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.modal .cancel button,
+.modal .cancel .form-log-footer .form-log-btn,
+.form-log-footer .modal .cancel .form-log-btn,
+.modal .cancel #panel .card .card-body button,
+#panel .card .card-body .modal .cancel button,
+.modal .cancel #curriculum-form .agregar,
+#curriculum-form .modal .cancel .agregar {
+  width: 100%;
+}
+
 @media only screen and (max-width: 500px) {
   .form-log-cont {
     left: 26%;

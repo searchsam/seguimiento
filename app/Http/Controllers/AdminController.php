@@ -8,6 +8,17 @@ use Carbon\Carbon;
 
 class AdminController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function fecha()
     {
         $date = Carbon::now();

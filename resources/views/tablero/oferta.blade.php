@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form id="curriculum-form" action="{{ route('registrar_entidad') }}" method="POST" enctype="multipart/form-data">
+    <form id="curriculum-form" action="{{ route('registrar_oferta') }}" method="POST" enctype="multipart/form-data">
 
         {{ csrf_field() }}
 

@@ -38,10 +38,10 @@
         <div class="wrapper">
 
             <!-- Header -->
-            @include('layouts/header')
+            @include('layouts.header')
 
             <!-- Sidebar -->
-            @include('layouts/sidebar')
+            @include('layouts.sidebar')
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -64,10 +64,10 @@
             </div><!-- /.content-wrapper -->
 
             <!-- Footer -->
-            @include('layouts/footer')
+            @include('layouts.footer')
 
             <!-- Header -->
-            @include('layouts/control-sidebar')
+            @include('layouts.control-sidebar')
 
         </div><!-- ./wrapper -->
 
@@ -81,8 +81,14 @@
         <script src="{{ asset("js/AdminLTE.min.js") }}"></script>
         <!-- AdminLTE App -->
         <script src="{{ asset("js/demo.js") }}"></script>
+        <!--  Bootstrap Datepicker  -->
+        <script src="{{ asset("js/bootstrap-datepicker.min.js") }}"></script>
         <!-- Estilo de Seguimiento -->
         <script src="{{ asset("js/seguimiento.js") }}"></script>
+
+        <script>
+            $('#Date').datepicker({ autoclose: true, todayHighlight: true});
+        </script>
     </body>
 
 </html>

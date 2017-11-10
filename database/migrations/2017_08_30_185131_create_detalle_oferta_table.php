@@ -19,7 +19,10 @@ class CreateDetalleOfertaTable extends Migration
             $table->string('oferta_salarial');
             $table->string('area');
             $table->string('cargo_oferta');
+            $table->integer('oferta_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('oferta_id')->references('id_oferta')->on('oferta')->onDelete('cascade');
         });
     }
 
