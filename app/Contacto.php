@@ -21,4 +21,12 @@ class Contacto extends Model
         'telefono_institucional',
         'empresa_id'
     ];
+
+    /**
+     * Obtener el registro de la empresa asociado con el conctacto.
+     */
+    public function empresa()
+    {
+        return $this->belongsTo('App\Empresa', 'empresa_id');
+    }
 }

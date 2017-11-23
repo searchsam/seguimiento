@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 // Eventos
 use App\Events\MarcarComoLeida;
+use App\Events\ActualizarSession;
 
 // Modelos
 use App\Empresa;
 use App\Contacto;
+use App\Usuario;
 
 class EmpresaController extends Controller
 {
@@ -48,15 +50,15 @@ class EmpresaController extends Controller
     {
         $validate = $request->validate([
             'nombre_empresa' => 'required|string',
-            'ruc' => 'required|string',
-            'direccion' => 'required|string',
-            'foto' => 'nullable|image',
-            'nombre' => 'required|string',
-            'apellido' => 'required|string',
-            'cedula' => ['required', new Cedula],
-            'cargo' => 'required|string',
-            'email' => 'required|email',
-            'telefono' => 'required|numeric',
+            'ruc'            => 'required|string',
+            'direccion'      => 'required|string',
+            'foto'           => 'nullable|image',
+            'nombre'         => 'required|string',
+            'apellido'       => 'required|string',
+            'cedula'         => ['required', new Cedula],
+            'cargo'          => 'required|string',
+            'email'          => 'required|email',
+            'telefono'       => 'required|numeric',
         ]);
 
         // Guardar Empresa
@@ -81,7 +83,7 @@ class EmpresaController extends Controller
             $usuario->foto_usuario = 'storage/' . $img_dir;
             $usuario->save();
 
-            event(new ActualizarSession($usuario));
+            event(new ActualizarSession( Auth::user() ));
         }
 
         // Guarda datos de contacto
@@ -100,5 +102,14 @@ class EmpresaController extends Controller
 
         event( new MarcarComoLeida( Auth::user(), 'RegistrarEntidadEmpresarial' ) );
         return redirect()->route( 'perfil_empresa' );
+    }
+
+    // Generar nombre de archivo para la foto de empresa
+    public function fotos_name( string $name )
+    {
+        // Elimina los espacios en blanco
+        $name = str_replace( ' ', '', trim( $name ) );
+        $name = strtolower( $name );
+        return $name;
     }
 }

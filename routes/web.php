@@ -12,7 +12,6 @@
 */
 
 Route::view( '/', 'auth.acceso', ['page_title' => 'Acceso'] )->name( 'acceso' );
-Route::any( '/errata', 'AdminController@fecha' )->name( 'errata' );
 
 Route::prefix( 'autenticacion' )->group( function () {
     // Autenticacion
@@ -25,8 +24,6 @@ Route::prefix( 'autenticacion' )->group( function () {
 });
 
 Route::prefix( 'tablero' )->group( function () {
-    // Loggin User
-    Route::get('inicio', 'DashController@index')->name('inicio');
 
     Route::prefix( 'estudiante' )->group( function () {
         Route::get( 'inicio', 'EstudianteController@index' )->name( 'perfil_estudiante' );

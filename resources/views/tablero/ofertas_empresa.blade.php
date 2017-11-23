@@ -16,13 +16,37 @@
                 <div class="box-body">
                     <button type="button" data-toggle="modal" data-target="#oferta-modal" class="btn btn-default add-oferta"><i class="fa fa-plus"></i></button>
                     @if (count($cliente))
-                        <div class="card">
-                            <div class="triangle-container warning" data-toggle="tooltip" data-placement="left" title="Oferta en espera de ser atendida."></div>
-                            <div class="card-body">
-                                <h1><b>John Doe</b></h1>
-                                <p>Architect & Engineer</p>
-                            </div>
-                        </div>
+                        @foreach ($cliente as $oferta)
+                            @if ($oferta->estado_oferta == 0)
+                                <div class="card" id="show-modal" @click="showModal = true">
+
+                                    <div class="triangle-container warning" data-toggle="tooltip" data-placement="left" title="Oferta en espera de ser atendida."></div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col col-md-4">
+                                                <img class="img-circle" src="{{ asset($usuario->foto_usuario) }}" alt="{{ $usuario->empresa->nombre_empresa }}" width="128px" height="128px">
+                                            </div>
+                                            <div class="col col-md-8">
+                                                <h1><b>{{ $contacto->nombre_contacto }} {{ $contacto->apellido_contacto }}</b></h1>
+                                                <div class="text-truncate">
+                                                    <p>{{ $oferta->descripcion_oferta }}</p>
+                                                </div>
+                                                <p>{{ $oferta->fecha_limite_oferta }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <modal v-if="showModal" @close="showModal = false">
+                                    <h1 slot="header"><b>{{ $contacto->nombre_contacto }} {{ $contacto->apellido_contacto }}</b> <small slot="sub-header">{{ $usuario->empresa->nombre_empresa }}</small></h1>
+                                    <p slot="body">{{ $oferta->descripcion_oferta }}</p>
+                                    <p slot="state">En Espera de ser Atendida</p>
+                                    @if (!is_null($oferta->fecha_limite_oferta))
+                                        <p slot="limit">{{ $oferta->fecha_limite_oferta }}</p>
+                                    @endif
+                                </modal>
+                            @endif
+                        @endforeach
                     @endif
                 </div><!-- /.box-body -->
 
@@ -42,13 +66,36 @@
 
                 <div class="box-body">
                     @if (count($cliente))
-                        <div class="card">
-                            <div class="triangle-container success" data-toggle="tooltip" data-placement="left" title="Oferta atendida."></div>
-                            <div class="card-body">
-                                <h1><b>John Doe</b></h1>
-                                <p>Architect & Engineer</p>
-                            </div>
-                        </div>
+                        @foreach ($cliente as $oferta)
+                            @if ($oferta->estado_oferta == 1)
+                                <div class="card" id="show-modal" @click="showModal = true">
+                                    <div class="triangle-container success" data-toggle="tooltip" data-placement="left" title="Oferta atendida."></div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col col-md-4">
+                                                <img class="img-circle" src="{{ asset($usuario->foto_usuario) }}" alt="{{ $usuario->empresa->nombre_empresa }}" width="128px" height="128px">
+                                            </div>
+                                            <div class="col col-md-8">
+                                                <h1><b>{{ $contacto->nombre_contacto }} {{ $contacto->apellido_contacto }}</b></h1>
+                                                <div class="text-truncate">
+                                                    <p>{{ $oferta->descripcion_oferta }}</p>
+                                                </div>
+                                                <p>{{ $oferta->fecha_limite_oferta }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <modal v-if="showModal" @close="showModal = false">
+                                    <h1 slot="header"><b>{{ $contacto->nombre_contacto }} {{ $contacto->apellido_contacto }}</b> <small slot="sub-header">{{ $usuario->empresa->nombre_empresa }}</small></h1>
+                                    <p slot="body">{{ $oferta->descripcion_oferta }}</p>
+                                    <p slot="state">Oferta Atendida</p>
+                                    @if (!is_null($oferta->fecha_limite_oferta))
+                                        <p slot="limit">{{ $oferta->fecha_limite_oferta }}</p>
+                                    @endif
+                                </modal>
+                            @endif
+                        @endforeach
                     @endif
                 </div><!-- /.box-body -->
 
@@ -64,7 +111,10 @@
                     </div>
 
                     <div class="modal-body">
-                        <form id="curriculum-form" action="{{ route('registrar_oferta') }}" method="POST" role="form">
+                        <form id="curriculum-form" action="{{ route('registrar_oferta') }}" method="POST" enctype="multipart/form-data">
+
+                            {{ csrf_field() }}
+
                             <div class="form-group">
                                 <div class="form-select {{ $errors->has('tipo_oferta') ? 'error' : '' }}">
                                     <select name="tipo_oferta" class="custom-select {{ $errors->has('tipo_oferta') ? 'error' : '' }}">
@@ -101,5 +151,32 @@
 
     </div><!-- /.row -->
 
-    <div class="daterangepicker dropdown-menu ltr show-calendar opensleft" style="top: 705.317px; right: 25px; left: auto; display: none;"><div class="calendar left"><div class="daterangepicker_input"><input class="input-mini form-control active" name="daterangepicker_start" value="" type="text"><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time"><div><select class="hourselect"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12" selected="selected">12</option></select> : <select class="minuteselect"><option value="0" selected="selected">00</option><option value="30">30</option></select> <select class="ampmselect"><option value="AM" selected="selected">AM</option><option value="PM">PM</option></select></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></i></th><th colspan="5" class="month">Nov 2017</th><th></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">29</td><td class="off available" data-title="r0c1">30</td><td class="off available" data-title="r0c2">31</td><td class="available" data-title="r0c3">1</td><td class="available" data-title="r0c4">2</td><td class="available" data-title="r0c5">3</td><td class="weekend available" data-title="r0c6">4</td></tr><tr><td class="weekend available" data-title="r1c0">5</td><td class="available" data-title="r1c1">6</td><td class="available" data-title="r1c2">7</td><td class="available" data-title="r1c3">8</td><td class="available" data-title="r1c4">9</td><td class="today active start-date active end-date available" data-title="r1c5">10</td><td class="weekend available" data-title="r1c6">11</td></tr><tr><td class="weekend available" data-title="r2c0">12</td><td class="available" data-title="r2c1">13</td><td class="available" data-title="r2c2">14</td><td class="available" data-title="r2c3">15</td><td class="available" data-title="r2c4">16</td><td class="available" data-title="r2c5">17</td><td class="weekend available" data-title="r2c6">18</td></tr><tr><td class="weekend available" data-title="r3c0">19</td><td class="available" data-title="r3c1">20</td><td class="available" data-title="r3c2">21</td><td class="available" data-title="r3c3">22</td><td class="available" data-title="r3c4">23</td><td class="available" data-title="r3c5">24</td><td class="weekend available" data-title="r3c6">25</td></tr><tr><td class="weekend available" data-title="r4c0">26</td><td class="available" data-title="r4c1">27</td><td class="available" data-title="r4c2">28</td><td class="available" data-title="r4c3">29</td><td class="available" data-title="r4c4">30</td><td class="off available" data-title="r4c5">1</td><td class="weekend off available" data-title="r4c6">2</td></tr><tr><td class="weekend off available" data-title="r5c0">3</td><td class="off available" data-title="r5c1">4</td><td class="off available" data-title="r5c2">5</td><td class="off available" data-title="r5c3">6</td><td class="off available" data-title="r5c4">7</td><td class="off available" data-title="r5c5">8</td><td class="weekend off available" data-title="r5c6">9</td></tr></tbody></table></div></div><div class="calendar right"><div class="daterangepicker_input"><input class="input-mini form-control" name="daterangepicker_end" value="" type="text"><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time"><div><select class="hourselect"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11" selected="selected">11</option><option value="12">12</option></select> : <select class="minuteselect"><option value="0">00</option><option value="30">30</option></select> <select class="ampmselect"><option value="AM">AM</option><option value="PM" selected="selected">PM</option></select></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Dec 2017</th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">26</td><td class="off available" data-title="r0c1">27</td><td class="off available" data-title="r0c2">28</td><td class="off available" data-title="r0c3">29</td><td class="off available" data-title="r0c4">30</td><td class="available" data-title="r0c5">1</td><td class="weekend available" data-title="r0c6">2</td></tr><tr><td class="weekend available" data-title="r1c0">3</td><td class="available" data-title="r1c1">4</td><td class="available" data-title="r1c2">5</td><td class="available" data-title="r1c3">6</td><td class="available" data-title="r1c4">7</td><td class="available" data-title="r1c5">8</td><td class="weekend available" data-title="r1c6">9</td></tr><tr><td class="weekend available" data-title="r2c0">10</td><td class="available" data-title="r2c1">11</td><td class="available" data-title="r2c2">12</td><td class="available" data-title="r2c3">13</td><td class="available" data-title="r2c4">14</td><td class="available" data-title="r2c5">15</td><td class="weekend available" data-title="r2c6">16</td></tr><tr><td class="weekend available" data-title="r3c0">17</td><td class="available" data-title="r3c1">18</td><td class="available" data-title="r3c2">19</td><td class="available" data-title="r3c3">20</td><td class="available" data-title="r3c4">21</td><td class="available" data-title="r3c5">22</td><td class="weekend available" data-title="r3c6">23</td></tr><tr><td class="weekend available" data-title="r4c0">24</td><td class="available" data-title="r4c1">25</td><td class="available" data-title="r4c2">26</td><td class="available" data-title="r4c3">27</td><td class="available" data-title="r4c4">28</td><td class="available" data-title="r4c5">29</td><td class="weekend available" data-title="r4c6">30</td></tr><tr><td class="weekend available" data-title="r5c0">31</td><td class="off available" data-title="r5c1">1</td><td class="off available" data-title="r5c2">2</td><td class="off available" data-title="r5c3">3</td><td class="off available" data-title="r5c4">4</td><td class="off available" data-title="r5c5">5</td><td class="weekend off available" data-title="r5c6">6</td></tr></tbody></table></div></div><div class="ranges"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div>
+    <!-- template for the modal component -->
+    <script type="text/x-template" id="modal-template">
+        <transition name="modal">
+            <div class="modal-mask">
+                <div class="modal-wrapper">
+                    <div class="modal-container">
+
+                        <div class="modal-header widget-user-header bg-black" style="background: url(<?php echo asset($usuario->foto_usuario); ?>) center center; height: 128px;"></div>
+
+                        <div class="modal-body warning">
+                            <slot name="header">Contacto <slot name="sub-header">Empresa</slot></slot>
+                            <slot name="body">Descriptcion de la Oferta</slot>
+                            <div class="row">
+                                <div class="col col-md-6">
+                                    <slot name="state">Estado de la Oferta</slot>
+                                </div>
+                                <div class="col col-md-6 right" style="float: right;">
+                                    <slot name="limit">{{ $oferta->fecha_limite_oferta }}</slot>
+                                </div>
+                            </div>
+                            <button class="modal-default-button" @click="$emit('close')" style="width: 100%;">Cerrar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </script>
 @endsection

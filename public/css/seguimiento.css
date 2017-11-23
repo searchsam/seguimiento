@@ -1260,6 +1260,64 @@ input:checked + .slider:before,
   width: 100%;
 }
 
+.modal-mask {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+}
+
+.modal-mask .modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-mask .modal-wrapper .modal-container {
+  width: 500px;
+  margin: 0px auto;
+  padding: 0;
+  background-color: white;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.modal-mask .modal-wrapper .modal-container .modal-header {
+  border-bottom: 0;
+}
+
+.modal-mask .modal-wrapper .modal-container .modal-body {
+  border-top: 5px solid #808080;
+}
+
+.modal-mask .modal-wrapper .modal-container .modal-body .espera {
+  height: 30px;
+  width: 30px;
+  background-color: #FFC107;
+}
+
+.modal-mask .modal-wrapper .modal-container .modal-body .atendida {
+  height: 30px;
+  width: 30px;
+  background-color: #28A745;
+}
+
+.modal-mask .modal-enter,
+.modal-mask .modal-leave-active {
+  opacity: 0;
+}
+
+.modal-mask .modal-enter .modal-container,
+.modal-mask .modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
 @media only screen and (max-width: 500px) {
   .form-log-cont {
     left: 26%;

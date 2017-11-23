@@ -29,10 +29,18 @@ class Empresa extends Model
     }
 
     /**
-     * Obtener el registro del estudiante asociado con el usuario.
+     * Obtener el registro de oferta asociado con la empresa.
      */
     public function oferta()
     {
         return $this->hasMany('App\Oferta', 'empresa_id');
+    }
+
+    /**
+     * Obtener el registro del contacto asociado con la empresa.
+     */
+    public function contacto()
+    {
+        return $this->hasOne('App\Contacto', 'empresa_id');
     }
 }

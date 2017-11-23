@@ -174,6 +174,24 @@ window.addEventListener('load', function () {
             }
         }
     });
+
+    // register modal component
+    Vue.component('modal', {
+        template: '#modal-template'
+    });
+
+    // start app
+    new Vue({
+        el: '#mostrar-oferta',
+        data: {
+            showModal: false
+        },
+        methods: {
+            close: function close() {
+                alert('hole');
+            }
+        }
+    });
 });
 
 /***/ }),

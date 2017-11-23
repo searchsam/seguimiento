@@ -51,7 +51,7 @@ class Handler extends ExceptionHandler
 
          if ($exception instanceof \Illuminate\Session\TokenMismatchException)
          {
-             return redirect()->route('registro')->with('flash', 'La página ha caducado debido a la inactividad. Actualiza e inténtalo de nuevo.');
+             return back()->with('flash', 'La página ha caducado debido a la inactividad. Actualiza e inténtalo de nuevo.');
              //return redirect('errors.verifytoken');
          }
 

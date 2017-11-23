@@ -15,12 +15,12 @@ class CreateOfertaTable extends Migration
     {
         Schema::create('oferta', function (Blueprint $table) {
             $table->increments('id_oferta');
-            $table->integer('fecha_registro_oferta');
+            $table->string('fecha_registro_oferta');
             $table->boolean('estado_oferta')->default('0');
-            $table->integer('fecha_limite_oferta')->nullable();
+            $table->string('fecha_limite_oferta')->nullable();
             $table->string('descripcion_oferta');
-            $table->integer('empresa_id')->unsigned();
             $table->integer('tipo_oferta_id')->unsigned();
+            $table->integer('empresa_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('empresa_id')->references('id_empresa')->on('empresa')->onDelete('cascade');
