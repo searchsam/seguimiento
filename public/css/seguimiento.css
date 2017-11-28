@@ -1292,18 +1292,22 @@ input:checked + .slider:before,
 }
 
 .modal-mask .modal-wrapper .modal-container .modal-body {
-  border-top: 5px solid #808080;
+  /*border-top: 5px solid $gris*/
+}
+
+.modal-mask .modal-wrapper .modal-container .modal-body .aside {
+  display: inline-block;
 }
 
 .modal-mask .modal-wrapper .modal-container .modal-body .espera {
-  height: 30px;
-  width: 30px;
+  width: 15px;
+  height: 15px;
   background-color: #FFC107;
 }
 
 .modal-mask .modal-wrapper .modal-container .modal-body .atendida {
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   background-color: #28A745;
 }
 

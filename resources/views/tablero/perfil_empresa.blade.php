@@ -50,9 +50,10 @@
         @else
             <div class="flex-center">
                 <div class="content">
-                    <div class="title">
+                    <img src="{{ asset('storage/slogo.svg') }}" alt="Seguimiento" height="300px">
+                    <!--div class="title">
                         Perfil vacio o sin crear.
-                    </div>
+                    </div -->
                 </div>
             </div>
         @endif

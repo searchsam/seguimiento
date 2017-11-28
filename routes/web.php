@@ -29,6 +29,7 @@ Route::prefix( 'tablero' )->group( function () {
         Route::get( 'inicio', 'EstudianteController@index' )->name( 'perfil_estudiante' );
         Route::get( 'registro_curriculum', 'EstudianteController@registro' )->name( 'registro_curriculum' );
         Route::post( 'registrar_curriculum', 'EstudianteController@registrar' )->name( 'registrar_curriculum' );
+        Route::get( 'subir_curriculum', 'EstudianteController@subir' )->name( 'subir_curriculum' );
     });
 
     Route::prefix( 'empresa')->group( function () {

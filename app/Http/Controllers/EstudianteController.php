@@ -348,4 +348,9 @@ class EstudianteController extends Controller
         return ($contador_vacios>0) ? $variable : false;
     }
 
+    public function subir()
+    {
+        return false;
+    }
+
 }

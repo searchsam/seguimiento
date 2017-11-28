@@ -42,7 +42,8 @@ class SubirCurriculum extends Notification
     {
         return [
             'tipo' => 'flag',
-            'text' => 'No ha subido un Curriculum.'
+            'text' => 'No ha subido un Curriculum.',
+            'ruta' => 'subir_curriculum'
         ];
     }
 }

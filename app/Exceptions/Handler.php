@@ -20,6 +20,8 @@ class Handler extends ExceptionHandler
         \Illuminate\Database\Eloquent\ModelNotFoundException::class,
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
+        \Swift_TransportException::class,
+        \Swift_RfcComplianceException::class,
     ];
 
     /**
@@ -46,13 +48,22 @@ class Handler extends ExceptionHandler
     {
          if ($exception instanceof \Illuminate\Auth\AuthenticationException)
          {
-             return redirect()->route('acceso')->with('flash', 'Por favor inicia sesión.');
+             return redirect()->route('acceso')->with('flash', 'Por favor inicie sesi&oacute;n.');
          }
 
          if ($exception instanceof \Illuminate\Session\TokenMismatchException)
          {
-             return back()->with('flash', 'La página ha caducado debido a la inactividad. Actualiza e inténtalo de nuevo.');
-             //return redirect('errors.verifytoken');
+             return back()->with('flash', 'La p&aacute;gina ha caducado debido a la inactividad. Actualiza e int&eacute;ntalo de nuevo.');
+         }
+
+         if ($exception instanceof \Swift_TransportException)
+         {
+             return redirect()->route('acceso')->with('flash', 'La conexi&oacute;n con el host no se pudo establecer. Por favor compruebe su conexi&oacute;n a internet e inicie sessi&oacute;n.');
+         }
+
+         if ($exception instanceof \Swift_RfcComplianceException)
+         {
+             return back()->with('flash', 'Direcci&oacute;n de correo electr&oacute;nico inv&aacute;lida.');
          }
 
         return parent::render($request, $exception);

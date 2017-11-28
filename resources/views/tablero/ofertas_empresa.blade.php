@@ -40,7 +40,8 @@
                                 <modal v-if="showModal" @close="showModal = false">
                                     <h1 slot="header"><b>{{ $contacto->nombre_contacto }} {{ $contacto->apellido_contacto }}</b> <small slot="sub-header">{{ $usuario->empresa->nombre_empresa }}</small></h1>
                                     <p slot="body">{{ $oferta->descripcion_oferta }}</p>
-                                    <p slot="state">En Espera de ser Atendida</p>
+                                    <div slot="color" class="espera aside"></div>
+                                    <p slot="state" class="aside">En Espera de ser Atendida</p>
                                     @if (!is_null($oferta->fecha_limite_oferta))
                                         <p slot="limit">{{ $oferta->fecha_limite_oferta }}</p>
                                     @endif
@@ -89,7 +90,8 @@
                                 <modal v-if="showModal" @close="showModal = false">
                                     <h1 slot="header"><b>{{ $contacto->nombre_contacto }} {{ $contacto->apellido_contacto }}</b> <small slot="sub-header">{{ $usuario->empresa->nombre_empresa }}</small></h1>
                                     <p slot="body">{{ $oferta->descripcion_oferta }}</p>
-                                    <p slot="state">Oferta Atendida</p>
+                                    <div slot="color" class="atendida aside"></div>
+                                    <p slot="state" class="aside">Oferta Atendida</p>
                                     @if (!is_null($oferta->fecha_limite_oferta))
                                         <p slot="limit">{{ $oferta->fecha_limite_oferta }}</p>
                                     @endif
@@ -165,6 +167,7 @@
                             <slot name="body">Descriptcion de la Oferta</slot>
                             <div class="row">
                                 <div class="col col-md-6">
+                                    <slot name="color"></slot>
                                     <slot name="state">Estado de la Oferta</slot>
                                 </div>
                                 <div class="col col-md-6 right" style="float: right;">
