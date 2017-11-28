@@ -116,7 +116,11 @@ class RegisterController extends Controller
         $user->remember_token = str_random(25);
         $user->save();
 
-        event(new ConfirmarEmail($user));
+        $usuario = Usuario::find($user->id);
+        if( $usuario->tipo_usuario_id == 3 OR $usuario->tipo_usuario_id == 4 )
+        {
+            event(new ConfirmarEmail($user));
+        }
     }
 
     protected function confirmation($token, User $user)

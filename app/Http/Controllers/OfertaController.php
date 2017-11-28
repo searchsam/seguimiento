@@ -67,4 +67,9 @@ class OfertaController extends Controller
         event( new MarcarComoLeida( Auth::user(), 'GenerarOferta' ) );
         return redirect()->route( 'ofertas' );
     }
+
+    public function usuario_ofertas()
+    {
+        
+    }
 }

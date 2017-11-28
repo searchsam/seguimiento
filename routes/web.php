@@ -43,7 +43,9 @@ Route::prefix( 'tablero' )->group( function () {
 });
 
 Route::prefix( 'usuario' )->group( function () {
-    // Usuario
+    Route::get( 'inicio', 'UsuarioController@index' )->name( 'perfil_usuario' );
+    Route::get( 'registro_usuario', 'UsuarioController@registro' )->name( 'registro_usuario' );
+    Route::get( 'ofertas', 'OfertaController@usuario_ofertas' )->name( 'ver_ofertas' );
 });
 
 Route::prefix( 'admin' )->group( function () {

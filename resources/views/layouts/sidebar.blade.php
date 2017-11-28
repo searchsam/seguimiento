@@ -29,6 +29,10 @@
                 <ul class="sidebar-menu tree" data-widget="tree">
                     <li class="header">NAVEGACIÓN PRINCIPAL</li>
                     @switch($usuario->tipo_usuario_id)
+                        @case(2)
+                            @include('usuario.treeview_usuario')
+                            @break
+
                         @case(3)
                             @include('tablero.treeview_estudiante')
                             @break
