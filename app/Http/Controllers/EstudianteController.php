@@ -19,6 +19,7 @@ use App\Events\NotificacionesEstudiante;
 use App\Usuario;
 use App\Estudiante;
 use App\TipoEstudio;
+use App\LineaTiempo;
 use App\Reconocimiento;
 use App\ReferenciaLaboral;
 use App\DesarrolloPersonal;
@@ -42,6 +43,7 @@ class EstudianteController extends Controller
     {
         $data['usuario']    = session('usuario');
         $data['cliente']    = Estudiante::where('usuario_id', Auth::id())->get();
+        $data['lineas']      = LineaTiempo::where( 'usuario_id', Auth::id() )->orderBy('id_linea_tiempo', 'asc')->get();
         $data['page_title'] = 'Perfil de Estudiante';
         return view('tablero.perfil_estudiante', $data);
     }
@@ -177,6 +179,12 @@ class EstudianteController extends Controller
                 $referencia_laboral->save();
             }
         }
+
+        LineaTiempo::create([
+            'evento'     => 'Registro plan de estudios.',
+            'usuario_id' => Auth::id(),
+        ]);
+
         event(new MarcarComoLeida(Auth::user(), 'RegistrarPlanEstudios'));
         return redirect()->route( 'perfil_estudiante' );
     }
@@ -350,7 +358,17 @@ class EstudianteController extends Controller
 
     public function subir()
     {
-        return false;
+        $usuario = session( 'usuario' );
+        if ( $usuario->estudiante )
+        {
+            LineaTiempo::create([
+                'evento'     => 'Subio curriculum completo en PDF.',
+                'usuario_id' => Auth::id(),
+            ]);
+
+            return false;
+        }
+        return back()->with( 'flash', 'Por favor regristre el plan de estudio.' );
     }
 
 }

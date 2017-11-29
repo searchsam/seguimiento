@@ -1,57 +1,100 @@
 @extends('layouts.admin_template')
 
 @section('content')
+    @php use Carbon\Carbon; @endphp
     <div class='row'>
-        @if (count($cliente))
-            <div class='col-md-6'>
-                <!-- Box -->
-                <div class="box box-primary">
+        @if ( count( $cliente ) )
+        <div class="col-md-3">
 
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Randomly Generated Tasks</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
+            <!-- Profile Image -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="{{ asset( $usuario->foto_usuario ) }}" alt="User profile picture">
+                    <h3 class="profile-username text-center">{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</h3>
+                    <p class="text-muted text-center">{{ $usuario->estudiante->codigo_estudiante }}</p>
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">Celular Usuario: <b class="pull-right">{{-- $usuario->estudiante->celular_estudiante --}}</b></li>
+                        <li class="list-group-item">Correo Electr&oacute;nico: <b class="pull-right">{{ $usuario->email_usuario }}</b></li>
+                        <li class="list-group-item">Estado Usuario:
+                            <b class="pull-right time-label">
+                                @if ( $usuario->estado_usuario )
+                                    <span class="bg-green">Activo</span>
+                                @else
+                                    <span class="bg-red">Inactivo</span>
+                                @endif
+                            </b>
+                        </li>
 
-                    <div class="box-body">
-                    </div><!-- /.box-body -->
+                    </ul>
+                    @if ($usuario->tipo_usuario == 1)
+                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                    @endif
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
 
-                    <div class="box-footer">
-                        <form action='#'>
-                            <input type='text' placeholder='New task' class='form-control input-sm' />
-                        </form>
-                    </div><!-- /.box-footer-->
+            <!-- About Me Box -->
+            <div class="box box-primary">
 
-                </div><!-- /.box -->
-            </div><!-- /.col -->
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <strong><i class="fa fa-book margin-r-5"></i> N&uacute;mero RUC</strong>
+                    <p class="text-muted">{{-- $usuario->empresa->ruc_empresa --}}</p>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Direcci&oacute;n</strong>
+                    <p class="text-muted">{{-- $usuario->empresa->direccion_empresa --}}</p>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+        <!-- /.col -->
 
-            <div class='col-md-6'>
-                <!-- Box -->
-                <div class="box box-primary">
+        <div class="col-md-9">
+            <div class="box box-primary">
 
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Second Box</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
+                <!-- /.box-header -->
+                <div class="box-body">
 
-                    <div class="box-body">
-                        A separate section to add any kind of widget. Feel free
-                        to explore all of AdminLTE widgets by visiting the demo page
-                        on <a href="https://almsaeedstudio.com">Almsaeed Studio</a>.
-                    </div><!-- /.box-body -->
+                    @php $carbon = new Carbon($usuario->fecha_registro); @endphp
 
-                </div><!-- /.box -->
-            </div><!-- /.col -->
+                    <!-- The timeline -->
+                    <ul class="timeline timeline-inverse">
+
+                        @foreach ($lineas as $evento)
+                            <!-- timeline time label -->
+                            @php
+                                $update = new Carbon($evento->updated_at);
+                            @endphp
+                            @if ($loop->first)
+                                @php $carbon = $update; @endphp
+                                <li class="time-label"><span class="bg-purple">{{ $update->toFormattedDateString() }}</span></li><!-- /.timeline-label -->
+                            @else
+                                @if ( !$update->isSameDay($carbon) )
+                                    @php $carbon = $update; @endphp
+                                    <li class="time-label"><span class="bg-purple">{{ $update->toFormattedDateString() }}</span></li><!-- /.timeline-label -->
+                                @endif
+                            @endif
+
+                            <!-- timeline item -->
+                            <li>
+                                <i class="fa fa-user bg-aqua"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{ $update->format('h:i A') }}</span>
+                                    <h3 class="timeline-header no-border"><h3>{{ $evento->evento }}</h3>
+                                </div>
+                            </li>
+                            <!-- END timeline item -->
+                        @endforeach
+
+                        <li><i class="fa fa-clock-o bg-gray"></i></li>
+                    </ul>
+                </div><!-- /.tab-pane -->
+            </div><!-- /.tab-content -->
+        </div><!-- /.nav-tabs-custom -->
         @else
+            <p style="margin-left:20px; margin-bottom:0;">Perfil vacio, por favor registre la entidad de la empresa.</p>
             <div class="flex-center">
                 <div class="content">
                     <img src="{{ asset('storage/slogo.svg') }}" alt="Seguimiento" height="300px">
-                    <!-- div class="title">
+                    <!--div class="title">
                         Perfil vacio o sin crear.
                     </div -->
                 </div>

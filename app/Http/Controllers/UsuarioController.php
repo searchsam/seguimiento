@@ -12,6 +12,7 @@ use App\Events\ActualizarSession;
 
 // Modelos
 use App\Usuario;
+use App\LineaTiempo;
 
 class UsuarioController extends Controller
 {
@@ -28,13 +29,13 @@ class UsuarioController extends Controller
     public function index()
     {
         $data['usuario']    = session('usuario');
-        $data['cliente']    = NULL;
+        $data['cliente']    = FALSE;
         $data['page_title'] = 'Perfil de Usuario';
         return view('usuario.perfil_usuario', $data);
     }
 
     public function registro()
     {
-        
+
     }
 }

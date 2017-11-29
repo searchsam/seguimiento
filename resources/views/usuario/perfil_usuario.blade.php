@@ -2,60 +2,41 @@
 
 @section('content')
     <div class='row'>
-        @if (count($cliente))
-            <div class='col-md-6'>
-                <!-- Box -->
-                <div class="box box-primary">
+        <div class='col-md-6 col-md-offset-3'>
+            <!-- Widget: user widget style 1 -->
+            <div class="box box-widget widget-user">
 
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Randomly Generated Tasks</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="box-body">
-                    </div><!-- /.box-body -->
-
-                    <div class="box-footer">
-                        <form action='#'>
-                            <input type='text' placeholder='New task' class='form-control input-sm' />
-                        </form>
-                    </div><!-- /.box-footer-->
-
-                </div><!-- /.box -->
-            </div><!-- /.col -->
-
-            <div class='col-md-6'>
-                <!-- Box -->
-                <div class="box box-primary">
-
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Second Box</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="box-body">
-                        A separate section to add any kind of widget. Feel free
-                        to explore all of AdminLTE widgets by visiting the demo page
-                        on <a href="https://almsaeedstudio.com">Almsaeed Studio</a>.
-                    </div><!-- /.box-body -->
-
-                </div><!-- /.box -->
-            </div><!-- /.col -->
-        @else
-            <div class="flex-center">
-                <div class="content">
-                    <img src="{{ asset('storage/slogo.svg') }}" alt="Seguimiento" height="300px">
-                    <!--div class="title">
-                        Perfil vacio o sin crear.
-                    </div -->
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-blue-active">
+                    <h3 class="widget-user-username">{{ $usuario->nombre_usuario }}{{ $usuario->apellido_usuario }}</h3>
                 </div>
-            </div>
-        @endif
+                <div class="widget-user-image">
+                    <img class="img-circle" src="{{ asset( $usuario->foto_usuario ) }}" alt="User Avatar" style="background-color:white;">
+                </div>
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">3,200</h5>
+                                <span class="description-text">OFERTAS</span>
+                            </div><!-- /.description-block -->
+                        </div><!-- /.col -->
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">13,000</h5>
+                                <span class="description-text">EMPRESAS</span>
+                            </div><!-- /.description-block -->
+                        </div><!-- /.col -->
+                        <div class="col-sm-4">
+                            <div class="description-block">
+                                <h5 class="description-header">35</h5>
+                                <span class="description-text">ESTUDIANTES</span>
+                            </div><!-- /.description-block -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div>
+            </div><!-- /.widget-user -->
+
+        </div><!-- /.col -->
     </div><!-- /.row -->
 @endsection

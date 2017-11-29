@@ -28,4 +28,12 @@ class Oferta extends Model
     {
         return $this->belongsTo('App\Empresa', 'empresa_id');
     }
+
+    /**
+     * Obtener el registro del tipo de oferta asociada con la oferta.
+     */
+    public function tipo_oferta()
+    {
+        return $this->belongsTo('App\TipoOferta', 'tipo_oferta_id');
+    }
 }

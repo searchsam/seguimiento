@@ -17,6 +17,7 @@ use App\Events\ActualizarSession;
 use App\Empresa;
 use App\Contacto;
 use App\Usuario;
+use App\LineaTiempo;
 
 class EmpresaController extends Controller
 {
@@ -34,7 +35,8 @@ class EmpresaController extends Controller
     public function index()
     {
         $data['usuario']    = session( 'usuario' );
-        $data['cliente']    = Empresa::where(  'usuario_id', Auth::id() )->get();
+        $data['cliente']    = Empresa::where( 'usuario_id', Auth::id() )->get();
+        $data['lineas']      = LineaTiempo::where( 'usuario_id', Auth::id() )->orderBy('id_linea_tiempo', 'asc')->get();
         $data['page_title'] = 'Perfil de Empresa';
         return view('tablero.perfil_empresa', $data);
     }
@@ -99,6 +101,11 @@ class EmpresaController extends Controller
             $contacto->empresa_id             = $empresa->id_empresa;
             $contacto->save();
         }
+
+        LineaTiempo::create([
+            'evento'     => 'Resgistro la entidad en la empresa.',
+            'usuario_id' => Auth::id(),
+        ]);
 
         event( new MarcarComoLeida( Auth::user(), 'RegistrarEntidadEmpresarial' ) );
         return redirect()->route( 'perfil_empresa' );

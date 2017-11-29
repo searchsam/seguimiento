@@ -46,10 +46,11 @@ Route::prefix( 'usuario' )->group( function () {
     Route::get( 'inicio', 'UsuarioController@index' )->name( 'perfil_usuario' );
     Route::get( 'registro_usuario', 'UsuarioController@registro' )->name( 'registro_usuario' );
     Route::get( 'ofertas', 'OfertaController@usuario_ofertas' )->name( 'ver_ofertas' );
+    //Route::get( 'ofertas', 'OfertaController@index' )->name( 'ofertas' );
 });
 
 Route::prefix( 'admin' )->group( function () {
-    // Usuario
+    // Administrador
 });
 
 Route::prefix( 'error' )->group( function () {

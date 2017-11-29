@@ -345,15 +345,35 @@ a,
 
 .alert,
 .alert-info {
-  position: absolute;
-  bottom: 0px;
+  padding: 20px;
   border: 0;
   width: 100%;
   border-radius: 0;
+  background-color: #DC3545;
+  color: white;
+  opacity: 1;
+  -webkit-transition: opacity 0.6s;
+  transition: opacity 0.6s;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
 }
 
 .alert-info {
-  background-color: #4D73BA;
+  background-color: #4D73BA !important;
   color: white;
 }
 
@@ -567,7 +587,7 @@ input:checked + .slider:before,
 .navbar-nav > .user-menu .user-image,
 .user-panel > .image > img {
   border: 3px solid;
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: #ECF0F5;
 }
 
 .navbar-nav > .user-menu .user-image {
@@ -1320,6 +1340,44 @@ input:checked + .slider:before,
 .modal-mask .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.timeline .time-label .bg-blue {
+  background-color: #1C3170 !important;
+}
+
+.timeline .time-label .bg-green {
+  background-color: #28A745 !important;
+}
+
+.timeline .time-label .bg-red {
+  background-color: #DC3545 !important;
+}
+
+.timeline .time-label .bg-aqua {
+  background-color: #17A2B8 !important;
+}
+
+.timeline .time-label .bg-yellow {
+  background-color: #FFC107 !important;
+}
+
+.timeline .time-label .bg-gray {
+  background-color: #808080 !important;
+}
+
+.timeline-inverse li .timeline-item {
+  background: #ECF0F5;
+  border: 0;
+  border-radius: 0;
+}
+
+.bg-aqua-active {
+  background-color: #17A2B8 !important;
+}
+
+.bg-blue-active {
+  background-color: #1C3170 !important;
 }
 
 @media only screen and (max-width: 500px) {

@@ -61,10 +61,8 @@
 
                     @if (session()->has('flash'))
                         <div class="alert alert-info" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            {{ session('flash') }}
+                            <span class="closebtn" aria-hidden="true">&times;</span>
+                            <h2>{{ session('flash') }}</h2>
                         </div>
                     @endif
 

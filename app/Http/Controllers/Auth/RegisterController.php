@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Auth;
 use App\Usuario;
 use Carbon\Carbon;
+use App\LineaTiempo;
 use App\Events\ConfirmarEmail;
 use App\Events\EmailConfirmado;
 use App\Events\NotificacionesEmpresa;
@@ -96,7 +97,7 @@ class RegisterController extends Controller
             'email_usuario'     => $data['email'],
             'contrasena'        => bcrypt($data['password']),
             'estado_usuario'    => FALSE,
-            'fecha_registro'    => strtotime(Carbon::now()),
+            'fecha_registro'    => now(),
             'foto_usuario'      => 'storage/cliente.svg',
             'tipo_usuario_id'   => $data['empresa'] ? 4 : 3,
         ]);
@@ -116,11 +117,12 @@ class RegisterController extends Controller
         $user->remember_token = str_random(25);
         $user->save();
 
-        $usuario = Usuario::find($user->id);
-        if( $usuario->tipo_usuario_id == 3 OR $usuario->tipo_usuario_id == 4 )
-        {
-            event(new ConfirmarEmail($user));
-        }
+        LineaTiempo::create([
+            'evento'     => 'Se registro en el Sistema de Seguimiento - PSG.',
+            'usuario_id' => $user->id,
+        ]);
+
+        event(new ConfirmarEmail($user));
     }
 
     protected function confirmation($token, User $user)
@@ -134,6 +136,11 @@ class RegisterController extends Controller
             $usuario = Usuario::find(Auth::id());
             $usuario->estado_usuario = TRUE;
             $usuario->save();
+
+            LineaTiempo::create([
+                'evento'     => 'Comfirmo la cuenta de correo electrónico y activo su usuario.',
+                'usuario_id' => Auth::id(),
+            ]);
 
             event(new EmailConfirmado($user));
 

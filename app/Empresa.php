@@ -21,7 +21,7 @@ class Empresa extends Model
     ];
 
     /**
-     * Obtener el registro del tipo de usuario asociado con el usuario.
+     * Obtener el registro del usuario asociado con la empresa.
      */
     public function usuario()
     {

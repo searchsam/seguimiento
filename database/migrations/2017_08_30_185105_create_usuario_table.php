@@ -20,7 +20,7 @@ class CreateUsuarioTable extends Migration
             $table->string('email_usuario')->unique();
             $table->string('contrasena');
             $table->boolean('estado_usuario');
-            $table->integer('fecha_registro');
+            $table->string('fecha_registro');
             $table->string('foto_usuario');
             $table->integer('tipo_usuario_id')->unsigned();
             $table->timestamps();

@@ -28,10 +28,10 @@ class Estudiante extends Model
     ];
 
     /**
-     * Obtiene el usuario que es un estudiante
+     * Obtener el registro del usuario asociado con el estudiante.
      */
     public function usuario()
     {
-        return $this->belongsTo('App\Usuario');
+        return $this->belongsTo('App\Usuario', 'usuario_id');
     }
 }

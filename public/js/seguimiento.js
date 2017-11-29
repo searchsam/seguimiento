@@ -228,6 +228,16 @@ $(document).on('click', '#agregar-reconocimiento', function() {
   return $(this).replaceWith('<a class="agregar quitar"><i class="fa fa-minus"></i></a>');
 });
 
+// Alert dissmise animation
+$(document).on('click', '.closebtn', function() {
+  var div;
+  div = this.parentElement;
+  div.style.opacity = '0';
+  return setTimeout((function() {
+    return div.style.display = 'none';
+  }), 600);
+});
+
 
 /***/ })
 

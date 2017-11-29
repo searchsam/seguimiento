@@ -175,17 +175,31 @@ a
     padding: 3px
 
 .alert
-    position: absolute
-    bottom: 0px
+    padding: 20px
     border: 0
     width: 100%
     +border-radius(0)
+    background-color: $rojo
+    color: white
+    opacity: 1
+    transition: opacity 0.6s
+
+.closebtn
+    margin-left: 15px
+    color: white
+    font-weight: bold
+    float: right
+    font-size: 22px
+    line-height: 20px
+    cursor: pointer
+    transition: 0.3s
+    &:hover
+        color: black
 
 .alert-info
     @extend .alert
-    background-color: $celeste
+    background-color: $celeste !important
     color: white
-
 
 // Registro
 .container
@@ -296,7 +310,7 @@ input
 
 .img-circle
         border: 3px solid
-        border-color: rgba(255, 255, 255, 0.2)
+        border-color: $grisclaro
 
 .navbar-nav > .user-menu .user-image
     @extend .img-circle
@@ -711,6 +725,38 @@ input
     .modal-enter .modal-container, .modal-leave-active .modal-container
       -webkit-transform: scale(1.1)
       transform: scale(1.1)
+
+//
+//    Perfil
+//
+// Perfil de empresa
+.timeline
+    .time-label
+        .bg-blue
+            background-color: $azuloscuro !important
+        .bg-green
+            background-color: $verde !important
+        .bg-red
+            background-color: $rojo !important
+        .bg-aqua
+            background-color: $azulalternativo !important
+        .bg-yellow
+            background-color: $amarillo !important
+        .bg-gray
+            background-color: $gris !important
+
+.timeline-inverse
+    li
+        .timeline-item
+            background: $grisclaro
+            border: 0
+            +border-radius(0)
+
+// Perfil usuario
+.bg-aqua-active
+    background-color: $azulalternativo !important
+.bg-blue-active
+    background-color: $azuloscuro !important
 
 @media only screen and (max-width: 500px)
     // Estilo Login

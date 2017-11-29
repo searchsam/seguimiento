@@ -15,6 +15,7 @@ use App\Empresa;
 use App\Usuario;
 use App\Contacto;
 use App\TipoOferta;
+use App\LineaTiempo;
 
 class OfertaController extends Controller
 {
@@ -41,10 +42,15 @@ class OfertaController extends Controller
 
     public function registro()
     {
-        $data['usuario']     = session( 'usuario' );
-        $data['tipo_oferta'] = TipoOferta::all();
-        $data['page_title']  = 'Generar Oferta';
-        return view('tablero.oferta', $data);
+        $usuario = session( 'usuario' );
+        if ( $usuario->empresa )
+        {
+            $data['usuario']     = $usuario;
+            $data['tipo_oferta'] = TipoOferta::all();
+            $data['page_title']  = 'Generar Oferta';
+            return view( 'tablero.oferta', $data );
+        }
+        return back()->with( 'flash', 'Por favor regristre la identidad de la empresa.' );
     }
 
     public function registrar(Request $request)
@@ -64,12 +70,20 @@ class OfertaController extends Controller
         $oferta->empresa_id             = $empresa->id_empresa;
         $oferta->save();
 
+        LineaTiempo::create([
+            'evento'     => 'Genero una oferta ' . $oferta->tipo_oferta->tipo_oferta . '.',
+            'usuario_id' => Auth::id(),
+        ]);
+
         event( new MarcarComoLeida( Auth::user(), 'GenerarOferta' ) );
         return redirect()->route( 'ofertas' );
     }
 
     public function usuario_ofertas()
     {
-        
+        $data['usuario']     = session( 'usuario' );
+        $data['ofertas']     = Oferta::all();
+        $data['page_title']  = 'Ofertas de Empresas';
+        return view('usuario.ofertas_empresas', $data);
     }
 }

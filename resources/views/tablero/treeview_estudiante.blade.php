@@ -5,6 +5,8 @@
     </a>
     <ul class="treeview-menu">
         <li><a href="{{ route( 'perfil_estudiante' ) }}"><i class="fa fa-circle-o"></i>Perfil Estudiante</a></li>
-        <li><a href="{{ route( 'registro_curriculum' ) }}"><i class="fa fa-circle-o"></i>Regitrar Plan de Estudios</a></li>
+        @if ( !$usuario->estudiante )
+            <li><a href="{{ route( 'registro_curriculum' ) }}"><i class="fa fa-circle-o"></i>Regitrar Plan de Estudios</a></li>
+        @endif
     </ul>
 </li>

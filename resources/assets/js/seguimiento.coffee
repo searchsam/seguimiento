@@ -31,3 +31,10 @@ $ document
             .append row
         $ this
             .replaceWith '<a class="agregar quitar"><i class="fa fa-minus"></i></a>'
+
+# Alert dissmise animation
+$ document
+    .on 'click', '.closebtn', ->
+         div = @parentElement
+         div.style.opacity = '0'
+         setTimeout (-> div.style.display = 'none' ), 600
