@@ -58,10 +58,10 @@
                     <!-- The timeline -->
                     <ul class="timeline timeline-inverse">
 
-                        @foreach ($lineas as $evento)
+                        @foreach ($lineas as $linea)
                             <!-- timeline time label -->
                             @php
-                                $update = new Carbon($evento->updated_at);
+                                $update = new Carbon($linea->updated_at);
                             @endphp
                             @if ($loop->first)
                                 @php $carbon = $update; @endphp
@@ -78,7 +78,7 @@
                                 <i class="fa fa-user bg-aqua"></i>
                                 <div class="timeline-item">
                                     <span class="time"><i class="fa fa-clock-o"></i> {{ $update->format('h:i A') }}</span>
-                                    <h3 class="timeline-header no-border"><h3>{{ $evento->evento }}</h3>
+                                    <h3 class="timeline-header no-border"><h3>{{ $linea->$evento->evento }}</h3>
                                 </div>
                             </li>
                             <!-- END timeline item -->

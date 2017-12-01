@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 // Eventos
 use App\Events\MarcarComoLeida;
 use App\Events\ActualizarSession;
+use App\Events\GenerarLineaTiempo;
 use App\Events\NotificacionesEstudiante;
 
 // Modelos

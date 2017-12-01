@@ -29,48 +29,48 @@ class CrearEvento implements ShouldQueue
      */
     public function handle(GenerarLineaTiempo $event)
     {
-        $tmp = LineaTiempo::where([ ['usuario_id', '=', Auth::id()], ['tipo_evento_id', '=', $event->evento],])->get();
+        $tmp = LineaTiempo::where([ ['usuario_id', '=', $event->user->id], ['tipo_evento_id', '=', $event->evento],])->get();
         switch ( $event->evento ) {
             case 1:
                 if( count($tmp) ) break;
-                LineaTiempo::create([
-                    'tipo_evento_id' => $event->evento,
-                    'usuario_id' => Auth::id(),
-                ]);
+                $linea = new LineaTiempo;
+                $linea->tipo_evento_id = $event->evento;
+                $linea->usuario_id = $event->user->id;
+                $linea->save();
                 break;
             case 2:
                 if( count($tmp) ) break;
-                LineaTiempo::create([
-                    'tipo_evento_id' => $event->evento,
-                    'usuario_id' => Auth::id(),
-                ]);
+                $linea = new LineaTiempo;
+                $linea->tipo_evento_id = $event->evento;
+                $linea->usuario_id = $event->user->id;
+                $linea->save();
                 break;
             case 3:
                 if( count($tmp) ) break;
-                LineaTiempo::create([
-                    'tipo_evento_id' => $event->evento,
-                    'usuario_id' => Auth::id(),
-                ]);
+                $linea = new LineaTiempo;
+                $linea->tipo_evento_id = $event->evento;
+                $linea->usuario_id = $event->user->id;
+                $linea->save();
                 break;
             case 4:
                 if( count($tmp) ) $event->evento = 5;
-                LineaTiempo::create([
-                    'tipo_evento_id' => $event->evento,
-                    'usuario_id' => Auth::id(),
-                ]);
+                $linea = new LineaTiempo;
+                $linea->tipo_evento_id = $event->evento;
+                $linea->usuario_id = $event->user->id;
+                $linea->save();
                 break;
             case 5:
                 if( count($tmp) ) break;
-                LineaTiempo::create([
-                    'tipo_evento_id' => $event->evento,
-                    'usuario_id' => Auth::id(),
-                ]);
+                $linea = new LineaTiempo;
+                $linea->tipo_evento_id = $event->evento;
+                $linea->usuario_id = $event->user->id;
+                $linea->save();
                 break;
             default:
-                LineaTiempo::create([
-                    'tipo_evento_id' => $event->evento,
-                    'usuario_id' => Auth::id(),
-                ]);
+                $linea = new LineaTiempo;
+                $linea->tipo_evento_id = $event->evento;
+                $linea->usuario_id = $event->user->id;
+                $linea->save();
                 break;
         }
 
