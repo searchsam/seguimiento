@@ -13,7 +13,7 @@ class LineaTiempo extends Model
      * Campos de la tabla de empresa para asignacion masiva
      */
     protected $fillable = [
-        'evento',
+        'tipo_evento_id',
         'usuario_id'
     ];
 
@@ -23,5 +23,13 @@ class LineaTiempo extends Model
     public function usuario()
     {
         return $this->belongsTo('App\Usuario', 'usuario_id');
+    }
+
+    /**
+     * Obtener el registro del evento asociado con la linea de tiempo.
+     */
+    public function tipo_evento()
+    {
+        return $this->belongsTo('App\TipoEvento', 'tipo_evento_id');
     }
 }

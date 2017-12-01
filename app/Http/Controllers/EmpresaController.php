@@ -36,7 +36,7 @@ class EmpresaController extends Controller
     {
         $data['usuario']    = session( 'usuario' );
         $data['cliente']    = Empresa::where( 'usuario_id', Auth::id() )->get();
-        $data['lineas']      = LineaTiempo::where( 'usuario_id', Auth::id() )->orderBy('id_linea_tiempo', 'asc')->get();
+        $data['lineas']     = LineaTiempo::where( 'usuario_id', Auth::id() )->orderBy('id_linea_tiempo', 'asc')->get();
         $data['page_title'] = 'Perfil de Empresa';
         return view('tablero.perfil_empresa', $data);
     }
@@ -102,11 +102,7 @@ class EmpresaController extends Controller
             $contacto->save();
         }
 
-        LineaTiempo::create([
-            'evento'     => 'Resgistro la entidad en la empresa.',
-            'usuario_id' => Auth::id(),
-        ]);
-
+        event( new GenerarLineaTiempo( Auth::user(), 5 ) );
         event( new MarcarComoLeida( Auth::user(), 'RegistrarEntidadEmpresarial' ) );
         return redirect()->route( 'perfil_empresa' );
     }

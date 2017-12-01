@@ -25,7 +25,7 @@ CREATE USER 'psg'@'localhost' IDENTIFIED BY 'segu1m1ent0';
 -- Base de datos: `seguimiento`
 --
 
--- CREATE DATABASE seguimiento;
+CREATE DATABASE seguimiento;
 
 -- --------------------------------------------------------
 

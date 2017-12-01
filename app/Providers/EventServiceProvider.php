@@ -31,6 +31,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\MarcarComoLeida' => [
             'App\Listeners\MarcarNotificacion',
         ],
+        'App\Events\GenerarLineaTiempo' => [
+            'App\Listeners\CrearEvento',
+        ],
     ];
 
     /**

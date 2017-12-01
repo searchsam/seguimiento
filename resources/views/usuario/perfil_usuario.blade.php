@@ -8,7 +8,7 @@
 
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <div class="widget-user-header bg-blue-active">
-                    <h3 class="widget-user-username">{{ $usuario->nombre_usuario }}{{ $usuario->apellido_usuario }}</h3>
+                    <h3 class="widget-user-username">{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</h3>
                 </div>
                 <div class="widget-user-image">
                     <img class="img-circle" src="{{ asset( $usuario->foto_usuario ) }}" alt="User Avatar" style="background-color:white;">
@@ -17,20 +17,20 @@
                     <div class="row">
                         <div class="col-sm-4 border-right">
                             <div class="description-block">
-                                <h5 class="description-header">3,200</h5>
-                                <span class="description-text">OFERTAS</span>
+                                <h5 class="description-header">{{ $ofertas }}</h5>
+                                <span class="description-text"><a href="{{ route('ver_ofertas') }}">OFERTAS</a></span>
                             </div><!-- /.description-block -->
                         </div><!-- /.col -->
                         <div class="col-sm-4 border-right">
                             <div class="description-block">
-                                <h5 class="description-header">13,000</h5>
-                                <span class="description-text">EMPRESAS</span>
+                                <h5 class="description-header">{{ $empresas }}</h5>
+                                <span class="description-text"><a href="#">EMPRESAS</a></span>
                             </div><!-- /.description-block -->
                         </div><!-- /.col -->
                         <div class="col-sm-4">
                             <div class="description-block">
-                                <h5 class="description-header">35</h5>
-                                <span class="description-text">ESTUDIANTES</span>
+                                <h5 class="description-header">{{ $estudiantes }}</h5>
+                                <span class="description-text"><a href="#">ESTUDIANTES</a></span>
                             </div><!-- /.description-block -->
                         </div><!-- /.col -->
                     </div><!-- /.row -->

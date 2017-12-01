@@ -11,7 +11,10 @@ use Illuminate\Support\Facades\Storage;
 use App\Events\ActualizarSession;
 
 // Modelos
+use App\Oferta;
+use App\Empresa;
 use App\Usuario;
+use App\Estudiante;
 use App\LineaTiempo;
 
 class UsuarioController extends Controller
@@ -28,9 +31,12 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        $data['usuario']    = session('usuario');
-        $data['cliente']    = FALSE;
-        $data['page_title'] = 'Perfil de Usuario';
+        $data['usuario']     = session('usuario');
+        $data['cliente']     = FALSE;
+        $data['ofertas']     = Oferta::all()->count();
+        $data['empresas']    = Empresa::all()->count();
+        $data['estudiantes'] = Estudiante::all()->count();
+        $data['page_title']  = 'Perfil de Usuario';
         return view('usuario.perfil_usuario', $data);
     }
 

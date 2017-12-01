@@ -117,11 +117,7 @@ class RegisterController extends Controller
         $user->remember_token = str_random(25);
         $user->save();
 
-        LineaTiempo::create([
-            'evento'     => 'Se registro en el Sistema de Seguimiento - PSG.',
-            'usuario_id' => $user->id,
-        ]);
-
+        event( new GenerarLineaTiempo( Auth::user(), 1 ) );
         event(new ConfirmarEmail($user));
     }
 
@@ -137,11 +133,7 @@ class RegisterController extends Controller
             $usuario->estado_usuario = TRUE;
             $usuario->save();
 
-            LineaTiempo::create([
-                'evento'     => 'Comfirmo la cuenta de correo electrónico y activo su usuario.',
-                'usuario_id' => Auth::id(),
-            ]);
-
+            event( new GenerarLineaTiempo( Auth::user(), 2 ) );
             event(new EmailConfirmado($user));
 
             session(['usuario' => $usuario]);

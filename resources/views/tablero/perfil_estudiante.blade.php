@@ -13,9 +13,9 @@
                     <h3 class="profile-username text-center">{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</h3>
                     <p class="text-muted text-center">{{ $usuario->estudiante->codigo_estudiante }}</p>
                     <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">Celular Usuario: <b class="pull-right">{{-- $usuario->estudiante->celular_estudiante --}}</b></li>
-                        <li class="list-group-item">Correo Electr&oacute;nico: <b class="pull-right">{{ $usuario->email_usuario }}</b></li>
-                        <li class="list-group-item">Estado Usuario:
+                        <li class="list-group-item">Celular: <b class="pull-right">{{ $usuario->estudiante->celular_estudiante }}</b></li>
+                        <li class="list-group-item">Email: <b class="pull-right">{{ $usuario->email_usuario }}</b></li>
+                        <li class="list-group-item">Estado:
                             <b class="pull-right time-label">
                                 @if ( $usuario->estado_usuario )
                                     <span class="bg-green">Activo</span>
@@ -37,11 +37,8 @@
 
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <strong><i class="fa fa-book margin-r-5"></i> N&uacute;mero RUC</strong>
-                    <p class="text-muted">{{-- $usuario->empresa->ruc_empresa --}}</p>
-                    <hr>
                     <strong><i class="fa fa-map-marker margin-r-5"></i> Direcci&oacute;n</strong>
-                    <p class="text-muted">{{-- $usuario->empresa->direccion_empresa --}}</p>
+                    <p class="text-muted">{{ $usuario->estudiante->direccion_estudiante }}</p>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>

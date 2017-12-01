@@ -1366,6 +1366,10 @@ input:checked + .slider:before,
   background-color: #808080 !important;
 }
 
+.timeline .time-label .bg-purple {
+  background-color: #663399 !important;
+}
+
 .timeline-inverse li .timeline-item {
   background: #ECF0F5;
   border: 0;

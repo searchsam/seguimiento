@@ -70,11 +70,7 @@ class OfertaController extends Controller
         $oferta->empresa_id             = $empresa->id_empresa;
         $oferta->save();
 
-        LineaTiempo::create([
-            'evento'     => 'Genero una oferta ' . $oferta->tipo_oferta->tipo_oferta . '.',
-            'usuario_id' => Auth::id(),
-        ]);
-
+        event( new GenerarLineaTiempo( Auth::user(), 4 ) );
         event( new MarcarComoLeida( Auth::user(), 'GenerarOferta' ) );
         return redirect()->route( 'ofertas' );
     }

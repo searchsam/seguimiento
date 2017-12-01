@@ -42,7 +42,7 @@ class EstudianteController extends Controller
     public function index()
     {
         $data['usuario']    = session('usuario');
-        $data['cliente']    = Estudiante::where('usuario_id', Auth::id())->get();
+        $data['cliente']    = Estudiante::where( 'usuario_id', Auth::id() )->get();
         $data['lineas']      = LineaTiempo::where( 'usuario_id', Auth::id() )->orderBy('id_linea_tiempo', 'asc')->get();
         $data['page_title'] = 'Perfil de Estudiante';
         return view('tablero.perfil_estudiante', $data);
@@ -106,7 +106,7 @@ class EstudianteController extends Controller
             $usuario->foto_usuario = 'storage/' . $img_dir;
             $usuario->save();
 
-            event(new ActualizarSession($usuario));
+            event(new ActualizarSession(Auth::user()));
         }
 
         // Guardar datos de formacion academica
@@ -180,11 +180,7 @@ class EstudianteController extends Controller
             }
         }
 
-        LineaTiempo::create([
-            'evento'     => 'Registro plan de estudios.',
-            'usuario_id' => Auth::id(),
-        ]);
-
+        event( new GenerarLineaTiempo( Auth::user(), 3 ) );
         event(new MarcarComoLeida(Auth::user(), 'RegistrarPlanEstudios'));
         return redirect()->route( 'perfil_estudiante' );
     }
@@ -207,7 +203,7 @@ class EstudianteController extends Controller
         else
         {
             // Si existe codigo previo
-            $codigo_actual       = $codigo->codigo_estudiante;
+            $codigo_actual       = $codigo[0]->codigo_estudiante;
             $consecutivo_literal = substr( $codigo_actual, 1, 1 );
             $consecutivo_numeral = (int) substr( $codigo_actual, 3, 4 );
             // Verificacion de las partes secuenciles del codigo
@@ -361,11 +357,7 @@ class EstudianteController extends Controller
         $usuario = session( 'usuario' );
         if ( $usuario->estudiante )
         {
-            LineaTiempo::create([
-                'evento'     => 'Subio curriculum completo en PDF.',
-                'usuario_id' => Auth::id(),
-            ]);
-
+            event( new GenerarLineaTiempo( Auth::user(), 4 ) );
             return false;
         }
         return back()->with( 'flash', 'Por favor regristre el plan de estudio.' );
