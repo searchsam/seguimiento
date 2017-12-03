@@ -18,4 +18,12 @@ class ReferenciaLaboral extends Model
         'telefono_referencia',
         'dato_profesional_id'
     ];
+
+    /**
+     * Obtener el registro del estudiante asociado con las referencias laborales.
+     */
+    public function estudiante()
+    {
+        return $this->belongsTo('App\Estudiante', 'estudiante_id');
+    }
 }

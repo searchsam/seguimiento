@@ -18,4 +18,12 @@ class DesarrolloPersonal extends Model
         'otro_personal',
         'estudiante_id'
     ];
+
+    /**
+     * Obtener el registro del estudiante asociado con el desarrollo personal.
+     */
+    public function estudiante()
+    {
+        return $this->belongsTo('App\Estudiante', 'estudiante_id');
+    }
 }

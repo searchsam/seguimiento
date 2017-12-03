@@ -19,4 +19,12 @@ class Reconocimiento extends Model
         'fecha_reconocimiento',
         'estudiante_id'
     ];
+
+    /**
+     * Obtener el registro del estudiante asociado con los reconociemintos.
+     */
+    public function estudiante()
+    {
+        return $this->belongsTo('App\Estudiante', 'estudiante_id');
+    }
 }

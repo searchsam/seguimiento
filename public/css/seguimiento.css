@@ -605,9 +605,78 @@ input:checked + .slider:before,
   border-left-color: #1C3170;
 }
 
-.box.box-primary {
+.box .box-primary {
   border-radius: 0;
   border-top-color: #4D73BA;
+}
+
+.box .box-solid .box-warning {
+  border: 1px solid #FFC107;
+}
+
+.box .box-solid .box-success {
+  border: 1px solid #28A745;
+}
+
+.box .box-solid .box-danger {
+  border: 1px solid #DC3545;
+}
+
+.box .box-solid .box-info {
+  border: 1px solid #17A2B8;
+}
+
+.box-alternate {
+  /*border: 1px solid $furcia*/
+  background-color: #D81B60;
+  color: white;
+}
+
+.box-alternate h3 {
+  font-size: "Saraun";
+  font-weight: normal;
+}
+
+.grad-bg {
+  background-color: #d81b60 !important;
+}
+
+.grad-md {
+  background-color: rgba(216, 27, 96, 0.8) !important;
+}
+
+.grad-sm {
+  background-color: rgba(216, 27, 96, 0.6) !important;
+}
+
+.box-orange {
+  border: 1px solid #FF851B;
+}
+
+.box-orange .with-border.box-header {
+  color: white;
+  background: #FF851B;
+  background-color: #ff851b;
+  background-color: #FF851B;
+}
+
+.box-orange .box-header .btn-box-tool {
+  color: white;
+}
+
+.box-purple {
+  border: 1px solid #663399;
+}
+
+.box-purple .with-border.box-header {
+  color: white;
+  background: #663399;
+  background-color: rebeccapurple;
+  background-color: #663399;
+}
+
+.box-purple .box-header .btn-box-tool {
+  color: white;
 }
 
 .box-header.with-border {
@@ -954,7 +1023,7 @@ input:checked + .slider:before,
 }
 
 #referencia {
-  border-color: #605CA8;
+  border-color: #663399;
 }
 
 #user-foto {

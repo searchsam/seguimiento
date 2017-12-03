@@ -34,4 +34,44 @@ class Estudiante extends Model
     {
         return $this->belongsTo('App\Usuario', 'usuario_id');
     }
+
+    /**
+     * Obtener el registro de la formacion academica asociado con el estudiante.
+     */
+    public function formacion_academica()
+    {
+        return $this->hasMany('App\FormacionAcademica', 'estudiante_id');
+    }
+
+    /**
+     * Obtener el registro de la experiencia laboral asociado con el estudiante.
+     */
+    public function experiencia_laboral()
+    {
+        return $this->hasMany('App\ExperienciaLaboral', 'estudiante_id');
+    }
+
+    /**
+     * Obtener el registro del desarrollo persosnal asociado con el estudiante.
+     */
+    public function desarrollo_personal()
+    {
+        return $this->hasMany('App\DesarrolloPersonal', 'estudiante_id');
+    }
+
+    /**
+     * Obtener el registro de los reconocimientos asociado con el estudiante.
+     */
+    public function reconocimiento()
+    {
+        return $this->hasMany('App\Reconocimiento', 'estudiante_id');
+    }
+
+    /**
+     * Obtener el registro de las referencias laborales asociado con el estudiante.
+     */
+    public function referencia_laboral()
+    {
+        return $this->hasMany('App\ReferenciaLaboral', 'estudiante_id');
+    }
 }

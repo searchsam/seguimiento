@@ -15,4 +15,12 @@ class TipoEvento extends Model
     protected $fillable = [
         'evento'
     ];
+
+    /**
+     * Obtener el registro de la empresa asociado con el usuario.
+     */
+    public function linea_tiempo()
+    {
+        return $this->hasMany('App\LineaTiempo', 'tipo_evento_id');
+    }
 }

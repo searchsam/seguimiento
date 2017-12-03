@@ -19,4 +19,12 @@ class ExperienciaLaboral extends Model
         'periodo_laboral',
         'estudiante_id'
     ];
+
+    /**
+     * Obtener el registro del estudiante asociado con la experiencia laboral.
+     */
+    public function estudiante()
+    {
+        return $this->belongsTo('App\Estudiante', 'estudiante_id');
+    }
 }

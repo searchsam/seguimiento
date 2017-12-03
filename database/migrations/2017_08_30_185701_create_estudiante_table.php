@@ -23,6 +23,7 @@ class CreateEstudianteTable extends Migration
             $table->string('celular_estudiante');
             $table->string('telefono_estudiante');
             $table->string('direccion_estudiante');
+            $table->string('ciudad_estudiante');
             $table->string('email_estudiante');
             $table->boolean('sexo_estudiante');
             $table->integer('tipo_estudiante_id')->unsigned()->default('1');

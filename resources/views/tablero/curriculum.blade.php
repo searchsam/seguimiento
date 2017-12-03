@@ -47,7 +47,7 @@
                             {!! $errors->first('correo', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">
-                            <input type="text" name="ciudad" style="width:100%" placeholder="Ciudad" class="{{ $errors->has('ciudad') ? 'error' : '' }}" value="{{ old('ciudad') }}">
+                            <input type="text" name="ciudad" style="width:100%" placeholder="Ciudad de Procendencia" class="{{ $errors->has('ciudad') ? 'error' : '' }}" value="{{ old('ciudad') }}">
                             {!! $errors->first('ciudad', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
                         <div class="form-group">

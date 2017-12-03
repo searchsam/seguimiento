@@ -29,7 +29,7 @@ class CrearEvento implements ShouldQueue
      */
     public function handle(GenerarLineaTiempo $event)
     {
-        $tmp = LineaTiempo::where([ ['usuario_id', '=', $event->user->id], ['tipo_evento_id', '=', $event->evento],])->get();
+        $tmp = LineaTiempo::where([ ['usuario_id', '=', $event->user->id], ['tipo_evento_id', '=', $event->evento], ])->get();
         switch ( $event->evento ) {
             case 1:
                 if( count($tmp) ) break;

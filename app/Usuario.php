@@ -51,4 +51,12 @@ class Usuario extends Model
     {
         return $this->hasOne('App\Empresa', 'usuario_id');
     }
+
+    /**
+     * Obtener el registro de la empresa asociado con el usuario.
+     */
+    public function linea_tiempo()
+    {
+        return $this->hasMany('App\LineaTiempo', 'usuario_id');
+    }
 }

@@ -44,7 +44,6 @@ class EstudianteController extends Controller
     {
         $data['usuario']    = session('usuario');
         $data['cliente']    = Estudiante::where( 'usuario_id', Auth::id() )->get();
-        $data['lineas']      = LineaTiempo::where( 'usuario_id', Auth::id() )->orderBy('id_linea_tiempo', 'asc')->get();
         $data['page_title'] = 'Perfil de Estudiante';
         return view('tablero.perfil_estudiante', $data);
     }
@@ -81,18 +80,19 @@ class EstudianteController extends Controller
 
         // Guardar Estudiante
         $estudiante = new Estudiante;
-        if ( !empty($request->cedula) and !empty($request->celular) and !empty($request->telefono) and !empty($request->direccion) and !empty($request->correo) and isset($request->sexo) )
+        if ( !empty($request->cedula) and !empty($request->celular) and !empty($request->telefono) and !empty($request->direccion) and !empty($request->correo) and isset($request->sexo) and !isset($request->ciudad) )
         {
-            $estudiante->codigo_estudiante      = $this->gen_codestudiante();
-            $estudiante->nombre_estudiante      = Auth::user()->name;
-            $estudiante->apellido_estudiante    = Auth::user()->lastname;
-            $estudiante->cedula_estudiante      = trim( $request->cedula );
-            $estudiante->celular_estudiante     = trim( $request->celular );
-            $estudiante->telefono_estudiante    = trim( $request->telefono );
-            $estudiante->direccion_estudiante   = trim( $request->direccion );
-            $estudiante->email_estudiante       = trim( $request->correo );
-            $estudiante->sexo_estudiante        = $request->sexo;
-            $estudiante->usuario_id             = Auth::id();
+            $estudiante->codigo_estudiante    = $this->gen_codestudiante();
+            $estudiante->nombre_estudiante    = Auth::user()->name;
+            $estudiante->apellido_estudiante  = Auth::user()->lastname;
+            $estudiante->cedula_estudiante    = trim( $request->cedula );
+            $estudiante->celular_estudiante   = trim( $request->celular );
+            $estudiante->telefono_estudiante  = trim( $request->telefono );
+            $estudiante->direccion_estudiante = trim( $request->direccion );
+            $estudiante->ciudad_estudiante    = trim( $request->ciudad );
+            $estudiante->email_estudiante     = trim( $request->correo );
+            $estudiante->sexo_estudiante      = trim( $request->sexo );
+            $estudiante->usuario_id           = Auth::id();
             $estudiante->save();
         }
 
@@ -116,11 +116,11 @@ class EstudianteController extends Controller
             // Guardar cada elemento del arreglo
             foreach ($estudio as $key => $value) {
                 $formacion = new FormacionAcademica;
-                $formacion->nombre_estudio      = $value->estudio_academico;
-                $formacion->institucion_estudio = $value->institucion_academica;
-                $formacion->localidad_estudio   = $value->localidad_academica;
-                $formacion->fecha_estudio       = $value->fecha_academica;
-                $formacion->tipo_estudio_id     = $value->tipo_estudio;
+                $formacion->nombre_estudio      = trim( $value->estudio_academico );
+                $formacion->institucion_estudio = trim( $value->institucion_academica );
+                $formacion->localidad_estudio   = trim( $value->localidad_academica );
+                $formacion->fecha_estudio       = trim( $value->fecha_academica );
+                $formacion->tipo_estudio_id     = trim( $value->tipo_estudio );
                 $formacion->estudiante_id       = $estudiante->id_estudiante;
                 $formacion->save();
             }
@@ -132,10 +132,10 @@ class EstudianteController extends Controller
             // Guardar cada elemento del arreglo
             foreach ($laboral as $key => $value) {
                 $experiencia = new ExperienciaLaboral;
-                $experiencia->institucion_laboral = $value->cargo_laboral;
-                $experiencia->cargo_laboral       = $value->institucion_laboral;
-                $experiencia->cuidad_laboral      = $value->ciudad_empresa;
-                $experiencia->periodo_laboral     = $value->periodo_laboral;
+                $experiencia->institucion_laboral = trim( $value->cargo_laboral );
+                $experiencia->cargo_laboral       = trim( $value->institucion_laboral );
+                $experiencia->cuidad_laboral      = trim( $value->ciudad_empresa );
+                $experiencia->periodo_laboral     = trim( $value->periodo_laboral );
                 $experiencia->estudiante_id       = $estudiante->id_estudiante;
                 $experiencia->save();
             }
@@ -145,9 +145,9 @@ class EstudianteController extends Controller
         if ( !is_null($request->habilidad) or !is_null($request->idioma) or !is_null($request->otro) )
         {
             $desarrollo = new DesarrolloPersonal;
-            $desarrollo->habilidad_personal = $request->habilidad;
-            $desarrollo->idomas_personal    = $request->idioma;
-            $desarrollo->otro_personal      = $request->otro;
+            $desarrollo->habilidad_personal = trim( $request->habilidad );
+            $desarrollo->idomas_personal    = trim( $request->idioma );
+            $desarrollo->otro_personal      = trim( $request->otro );
             $desarrollo->estudiante_id      = $estudiante->id_estudiante;
             $desarrollo->save();
         }
@@ -158,10 +158,10 @@ class EstudianteController extends Controller
             // Guardar cada elemento del arreglo
             foreach ($merito as $key => $value) {
                 $reconocimiento = new Reconocimiento;
-                $reconocimiento->merito_reconocimiento       = $value->merito_reconocimiento;
-                $reconocimiento->organizacion_reconocimiento = $value->organizacion_reconocimiento;
-                $reconocimiento->ciudad_reconocimiento       = $value->ciudad_reconocimiento;
-                $reconocimiento->fecha_reconocimiento        = $value->periodo_reconicimiento;
+                $reconocimiento->merito_reconocimiento       = trim( $value->merito_reconocimiento );
+                $reconocimiento->organizacion_reconocimiento = trim( $value->organizacion_reconocimiento );
+                $reconocimiento->ciudad_reconocimiento       = trim( $value->ciudad_reconocimiento );
+                $reconocimiento->fecha_reconocimiento        = trim( $value->periodo_reconicimiento );
                 $reconocimiento->estudiante_id               = $estudiante->id_estudiante;
                 $reconocimiento->save();
             }
@@ -173,9 +173,9 @@ class EstudianteController extends Controller
             // Guardar cada elemento del arreglo
             foreach ($referencias as $key => $value) {
                 $referencia_laboral = new ReferenciaLaboral;
-                $referencia_laboral->nombre_referencia   = $value->nombre_referencia;
-                $referencia_laboral->cargo_referencia    = $value->cargo_referencia;
-                $referencia_laboral->telefono_referencia = $value->telefono_referencia;
+                $referencia_laboral->nombre_referencia   = trim( $value->nombre_referencia );
+                $referencia_laboral->cargo_referencia    = trim( $value->cargo_referencia );
+                $referencia_laboral->telefono_referencia = trim( $value->telefono_referencia );
                 $referencia_laboral->estudiante_id       = $estudiante->id_estudiante;
                 $referencia_laboral->save();
             }

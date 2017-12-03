@@ -20,4 +20,20 @@ class FormacionAcademica extends Model
         'tipo_estudio_id',
         'estudiante_id'
     ];
+
+    /**
+     * Obtener el registro del estudiante asociado con la formacion academica.
+     */
+    public function estudiante()
+    {
+        return $this->belongsTo('App\Estudiante', 'estudiante_id');
+    }
+
+    /**
+     * Obtener el registro del tipo de estudio asociado con la formacion academica.
+     */
+    public function tipo_estudio()
+    {
+        return $this->belongsTo('App\TipoEstudio', 'tipo_estudio_id');
+    }
 }

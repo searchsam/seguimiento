@@ -11,6 +11,8 @@ $azulalternativo: #17A2B8
 $amarillo: #FFC107
 $rojo: #DC3545
 $purpura: #663399
+$naranja: #FF851B
+$furcia: #D81B60
 
 $hovercolor: rgba(0,0,0,0.1)
 
@@ -325,9 +327,55 @@ input
     &:hover > a, &.active > a
         border-left-color: $azuloscuro
 
-.box.box-primary
-    border-radius: 0
-    border-top-color: $celeste
+.box
+    .box-primary
+        border-radius: 0
+        border-top-color: $celeste
+    .box-solid
+        .box-warning
+            border: 1px solid $amarillo
+        .box-success
+            border: 1px solid $verde
+        .box-danger
+            border: 1px solid $rojo
+        .box-info
+            border: 1px solid $azulalternativo
+
+.box-alternate
+    /*border: 1px solid $furcia*/
+    background-color: $furcia
+    color: white
+    h3
+        font-size: $titulo;
+        font-weight: normal;
+.grad-bg
+    background-color: rgba(216, 27, 96, 1) !important
+.grad-md
+    background-color: rgba(216, 27, 96, 0.8) !important
+.grad-sm
+    background-color: rgba(216, 27, 96, 0.6) !important
+
+.box-orange
+    border: 1px solid #FF851B
+    .with-border.box-header
+        color: white
+        background: #FF851B
+        background-color: rgb(255, 133, 27)
+        background-color: #FF851B
+    .box-header
+        .btn-box-tool
+            color: white
+
+.box-purple
+    border: 1px solid $purpura
+    .with-border.box-header
+        color: white
+        background: $purpura
+        background-color: rgb(102, 51, 153)
+        background-color: $purpura
+    .box-header
+        .btn-box-tool
+            color: white
 
 .box-header.with-border
     background-color: $grisclaro
@@ -517,7 +565,7 @@ input
     border-color: #FF851B
 
 #referencia
-    border-color: #605CA8
+    border-color: $purpura
 
 #user-foto
     background: $celeste
