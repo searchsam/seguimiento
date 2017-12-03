@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 // Eventos
 use App\Events\MarcarComoLeida;
 use App\Events\ActualizarSession;
+use App\Events\GenerarLineaTiempo;
 
 // Modelos
 use App\Empresa;
@@ -36,7 +37,6 @@ class EmpresaController extends Controller
     {
         $data['usuario']    = session( 'usuario' );
         $data['cliente']    = Empresa::where( 'usuario_id', Auth::id() )->get();
-        $data['lineas']     = LineaTiempo::where( 'usuario_id', Auth::id() )->orderBy('id_linea_tiempo', 'asc')->get();
         $data['page_title'] = 'Perfil de Empresa';
         return view('tablero.perfil_empresa', $data);
     }
@@ -60,7 +60,7 @@ class EmpresaController extends Controller
             'cedula'         => ['required', new Cedula],
             'cargo'          => 'required|string',
             'email'          => 'required|email',
-            'telefono'       => 'required|numeric',
+            'telefono'       => 'required|string',
         ]);
 
         // Guardar Empresa

@@ -10,7 +10,7 @@
 </li>
 <li class="treeview menu-open">
     <a href="{{ route('ver_ofertas') }}">
-        <i class="fa fa-sticky-note"></i><span>Ofertas</span>
+        <i class="fa fa-address-card-o"></i><span>Ofertas</span>
         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
     </a>
     <ul class="treeview-menu">

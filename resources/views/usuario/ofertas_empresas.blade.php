@@ -22,7 +22,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col col-md-4">
-                                                <img class="img-circle" src="{{ asset($usuario->foto_usuario) }}" alt="{{ $usuario->empresa->nombre_empresa }}" width="128px" height="128px">
+                                                <img class="img-circle" src="{{ asset($oferta->empresa->usuario->foto_usuario) }}" alt="{{ $oferta->empresa->nombre_empresa }}" width="128px" height="128px">
                                             </div>
                                             <div class="col col-md-8">
                                                 <h1><b>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</b></h1>
@@ -36,7 +36,7 @@
                                 </div>
 
                                 <modal v-if="showModal" @close="showModal = false">
-                                    <h1 slot="header"><b>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</b> <small slot="sub-header">{{ $usuario->empresa->nombre_empresa }}</small></h1>
+                                    <h1 slot="header"><b>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</b> <small slot="sub-header">{{ $oferta->empresa->nombre_empresa }}</small></h1>
                                     <p slot="body">{{ $oferta->descripcion_oferta }}</p>
                                     <div slot="color" class="espera aside"></div>
                                     <p slot="state" class="aside">En Espera de ser Atendida</p>
@@ -65,14 +65,14 @@
 
                 <div class="box-body">
                     @if (count($ofertas))
-                        @foreach ($cliente as $oferta)
+                        @foreach ($ofertas as $oferta)
                             @if ($oferta->estado_oferta == 1)
                                 <div class="card" id="show-modal" @click="showModal = true">
                                     <div class="triangle-container success" data-toggle="tooltip" data-placement="left" title="Oferta atendida."></div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col col-md-4">
-                                                <img class="img-circle" src="{{ asset($usuario->foto_usuario) }}" alt="{{ $usuario->empresa->nombre_empresa }}" width="128px" height="128px">
+                                                <img class="img-circle" src="{{ asset($oferta->empresa->usuario->foto_usuario) }}" alt="{{ $oferta->empresa->nombre_empresa }}" width="128px" height="128px">
                                             </div>
                                             <div class="col col-md-8">
                                                 <h1><b>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</b></h1>
@@ -86,7 +86,7 @@
                                 </div>
 
                                 <modal v-if="showModal" @close="showModal = false">
-                                    <h1 slot="header"><b>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</b> <small slot="sub-header">{{ $usuario->empresa->nombre_empresa }}</small></h1>
+                                    <h1 slot="header"><b>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</b> <small slot="sub-header">{{ $oferta->empresa->nombre_empresa }}</small></h1>
                                     <p slot="body">{{ $oferta->descripcion_oferta }}</p>
                                     <div slot="color" class="atendida aside"></div>
                                     <p slot="state" class="aside">Oferta Atendida</p>
@@ -124,7 +124,17 @@
                                     <slot name="limit"></slot>
                                 </div>
                             </div>
-                            <button class="modal-default-button" @click="$emit('close')" style="width: 100%;">Cerrar</button>
+                            <!-- button class="modal-default-button" @click="$emit('close')" style="width: 100%;">Cerrar</button -->
+                            <div class="row">
+                                <div class="col col-md-6 seccess">
+                                    <form action="" method="get">
+                                        <button type="submit" style="width: 100%; background-color: #28A745; color: #fff;">Asignar</button>
+                                    </form>
+                                </div>
+                                <div class="col col-md-6 cancel">
+                                    <button type="button" class="modal-default-button" @click="$emit('close')" style="width: 100%;">Cerrar</button>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

@@ -56,9 +56,11 @@
                         <strong><i class="fa fa-phone margin-r-5"></i> Telefono</strong>
                         <p class="text-muted">{{ $usuario->estudiante->telefono_estudiante }}</p>
                     @endif
-                    <hr />
-                    <strong><i class="fa fa-newspaper-o margin-r-5"></i> Curriculum</strong>
-                    <p class="text-muted"><a href="#">Soporte Fisico</a></p>
+                    @if ($usuario->estudiante->curriculum)
+                        <hr />
+                        <strong><i class="fa fa-newspaper-o margin-r-5"></i> Soporte Fisico</strong>
+                        <p class="text-muted"><a href="{{ $usuario->estudiante->curriculum }}">Curriculum</a></p>
+                    @endif
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>
@@ -135,8 +137,8 @@
                 <div class="col-md-4">
                     <div class="small-box box-alternate grad-bg">
                         <div class="inner">
-                            <h3>Habilidades</sup></h3>
-                            <p>{{ $usuario->estudiante->habilidad_personal }}</p>
+                            <h3>Habilidades</h3>
+                            <p>{{ str_replace( ',', ', ', $usuario->estudiante->desarrollo_personal->habilidad_personal ) }}</p>
                         </div>
                     </div>
                 </div>
@@ -145,7 +147,7 @@
                     <div class="small-box box-alternate grad-md">
                         <div class="inner">
                             <h3>Idioma</h3>
-                            <p>{{ $usuario->estudiante->idomas_personal }}</p>
+                            <p>{{ str_replace( ',', ', ', $usuario->estudiante->desarrollo_personal->idomas_personal ) }}</p>
                         </div>
                     </div>
                 </div>
@@ -154,7 +156,7 @@
                     <div class="small-box box-alternate grad-sm">
                         <div class="inner">
                             <h3>Otra Informaci&oacute;</h3>
-                            <p>{{ $usuario->estudiante->otro_personal }}</p>
+                            <p>{{ str_replace( ',', ', ', $usuario->estudiante->desarrollo_personal->otro_personal ) }}</p>
                         </div>
                     </div>
                 </div>

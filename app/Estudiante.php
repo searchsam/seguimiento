@@ -56,7 +56,7 @@ class Estudiante extends Model
      */
     public function desarrollo_personal()
     {
-        return $this->hasMany('App\DesarrolloPersonal', 'estudiante_id');
+        return $this->hasOne('App\DesarrolloPersonal', 'estudiante_id');
     }
 
     /**

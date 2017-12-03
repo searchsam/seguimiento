@@ -10,8 +10,8 @@
             <div class="box box-primary">
                 <div class="box-body box-profile">
                     <img class="profile-user-img img-responsive img-circle" src="{{ asset( $usuario->foto_usuario ) }}" alt="User profile picture">
-                    <h3 class="profile-username text-center">{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</h3>
-                    <p class="text-muted text-center">{{ $usuario->empresa->nombre_empresa }}</p>
+                    <h3 class="profile-username text-center">{{ $usuario->empresa->nombre_empresa }}</h3>
+                    <p class="text-muted text-center">{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</p>
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">Cargo Contacto: <b class="pull-right">{{ $usuario->empresa->contacto->cargo_contacto }}</b></li>
                         <li class="list-group-item">Correo Electr&oacute;nico: <b class="pull-right">{{ $usuario->email_usuario }}</b></li>
@@ -58,10 +58,10 @@
                     <!-- The timeline -->
                     <ul class="timeline timeline-inverse">
 
-                        @foreach ($lineas as $linea)
+                        @foreach ($usuario->linea_tiempo as $evento)
                             <!-- timeline time label -->
                             @php
-                                $update = new Carbon($linea->updated_at);
+                                $update = new Carbon($evento->updated_at);
                             @endphp
                             @if ($loop->first)
                                 @php $carbon = $update; @endphp
@@ -78,7 +78,7 @@
                                 <i class="fa fa-user bg-aqua"></i>
                                 <div class="timeline-item">
                                     <span class="time"><i class="fa fa-clock-o"></i> {{ $update->format('h:i A') }}</span>
-                                    <h3 class="timeline-header no-border"><h3>{{ $linea->$evento->evento }}</h3>
+                                    <h3 class="timeline-header no-border"><h3>{{ $evento->tipo_evento->evento }}</h3>
                                 </div>
                             </li>
                             <!-- END timeline item -->

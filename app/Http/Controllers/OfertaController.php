@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 // Eventos
 use App\Events\MarcarComoLeida;
+use App\Events\GenerarLineaTiempo;
 
 // Modelos
 use App\Oferta;
@@ -70,7 +71,7 @@ class OfertaController extends Controller
         $oferta->empresa_id             = $empresa->id_empresa;
         $oferta->save();
 
-        event( new GenerarLineaTiempo( Auth::user(), 4 ) );
+        event( new GenerarLineaTiempo( Auth::user(), 6 ) );
         event( new MarcarComoLeida( Auth::user(), 'GenerarOferta' ) );
         return redirect()->route( 'ofertas' );
     }

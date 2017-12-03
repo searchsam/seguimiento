@@ -21,7 +21,7 @@ class CreateEstudianteTable extends Migration
             $table->string('apellido_estudiante');
             $table->string('cedula_estudiante')->unique();
             $table->string('celular_estudiante');
-            $table->string('telefono_estudiante');
+            $table->string('telefono_estudiante')->nullable();
             $table->string('direccion_estudiante');
             $table->string('ciudad_estudiante');
             $table->string('email_estudiante');

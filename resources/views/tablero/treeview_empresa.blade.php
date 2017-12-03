@@ -13,7 +13,7 @@
 @if ( $usuario->empresa )
     <li class="treeview menu-open">
         <a href="{{ route('ofertas') }}">
-            <i class="fa fa-sticky-note"></i><span>Ofertas</span>
+            <i class="fa fa-address-card"></i><span>Ofertas</span>
             <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
         </a>
         <ul class="treeview-menu">

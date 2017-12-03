@@ -46,6 +46,16 @@ class TipoEventoTableSeeder extends Seeder
                 'evento'         => 'Actualizo curriculum en PDF.',
                 'created_at'     => now(),
                 'updated_at'     => now(),
+            ],
+            [//8
+                'evento'         => 'Actualizo plan de estudios.',
+                'created_at'     => now(),
+                'updated_at'     => now(),
+            ],
+            [//9
+                'evento'         => 'Actualizo la entidad en la empresa.',
+                'created_at'     => now(),
+                'updated_at'     => now(),
             ]
         ]);
     }
