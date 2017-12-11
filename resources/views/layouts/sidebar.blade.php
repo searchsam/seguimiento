@@ -8,7 +8,7 @@
         <div class="user-panel">
 
             <div class="pull-left image">
-                <img src="{{ asset($usuario->foto_usuario) }}" class="img-circle" alt="User Image" />
+                <img src="{{ asset(session('usuario')->foto_usuario) }}" class="img-circle" alt="User Image" />
             </div>
 
             <div class="pull-left info">

@@ -17,6 +17,7 @@ class Oferta extends Model
         'estado_oferta',
         'fecha_limite_oferta',
         'descripcion_oferta',
+        'carrera',
         'empresa_id',
         'tipo_oferta_id'
     ];

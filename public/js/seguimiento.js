@@ -194,6 +194,31 @@ window.addEventListener('load', function () {
     });
 });
 
+// Carreras para la Oferta
+new Vue({
+    el: '#carrera_oferta',
+    data: {
+        identificadores: [],
+        carreras: []
+    },
+    methods: {
+        addCarrera: function addCarrera(e) {
+            if ($('#opt-carrera').val() > 0) {
+                this.carreras.push($('#opt-carrera option:selected').text());
+                this.identificadores.push($('#opt-carrera').val());
+                $('#opt-carrera').val('0');
+                $('#opt-carrera').focus();
+                $('#carrera-all').text(this.identificadores.toString());
+            }
+        },
+        rmCarrera: function rmCarrera(key) {
+            this.carreras.splice(key, 1);
+            this.identificadores.splice(key, 1);
+            $('#carrera-all').text(this.identificadores.toString());
+        }
+    }
+});
+
 /***/ }),
 
 /***/ 44:

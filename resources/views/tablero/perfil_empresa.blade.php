@@ -44,10 +44,7 @@
             <!-- About Me Box -->
             <div class="box box-primary">
                 <!-- /.box-header -->
-                <div class="box-body">
-                    <strong><i class="fa fa-book margin-r-5"></i> N&uacute;mero RUC</strong>
-                    <p class="text-muted">{{ $usuario->empresa->ruc_empresa }}</p>
-                    <hr>
+                <div class="box-body">                    
                     <strong><i class="fa fa-map-marker margin-r-5"></i> Direcci&oacute;n</strong>
                     <p class="text-muted">{{ $usuario->empresa->direccion_empresa }}</p>
                 </div><!-- /.box-body -->

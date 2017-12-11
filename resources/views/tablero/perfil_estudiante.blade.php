@@ -67,6 +67,7 @@
         <!-- /.col -->
 
         <div class="col-md-9">
+            @if ( count( $usuario->estudiante->formacion_academica ) )
             <div class="box box-success box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">FORMACI&Oacute;N ACAD&Eacute;MICA</h3>
@@ -90,7 +91,15 @@
                         @foreach ($usuario->estudiante->formacion_academica as $estudio)
                             <tr>
                               <td>{{ $estudio->tipo_estudio->tipo_estudio }}</td>
+                              @if ( strcmp($estudio->nombre_estudio, '5') == 0 )
+                                  @foreach ($carreras as $carrera)
+                                      @if (strcmp($carrera->id_carrera, '5') == 0)
+                                      <td>{{ $carrera->nombre_carrera }}</td>
+                                      @endif
+                                  @endforeach
+                              @else
                               <td>{{ $estudio->nombre_estudio }}</td>
+                              @endif
                               <td>{{ $estudio->institucion_estudio }}</td>
                               <td>{{ $estudio->localidad_estudio }}</td>
                               <td>{{ $estudio->fecha_estudio }}</td>
@@ -100,7 +109,8 @@
                     </table>
                 </div><!-- /.box-body -->
             </div>
-
+            @endif
+            @if ( count( $usuario->estudiante->experiencia_laboral ) )
             <div class="box box-info box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">EXPERIENCIA LABORAL</h3>
@@ -132,6 +142,7 @@
                     </table>
                 </div><!-- /.box-body -->
             </div>
+            @endif
             @if (count($usuario->estudiante->desarrollo_personal))
             <div class="row">
                 <div class="col-md-4">
@@ -162,7 +173,7 @@
                 </div>
             </div>
             @endif
-
+            @if ( count( $usuario->estudiante->reconocimiento ) )
             <div class="box box-orange box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">RECONOCIMIENTOS</h3>
@@ -194,7 +205,8 @@
                     </table>
                 </div><!-- /.box-body -->
             </div>
-
+            @endif
+            @if ( count( $usuario->estudiante->referencia_laboral ) )
             <div class="box box-purple box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">CONTACTOS DE REFERENCIA</h3>
@@ -224,6 +236,7 @@
                     </table>
                 </div><!-- /.box-body -->
             </div>
+            @endif
         </div><!-- /.nav-tabs-custom -->
         @else
             <p style="margin-left:20px; margin-bottom:0;">Perfil vacio, por favor registre la entidad de la empresa.</p>

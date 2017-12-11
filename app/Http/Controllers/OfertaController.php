@@ -13,6 +13,7 @@ use App\Events\NotificacionesOferta;
 
 // Modelos
 use App\Oferta;
+use App\Carrera;
 use App\Empresa;
 use App\Usuario;
 use App\Contacto;
@@ -49,6 +50,7 @@ class OfertaController extends Controller
         {
             $data['usuario']     = $usuario;
             $data['tipo_oferta'] = TipoOferta::all();
+            $data['carreras']    = Carrera::all();
             $data['page_title']  = 'Generar Oferta';
             return view( 'tablero.oferta', $data );
         }
@@ -58,9 +60,10 @@ class OfertaController extends Controller
     public function registrar(Request $request)
     {
         $validate = $request->validate([
-            'tipo_oferta' => ['required', new Selectnumeric],
-            'limite'      => 'nullable|string',
-            'descripcion' => 'required|string',
+            'tipo_oferta'     => ['required', new Selectnumeric],
+            'limite'          => 'nullable|string',
+            'oferta_carreras' => 'required|string',
+            'descripcion'     => 'required|string',
         ]);
 
         $empresa = Usuario::find( Auth::id() )->empresa;
@@ -68,6 +71,7 @@ class OfertaController extends Controller
         $oferta->fecha_registro_oferta  = now()->toFormattedDateString();
         $oferta->fecha_limite_oferta    = $request->limite;
         $oferta->descripcion_oferta     = $request->descripcion;
+        $oferta->carrera                = $request->oferta_carreras;
         $oferta->tipo_oferta_id         = $request->tipo_oferta;
         $oferta->empresa_id             = $empresa->id_empresa;
         $oferta->save();

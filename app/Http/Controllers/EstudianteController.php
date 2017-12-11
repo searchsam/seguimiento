@@ -19,6 +19,7 @@ use App\Events\NotificacionesEstudiante;
 
 // Modelos
 use App\Oferta;
+use App\Carrera;
 use App\Usuario;
 use App\Estudiante;
 use App\TipoEstudio;
@@ -46,6 +47,7 @@ class EstudianteController extends Controller
     {
         $data['usuario']    = session('usuario');
         $data['cliente']    = Estudiante::where( 'usuario_id', Auth::id() )->get();
+        $data['carreras']    = Carrera::all();
         $data['page_title'] = 'Perfil de Estudiante';
         return view('tablero.perfil_estudiante', $data);
     }
@@ -377,8 +379,19 @@ class EstudianteController extends Controller
     public function estudiantes_asignacion(Oferta $oferta)
     {
         $data['oferta']         = $oferta->id_oferta;
+        $carreras = explode(',', $oferta->carrera);
+        $estudiantes = array();
+        foreach ($carreras as $value)
+        {
+            $estudio = FormacionAcademica::where('nombre_estudio', $value)->get();
+            foreach ($estudio as $value)
+            {
+                $estudiantes[] = Estudiante::find($value->estudiante_id);
+            }
+        }
         $data['usuario']        = session('usuario');
-        $data['estudiantes']    = Estudiante::all();
+        $data['estudiantes']    = $estudiantes;
+        $data['carreras']       = Carrera::all();
         $data['page_title']     = 'Estudiantes Registrados';
 
         return view('usuario.ofertas_estudiantes', $data);
@@ -388,6 +401,7 @@ class EstudianteController extends Controller
     {
         $data['usuario']    = $estudiante->usuario;
         $data['cliente']    = $estudiante;
+        $data['carreras']   = Carrera::all();
         $data['page_title'] = 'Perfil de Estudiante';
         return view('tablero.perfil_estudiante', $data);
     }
@@ -403,6 +417,6 @@ class EstudianteController extends Controller
                 $user->notify(new AsignarNotificacion());
             }
         }
-
+        return back()->with( 'flash', 'Selecciones al menos un estudiante' );
     }
 }

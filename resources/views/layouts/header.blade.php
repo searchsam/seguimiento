@@ -125,7 +125,7 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{{ asset($usuario->foto_usuario) }}" class="user-image" alt="User Image"/>
+                        <img src="{{ asset(session('usuario')->foto_usuario) }}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</span>
                     </a>
@@ -133,7 +133,7 @@
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{{ asset($usuario->foto_usuario) }}" class="img-circle" alt="User Image" />
+                            <img src="{{ asset(session('usuario')->foto_usuario) }}" class="img-circle" alt="User Image" />
                             <p>
                                 {{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }} <br> {{ $usuario->tipousuario->tipo_usuario }}
                             </p>

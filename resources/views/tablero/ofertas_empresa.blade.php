@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="box-body">
-                    <button type="button" data-toggle="modal" data-target="#oferta-modal" class="btn btn-default add-oferta"><i class="fa fa-plus"></i></button>
+                    <!-- button type="button" data-toggle="modal" data-target="#oferta-modal" class="btn btn-default add-oferta"><i class="fa fa-plus"></i></button -->
                     @if (count($cliente))
                         @foreach ($cliente as $oferta)
                             @if ($oferta->estado_oferta == 0)

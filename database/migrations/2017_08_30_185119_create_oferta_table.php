@@ -19,6 +19,7 @@ class CreateOfertaTable extends Migration
             $table->boolean('estado_oferta')->default('0');
             $table->string('fecha_limite_oferta')->nullable();
             $table->string('descripcion_oferta');
+            $table->string('carrera');
             $table->integer('tipo_oferta_id')->unsigned();
             $table->integer('empresa_id')->unsigned();
             $table->timestamps();

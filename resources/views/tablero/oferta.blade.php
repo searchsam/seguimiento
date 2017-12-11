@@ -39,7 +39,28 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6"></div>
+                    <div class="col-md-6" id="carrera_oferta">
+                        <textarea id="carrera-all" name="oferta_carreras" rows="8" hidden="true"></textarea>
+                        <ul class="tags">
+                            <li class="carrera" v-for="(value, key) in carreras"><label class="tag"> @{{ value }} </label> <span @click="rmCarrera(key)"><i class="fa fa-minus"></i></span></li>
+                        </ul>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="form-select {{ $errors->has('oferta_carreras') ? 'error' : '' }}">
+                                    <select id="opt-carrera" class="custom-select {{ $errors->has('tipo_oferta') ? 'error' : '' }}">
+                                        <option value="0">Carreras Requeridas</option>
+                                        @foreach ($carreras as $carrera)
+                                            <option value="{{ $carrera->id_carrera }}">{{ $carrera->nombre_carrera }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <span class="input-group-btn">
+                                    <button type="button" @click="addCarrera()">Agregar</button>
+                                </span>
+                            </div>
+                            {!! $errors->first('oferta_carreras', '<span class="help-block"><b>:message</b></span>') !!}
+                        </div>
+                    </div>
 
                 </div>
             </div>
