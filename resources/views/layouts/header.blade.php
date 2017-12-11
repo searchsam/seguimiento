@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="http://www.graduados.uni.edu.ni/" class="logo">
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><h1>SEGUIMIENTO</h1></span>
         <!-- mini logo for sidebar mini 50x50 pixels -->

@@ -27,7 +27,7 @@
                                                 <img class="img-circle" src="{{ asset($usuario->foto_usuario) }}" alt="{{ $usuario->empresa->nombre_empresa }}" width="128px" height="128px">
                                             </div>
                                             <div class="col col-md-8">
-                                                <h1><b>{{ $contacto->nombre_contacto }} {{ $contacto->apellido_contacto }}</b></h1>
+                                                <h1><b>{{ $oferta->empresa->nombre_empresa }}</b> <small>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</small> </h1>
                                                 <div class="text-truncate">
                                                     <p>{{ $oferta->descripcion_oferta }}</p>
                                                 </div>
@@ -77,7 +77,7 @@
                                                 <img class="img-circle" src="{{ asset($usuario->foto_usuario) }}" alt="{{ $usuario->empresa->nombre_empresa }}" width="128px" height="128px">
                                             </div>
                                             <div class="col col-md-8">
-                                                <h1><b>{{ $contacto->nombre_contacto }} {{ $contacto->apellido_contacto }}</b></h1>
+                                                <h1><b>{{ $oferta->empresa->nombre_empresa }}</b> <small>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</small> </h1>
                                                 <div class="text-truncate">
                                                     <p>{{ $oferta->descripcion_oferta }}</p>
                                                 </div>
@@ -160,7 +160,7 @@
                 <div class="modal-wrapper">
                     <div class="modal-container">
 
-                        <div class="modal-header widget-user-header bg-black" style="background: url(<?php echo asset($usuario->foto_usuario); ?>) center center; height: 128px;"></div>
+                        <div class="modal-header widget-user-header bg-blue" style="background: url(<?php echo asset($usuario->foto_usuario); ?>) center center; height: 128px;"></div>
 
                         <div class="modal-body warning">
                             <slot name="header">Contacto <slot name="sub-header">Empresa</slot></slot>

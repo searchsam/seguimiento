@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Rules\Selectnumeric;
 use Illuminate\Support\Facades\Storage;
+use App\Notifications\AsignarNotificacion;
 
 // Eventos
 use App\Events\MarcarComoLeida;
@@ -17,6 +18,7 @@ use App\Events\GenerarLineaTiempo;
 use App\Events\NotificacionesEstudiante;
 
 // Modelos
+use App\Oferta;
 use App\Usuario;
 use App\Estudiante;
 use App\TipoEstudio;
@@ -52,7 +54,7 @@ class EstudianteController extends Controller
     {
         $data['usuario']        = session('usuario');
         $data['tipo_estudio']   = TipoEstudio::all();
-        $data['page_title']     = 'Registrar Plan de Estudios';
+        $data['page_title']     = 'Registrar Resumen de Vida';
 
         return view('tablero.curriculum', $data);
     }
@@ -97,7 +99,7 @@ class EstudianteController extends Controller
         }
 
         // Almacenar y guardar foto de usuario
-        if ( isset( $request->foto ) )
+        if ( isset( $request->foto ) and !is_null( $request->foto ) )
         {
             // Subir foto
             $img_dir = $request->file( 'foto' )->storeAs( 'fotos', $this->fotos_name( Auth::user()->name ) );
@@ -360,7 +362,47 @@ class EstudianteController extends Controller
             event( new GenerarLineaTiempo( Auth::user(), 4 ) );
             return false;
         }
-        return back()->with( 'flash', 'Por favor regristre el plan de estudio.' );
+        return back()->with( 'flash', 'Por favor genere resumen de vida.' );
     }
 
+    public function usuario_estudiantes()
+    {
+        $data['usuario']        = session('usuario');
+        $data['estudiantes']    = Estudiante::all();
+        $data['page_title']     = 'Estudiantes Registrados';
+
+        return view('usuario.estudiantes', $data);
+    }
+
+    public function estudiantes_asignacion(Oferta $oferta)
+    {
+        $data['oferta']         = $oferta->id_oferta;
+        $data['usuario']        = session('usuario');
+        $data['estudiantes']    = Estudiante::all();
+        $data['page_title']     = 'Estudiantes Registrados';
+
+        return view('usuario.ofertas_estudiantes', $data);
+    }
+
+    public function perfil_estudiante(Estudiante $estudiante)
+    {
+        $data['usuario']    = $estudiante->usuario;
+        $data['cliente']    = $estudiante;
+        $data['page_title'] = 'Perfil de Estudiante';
+        return view('tablero.perfil_estudiante', $data);
+    }
+
+    public function asignar(Request $request)
+    {
+        if( !empty( $request->estudiante ) )
+        {
+            foreach($request->estudiante as $estudiante)
+            {
+                dd($estudiante);
+                $user = Estudiante::find($estudiante)->user();
+                $user->notify(new AsignarNotificacion());
+            }
+        }
+
+    }
 }

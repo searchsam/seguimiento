@@ -54,7 +54,8 @@ class VerificacionEmail extends Notification implements ShouldQueue
     {
         return [
             'tipo' => 'flag',
-            'text' => 'Verificar Correo Electronico.'
+            'text' => 'Verificar Correo Electronico.',
+            'ruta' => '#'
         ];
     }
 
@@ -67,18 +68,5 @@ class VerificacionEmail extends Notification implements ShouldQueue
     public function toNexmo($notifiable)
     {
         return (new NexmoMessage)->content('Notificacion por sms del PSG.');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
     }
 }

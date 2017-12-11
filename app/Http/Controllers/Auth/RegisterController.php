@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use App\LineaTiempo;
 use App\Events\ConfirmarEmail;
 use App\Events\EmailConfirmado;
+use App\Events\GenerarLineaTiempo;
 use App\Events\NotificacionesEmpresa;
 use App\Events\NotificacionesEstudiante;
 
@@ -117,7 +118,7 @@ class RegisterController extends Controller
         $user->remember_token = str_random(25);
         $user->save();
 
-        event( new GenerarLineaTiempo( Auth::user(), 1 ) );
+        event( new GenerarLineaTiempo( $user, 1 ) );
         event(new ConfirmarEmail($user));
     }
 

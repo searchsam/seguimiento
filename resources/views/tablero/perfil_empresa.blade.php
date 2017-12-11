@@ -10,11 +10,20 @@
             <div class="box box-primary">
                 <div class="box-body box-profile">
                     <img class="profile-user-img img-responsive img-circle" src="{{ asset( $usuario->foto_usuario ) }}" alt="User profile picture">
+                    @if($usuario->empresa->nombre_empresa)
                     <h3 class="profile-username text-center">{{ $usuario->empresa->nombre_empresa }}</h3>
+                    @endif
+                    @if($usuario->nombre_usuario)
                     <p class="text-muted text-center">{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</p>
+                    @endif
                     <ul class="list-group list-group-unbordered">
+                        @if($usuario->empresa->contacto->cargo_contacto)
                         <li class="list-group-item">Cargo Contacto: <b class="pull-right">{{ $usuario->empresa->contacto->cargo_contacto }}</b></li>
-                        <li class="list-group-item">Correo Electr&oacute;nico: <b class="pull-right">{{ $usuario->email_usuario }}</b></li>
+                        @endif
+                        @if($usuario->email_usuario)
+                        <li class="list-group-item">Email: <b class="pull-right">{{ $usuario->email_usuario }}</b></li>
+                        @endif
+                        @if($usuario->estado_usuario)
                         <li class="list-group-item">Estado Usuario:
                             <b class="pull-right time-label">
                                 @if ( $usuario->estado_usuario )
@@ -24,7 +33,7 @@
                                 @endif
                             </b>
                         </li>
-
+                        @endif
                     </ul>
                     @if ($usuario->tipo_usuario == 1)
                         <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
@@ -34,7 +43,6 @@
 
             <!-- About Me Box -->
             <div class="box box-primary">
-
                 <!-- /.box-header -->
                 <div class="box-body">
                     <strong><i class="fa fa-book margin-r-5"></i> N&uacute;mero RUC</strong>

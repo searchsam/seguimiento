@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Carrera;
 use App\TipoEstudio;
 
 class AjaxController extends Controller
@@ -26,7 +27,7 @@ class AjaxController extends Controller
             <div class="col-md-2 col-sm-12">
                 <div class="form-group">
                     <div class="form-select">
-                        <select name="tipo_estudio[]" class="custom-select">
+                        <select name="tipo_estudio[]" class="custom-select tipo-estudio">
                             <option value="0">Tipo de Estudio</option>';
                             foreach ($tipo_estudio as $estudio)
                             {
@@ -38,7 +39,7 @@ class AjaxController extends Controller
             </div>
             <div class="col-md-3 col-sm-12">
                 <div class="form-group">
-                    <input type="text" name="estudio_academico[]" placeholder="Estudio/Carrera">
+                    <input type="text" name="estudio_academico[]" placeholder="Estudio/Carrera" class="estudio">
                 </div>
             </div>
             <div class="col-md-2 col-sm-12">
@@ -90,6 +91,20 @@ class AjaxController extends Controller
                     <a class="agregar" id="agregar-laraboral"><i class="fa fa-plus"></i></a>
                 </div>
             </div>
+        </div>';
+    }
+
+    public function add_estudio()
+    {
+        $carreras = Carrera::all();
+
+        echo '<div class="form-select estudio">
+            <select name="estudio_academico[]" class="custom-select">';
+                foreach ($carreras as $carrera)
+                {
+                    echo '<option value="' . $carrera->id_carrera . '">' . $carrera->nombre_carrera . '</option>';
+                }
+        echo '</select>
         </div>';
     }
 }

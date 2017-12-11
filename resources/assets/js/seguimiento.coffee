@@ -8,6 +8,18 @@ $ document
             $ '#agregar-academico'
                 .replaceWith '<a class="agregar quitar"><i class="fa fa-minus"></i></a>'
 
+$ document
+    .on 'change', '.tipo-estudio', ->
+        el = $ this
+            .parents('.row').find('.estudio')
+        opcion = $ this
+            .val().localeCompare("5")
+        if opcion == 0
+            $.get '/ajax/add_estudio', (data) ->
+                el.replaceWith data
+        else
+            el.replaceWith '<input type="text" name="estudio_academico[0]" placeholder="Estudio/Carrera" class="estudio">'
+
 # QUITAR
 $ document
     .on 'click', '.quitar', ->
@@ -38,3 +50,29 @@ $ document
          div = @parentElement
          div.style.opacity = '0'
          setTimeout (-> div.style.display = 'none' ), 600
+
+# Seleccionar uno o varios estudiantes
+$ document
+    .on 'click', '.info-box-icon', ->
+        estudiante_eleccionado = $ '.box-selectable'
+            .children('input:checkbox').is(':checked')
+        if estudiante_eleccionado
+            $ '.box-selectable'
+                .children('input:checkbox').prop('checked', false)
+            $ '.box-selectable'
+                .css({'background-color': 'white', 'color': '#808080'})
+        else
+            $ '.box-selectable'
+                .children('input:checkbox').prop('checked', true)
+            $ '.box-selectable'
+                .css({'background-color': '#1C3170', 'color': 'white'})
+
+$ document
+    .on 'click', '#enviar', ->
+        seleccionados = $ 'input:checked'
+            .length
+        if (seleccionados-1) <= 0
+            alert 'No ha seleccionado al menos un estudiante'
+        else
+            $ '#asignar-form'
+                    .submit()

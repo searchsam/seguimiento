@@ -132,7 +132,7 @@
                     </table>
                 </div><!-- /.box-body -->
             </div>
-
+            @if (count($usuario->estudiante->desarrollo_personal))
             <div class="row">
                 <div class="col-md-4">
                     <div class="small-box box-alternate grad-bg">
@@ -161,6 +161,7 @@
                     </div>
                 </div>
             </div>
+            @endif
 
             <div class="box box-orange box-solid">
                 <div class="box-header with-border">

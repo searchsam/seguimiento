@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 // Eventos
 use App\Events\MarcarComoLeida;
 use App\Events\GenerarLineaTiempo;
+use App\Events\NotificacionesOferta;
 
 // Modelos
 use App\Oferta;
@@ -73,6 +74,7 @@ class OfertaController extends Controller
 
         event( new GenerarLineaTiempo( Auth::user(), 6 ) );
         event( new MarcarComoLeida( Auth::user(), 'GenerarOferta' ) );
+        event( new NotificacionesOferta( Auth::user() ) );
         return redirect()->route( 'ofertas' );
     }
 
@@ -81,6 +83,7 @@ class OfertaController extends Controller
         $data['usuario']     = session( 'usuario' );
         $data['ofertas']     = Oferta::all();
         $data['page_title']  = 'Ofertas de Empresas';
+        event( new MarcarComoLeida( Auth::user(), 'RegistrarOferta' ) );
         return view('usuario.ofertas_empresas', $data);
     }
 }

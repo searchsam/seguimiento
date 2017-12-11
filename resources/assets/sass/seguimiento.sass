@@ -1,11 +1,12 @@
 // Colores
+// Colores institucionales
 $celeste: #4D73BA
 $azul: #2E5097
 $azuloscuro: #1C3170
-
+// Colores de relleno
 $gris: #808080
 $grisclaro: #ECF0F5
-
+// Colores auxiliares
 $verde: #28A745
 $azulalternativo: #17A2B8
 $amarillo: #FFC107
@@ -153,7 +154,6 @@ a
         @extend button
         width: 100%
 
-
 .form-reg
     background-color: $azul
     a
@@ -168,7 +168,6 @@ a
         &:hover
             background-color: $gris
             border: 2px solid $gris
-
 
 .help-block
     font-size: $cuerpotam
@@ -328,9 +327,19 @@ input
         border-left-color: $azuloscuro
 
 .box
+    +border-radius(0)
+    box-shadow: 0 0 0 0
+    .box-header.with-border
+        text-align: center
+        h3
+            font-size: 30px
     .box-primary
         border-radius: 0
         border-top-color: $celeste
+    .box-default
+        border-color: $celeste
+    .box-info
+        border-color: $azulalternativo
     .box-solid
         .box-warning
             border: 1px solid $amarillo
@@ -447,18 +456,6 @@ input
                     a
                         border: 0
                         +border-radius(0)
-
-.box
-    +border-radius(0)
-    box-shadow: 0 0 0 0
-
-.box.box-default
-    border-color: $celeste
-
-.box-header.with-border
-    text-align: center
-    h3
-        font-size: 30px
 
 .messages-warning
     color: $amarillo
@@ -808,6 +805,30 @@ input
     background-color: $azulalternativo !important
 .bg-blue-active
     background-color: $azuloscuro !important
+
+.datepicker .datepicker-dropdown .dropdown-menu .datepicker-orient-left .datepicker-orient-top
+    z-index: 1030
+
+.box-selectable
+    +border-radius(0)
+    .info-box-icon
+        +border-radius(0)
+        .img-circle
+            max-height: 90%
+            margin-top: -8px
+            &:hover
+                border-color: $verde
+    .info-box-content
+        .info-box-number
+            a
+                &:hover
+                    color: $verde
+
+#enviar
+    position: absolute
+    right: 20px
+    bottom: 75px
+    z-index: 1030
 
 @media only screen and (max-width: 500px)
     // Estilo Login

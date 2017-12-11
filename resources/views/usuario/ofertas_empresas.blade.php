@@ -25,7 +25,7 @@
                                                 <img class="img-circle" src="{{ asset($oferta->empresa->usuario->foto_usuario) }}" alt="{{ $oferta->empresa->nombre_empresa }}" width="128px" height="128px">
                                             </div>
                                             <div class="col col-md-8">
-                                                <h1><b>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</b></h1>
+                                                <h1><b>{{ $oferta->empresa->nombre_empresa }}</b> <small>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</small> </h1>
                                                 <div class="text-truncate">
                                                     <p>{{ $oferta->descripcion_oferta }}</p>
                                                 </div>
@@ -43,6 +43,7 @@
                                     @if (!is_null($oferta->fecha_limite_oferta))
                                         <p slot="limit">{{ $oferta->fecha_limite_oferta }}</p>
                                     @endif
+                                    <a slot="oferta" class="btn btn-default btn-flat" href="{{ route('asignacion', ['oferta' => $oferta->id_oferta]) }}" style="width: 100%; background-color: #28A745; color: #fff; height: 50px; font-size: 17px;">Asignar</a>
                                 </modal>
                             @endif
                         @endforeach
@@ -75,7 +76,7 @@
                                                 <img class="img-circle" src="{{ asset($oferta->empresa->usuario->foto_usuario) }}" alt="{{ $oferta->empresa->nombre_empresa }}" width="128px" height="128px">
                                             </div>
                                             <div class="col col-md-8">
-                                                <h1><b>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</b></h1>
+                                                <h1><b>{{ $oferta->empresa->nombre_empresa }}</b> <small>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</small> </h1>
                                                 <div class="text-truncate">
                                                     <p>{{ $oferta->descripcion_oferta }}</p>
                                                 </div>
@@ -93,6 +94,7 @@
                                     @if (!is_null($oferta->fecha_limite_oferta))
                                         <p slot="limit">{{ $oferta->fecha_limite_oferta }}</p>
                                     @endif
+                                    <input slot="oferta" type="text" value="{{ $oferta->id_oferta }}" hidden="true">
                                 </modal>
                             @endif
                         @endforeach
@@ -110,7 +112,7 @@
                 <div class="modal-wrapper">
                     <div class="modal-container">
 
-                        <div class="modal-header widget-user-header bg-black" style="background: url(<?php echo asset($usuario->foto_usuario); ?>) center center; height: 128px;"></div>
+                        <div class="modal-header widget-user-header bg-blue" style="background: url(<?php echo asset($usuario->foto_usuario); ?>) center center; height: 128px;"></div>
 
                         <div class="modal-body warning">
                             <slot name="header">Contacto <slot name="sub-header">Empresa</slot></slot>
@@ -127,9 +129,7 @@
                             <!-- button class="modal-default-button" @click="$emit('close')" style="width: 100%;">Cerrar</button -->
                             <div class="row">
                                 <div class="col col-md-6 seccess">
-                                    <form action="" method="get">
-                                        <button type="submit" style="width: 100%; background-color: #28A745; color: #fff;">Asignar</button>
-                                    </form>
+                                    <slot name="oferta">Asignar</slot>
                                 </div>
                                 <div class="col col-md-6 cancel">
                                     <button type="button" class="modal-default-button" @click="$emit('close')" style="width: 100%;">Cerrar</button>

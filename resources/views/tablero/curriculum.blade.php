@@ -84,7 +84,7 @@
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
                                 <div class="form-select {{ $errors->has('tipo_estudio') ? 'error' : '' }}">
-                                    <select name="tipo_estudio[0]" class="custom-select {{ $errors->has('tipo_estudio') ? 'error' : '' }}">
+                                    <select name="tipo_estudio[0]" class="custom-select tipo-estudio {{ $errors->has('tipo_estudio') ? 'error' : '' }}">
                                         <option value="0">Tipo de Estudio</option>
                                         @foreach ($tipo_estudio as $estudio)
                                             <option value="{{ $estudio->id_tipo_estudio }}" {{ (old('tipo_estudio')==$estudio->id_tipo_estudio) ? 'selected' : '' }}>{{ $estudio->tipo_estudio }}</option>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="estudio_academico[0]" placeholder="Estudio/Carrera" class="{{ $errors->has('estudio_academico') ? 'error' : '' }}" value="{{ old('estudio_academico') }}">
+                                <input type="text" name="estudio_academico[0]" placeholder="Estudio/Carrera" class="{{ $errors->has('estudio_academico') ? 'error' : '' }} estudio" value="{{ old('estudio_academico') }}">
                                 {!! $errors->first('estudio_academico', '<span class="help-block"><b>:message</b></span>') !!}
                             </div>
                         </div>
@@ -323,14 +323,5 @@
         </div>
 
     </form>
-
-    @if (session()->has('flash'))
-        <div class="alert alert-info" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            {{ session('flash') }}
-        </div>
-    @endif
 
 @endsection

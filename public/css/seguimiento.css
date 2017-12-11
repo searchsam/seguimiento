@@ -605,9 +605,31 @@ input:checked + .slider:before,
   border-left-color: #1C3170;
 }
 
+.box {
+  border-radius: 0;
+  -webkit-box-shadow: 0 0 0 0;
+          box-shadow: 0 0 0 0;
+}
+
+.box .box-header.with-border {
+  text-align: center;
+}
+
+.box .box-header.with-border h3 {
+  font-size: 30px;
+}
+
 .box .box-primary {
   border-radius: 0;
   border-top-color: #4D73BA;
+}
+
+.box .box-default {
+  border-color: #4D73BA;
+}
+
+.box .box-info {
+  border-color: #17A2B8;
 }
 
 .box .box-solid .box-warning {
@@ -751,24 +773,6 @@ input:checked + .slider:before,
 .navbar-custom-menu .navbar-nav .tasks-menu .dropdown-menu li.footer a {
   border: 0;
   border-radius: 0;
-}
-
-.box {
-  border-radius: 0;
-  -webkit-box-shadow: 0 0 0 0;
-          box-shadow: 0 0 0 0;
-}
-
-.box.box-default {
-  border-color: #4D73BA;
-}
-
-.box-header.with-border {
-  text-align: center;
-}
-
-.box-header.with-border h3 {
-  font-size: 30px;
 }
 
 .messages-warning {
@@ -1451,6 +1455,44 @@ input:checked + .slider:before,
 
 .bg-blue-active {
   background-color: #1C3170 !important;
+}
+
+.datepicker .datepicker-dropdown .dropdown-menu .datepicker-orient-left .datepicker-orient-top {
+  z-index: 1030;
+}
+
+.box-selectable {
+  border-radius: 0;
+}
+
+.box-selectable .info-box-icon {
+  border-radius: 0;
+}
+
+.box-selectable .info-box-icon .img-circle,
+.box-selectable .info-box-icon .navbar-nav > .user-menu .user-image,
+.navbar-nav > .user-menu .box-selectable .info-box-icon .user-image,
+.box-selectable .info-box-icon .user-panel > .image > img {
+  max-height: 90%;
+  margin-top: -8px;
+}
+
+.box-selectable .info-box-icon .img-circle:hover,
+.box-selectable .info-box-icon .navbar-nav > .user-menu .user-image:hover,
+.navbar-nav > .user-menu .box-selectable .info-box-icon .user-image:hover,
+.box-selectable .info-box-icon .user-panel > .image > img:hover {
+  border-color: #28A745;
+}
+
+.box-selectable .info-box-content .info-box-number a:hover {
+  color: #28A745;
+}
+
+#enviar {
+  position: absolute;
+  right: 20px;
+  bottom: 75px;
+  z-index: 1030;
 }
 
 @media only screen and (max-width: 500px) {

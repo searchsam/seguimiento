@@ -3,14 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Estudiante extends Model
 {
+
+    use Notifiable;
+
     protected $table        = 'estudiante';    // Nombre de la tabla
     protected $primaryKey   = 'id_estudiante'; // Identicador
 
     /**
      * Campos de la tabla de estudiante para asignacion masiva
+     *
+     * @var array
+     *
      */
     protected $fillable = [
         'codigo_estudiante',

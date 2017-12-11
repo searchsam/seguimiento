@@ -30,7 +30,7 @@
                         <div class="col-sm-4">
                             <div class="description-block">
                                 <h5 class="description-header">{{ $estudiantes }}</h5>
-                                <span class="description-text"><a href="#">ESTUDIANTES</a></span>
+                                <span class="description-text"><a href="{{ route('ver_estudiantes') }}">ESTUDIANTES</a></span>
                             </div><!-- /.description-block -->
                         </div><!-- /.col -->
                     </div><!-- /.row -->

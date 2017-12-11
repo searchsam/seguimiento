@@ -17,7 +17,7 @@ class CreateContactoTable extends Migration
             $table->increments('id_contacto');
             $table->string('nombre_contacto');
             $table->string('apellido_contacto');
-            $table->string('cedula_contacto');
+            $table->string('cedula_contacto')->nullable();
             $table->string('cargo_contacto');
             $table->string('email_contacto');
             $table->string('telefono_institucional');

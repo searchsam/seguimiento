@@ -52,12 +52,10 @@ class EmpresaController extends Controller
     {
         $validate = $request->validate([
             'nombre_empresa' => 'required|string',
-            'ruc'            => 'required|string',
             'direccion'      => 'required|string',
             'foto'           => 'nullable|image',
             'nombre'         => 'required|string',
             'apellido'       => 'required|string',
-            'cedula'         => ['required', new Cedula],
             'cargo'          => 'required|string',
             'email'          => 'required|email',
             'telefono'       => 'required|string',
@@ -65,10 +63,9 @@ class EmpresaController extends Controller
 
         // Guardar Empresa
         $empresa = new Empresa;
-        if ( !empty($request->nombre_empresa) and !empty($request->ruc) and !empty($request->direccion)  )
+        if ( !empty($request->nombre_empresa) and !empty($request->direccion)  )
         {
             $empresa->nombre_empresa    = trim( $request->nombre_empresa );
-            $empresa->ruc_empresa       = trim( $request->ruc );
             $empresa->direccion_empresa = trim( $request->direccion );
             $empresa->usuario_id        = Auth::id();
             $empresa->save();
@@ -89,12 +86,11 @@ class EmpresaController extends Controller
         }
 
         // Guarda datos de contacto
-        if ( !is_null($request->nombre) and !is_null($request->apellido) and !is_null($request->cedula) and !is_null($request->cargo) and !is_null($request->email) and !is_null($request->telefono) )
+        if ( !is_null($request->nombre) and !is_null($request->apellido) and !is_null($request->cargo) and !is_null($request->email) and !is_null($request->telefono) )
         {
             $contacto = new Contacto;
             $contacto->nombre_contacto        = trim( $request->nombre );
             $contacto->apellido_contacto      = trim( $request->apellido );
-            $contacto->cedula_contacto        = trim( $request->cedula );
             $contacto->cargo_contacto         = trim( $request->cargo );
             $contacto->email_contacto         = trim( $request->email );
             $contacto->telefono_institucional = trim( $request->telefono );

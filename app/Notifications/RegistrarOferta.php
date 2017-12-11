@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class RegistrarPlanEstudios extends Notification
+class RegistrarOferta extends Notification
 {
     use Queueable;
 
@@ -27,23 +27,23 @@ class RegistrarPlanEstudios extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable)
-    {
-        return ['database'];
-    }
+     public function via($notifiable)
+     {
+         return ['database'];
+     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toDatabase($notifiable)
-    {
-        return [
-            'tipo' => 'flag',
-            'text' => 'No ha creado resumen de vida.',
-            'ruta' => 'registro_curriculum'
-        ];
-    }
+     /**
+      * Get the array representation of the notification.
+      *
+      * @param  mixed  $notifiable
+      * @return array
+      */
+     public function toDatabase($notifiable)
+     {
+         return [
+             'tipo' => 'bell',
+             'text' => 'Se ha generado una nueva Oferta.',
+             'ruta' => 'ver_ofertas'
+         ];
+     }
 }

@@ -207,6 +207,19 @@ $(document).on('click', '#agregar-academico', function() {
   });
 });
 
+$(document).on('change', '.tipo-estudio', function() {
+  var el, opcion;
+  el = $(this).parents('.row').find('.estudio');
+  opcion = $(this).val().localeCompare("5");
+  if (opcion === 0) {
+    return $.get('/ajax/add_estudio', function(data) {
+      return el.replaceWith(data);
+    });
+  } else {
+    return el.replaceWith('<input type="text" name="estudio_academico[0]" placeholder="Estudio/Carrera" class="estudio">');
+  }
+});
+
 // QUITAR
 $(document).on('click', '.quitar', function() {
   return $(this).parents('.row').css('display', 'none');
@@ -236,6 +249,35 @@ $(document).on('click', '.closebtn', function() {
   return setTimeout((function() {
     return div.style.display = 'none';
   }), 600);
+});
+
+// Seleccionar uno o varios estudiantes
+$(document).on('click', '.info-box-icon', function() {
+  var estudiante_eleccionado;
+  estudiante_eleccionado = $('.box-selectable').children('input:checkbox').is(':checked');
+  if (estudiante_eleccionado) {
+    $('.box-selectable').children('input:checkbox').prop('checked', false);
+    return $('.box-selectable').css({
+      'background-color': 'white',
+      'color': '#808080'
+    });
+  } else {
+    $('.box-selectable').children('input:checkbox').prop('checked', true);
+    return $('.box-selectable').css({
+      'background-color': '#1C3170',
+      'color': 'white'
+    });
+  }
+});
+
+$(document).on('click', '#enviar', function() {
+  var seleccionados;
+  seleccionados = $('input:checked').length;
+  if ((seleccionados - 1) <= 0) {
+    return alert('No ha seleccionado al menos un estudiante');
+  } else {
+    return $('#asignar-form').submit();
+  }
 });
 
 

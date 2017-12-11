@@ -46,7 +46,10 @@ Route::prefix( 'usuario' )->group( function () {
     Route::get( 'inicio', 'UsuarioController@index' )->name( 'perfil_usuario' );
     Route::get( 'registro_usuario', 'UsuarioController@registro' )->name( 'registro_usuario' );
     Route::get( 'ofertas', 'OfertaController@usuario_ofertas' )->name( 'ver_ofertas' );
-    //Route::get( 'ofertas', 'OfertaController@index' )->name( 'ofertas' );
+    Route::get( 'estudiantes', 'EstudianteController@usuario_estudiantes' )->name( 'ver_estudiantes' );
+    Route::get( 'asignacion/{oferta}', 'EstudianteController@estudiantes_asignacion' )->name( 'asignacion' );
+    Route::get( 'perfil_estudiante/{estudiante}', 'EstudianteController@perfil_estudiante' )->name( 'estudiante_perfil' );
+    Route::post( 'asignar', 'EstudianteController@asignar' )->name( 'asignar' );
 });
 
 Route::prefix( 'admin' )->group( function () {
@@ -64,4 +67,5 @@ Route::prefix( 'ajax' )->group( function () {
     // Ajax
     Route::any( 'add_academico', 'AjaxController@add_academico' )->name( 'add_academico' );
     Route::any( 'add_laboral', 'AjaxController@add_laboral' )->name( 'add_laboral' );
+    Route::any( 'add_estudio', 'AjaxController@add_estudio' )->name( 'add_estudio' );
 });

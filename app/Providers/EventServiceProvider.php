@@ -34,6 +34,12 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\GenerarLineaTiempo' => [
             'App\Listeners\CrearEvento',
         ],
+        'App\Events\NotificacionesUsuario' => [
+            'App\Listeners\CrearNotificacionesUsuario',
+        ],
+        'App\Events\NotificacionesOferta' => [
+            'App\Listeners\CrearNotificacionOferta',
+        ],
     ];
 
     /**

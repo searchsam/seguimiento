@@ -22,10 +22,12 @@
                             <input type="text" name="nombre_empresa" style="width:100%" placeholder="Nombre de la Empresa" class="{{ $errors->has('nombre_empresa') ? 'error' : '' }}" value="{{ old('nombre_empresa') }}">
                             {!! $errors->first('nombre_empresa', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
+                        {{--
                         <div class="form-group">
                             <input type="text" name="ruc" style="width:100%" placeholder="N&uacute;mero RUC" class="{{ $errors->has('ruc') ? 'error' : '' }}" value="{{ old('ruc') }}">
                             {!! $errors->first('ruc', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
+                        --}}
                         <div class="form-group">
                             <textarea rows="5" name="direccion" style="width:100%" placeholder="Direcci&oacute;n de la Empresa" class="{{ $errors->has('direccion') ? 'error' : '' }}">{{ old('direccion') }}</textarea>
                             {!! $errors->first('direccion', '<span class="help-block"><b>:message</b></span>') !!}
@@ -38,10 +40,12 @@
                             <input type="text" name="apellido" style="width:100%" placeholder="Apellido del Contacto" value="{{ old('apellido', $usuario->apellido_usuario) }}" class="{{ $errors->has('apellido') ? 'error' : '' }}">
                             {!! $errors->first('apellido', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
+                        {{--
                         <div class="form-group">
                             <input type="text" name="cedula" style="width:100%" placeholder="Cedula del Contacto" class="{{ $errors->has('cedula') ? 'error' : '' }}" value="{{ old('cedula') }}">
                             {!! $errors->first('cedula', '<span class="help-block"><b>:message</b></span>') !!}
                         </div>
+                        --}}
                         <div class="form-group">
                             <input type="text" name="cargo" style="width:100%" placeholder="Cargo del Contacto" class="{{ $errors->has('cargo') ? 'error' : '' }}" value="{{ old('cargo') }}">
                             {!! $errors->first('cargo', '<span class="help-block"><b>:message</b></span>') !!}
