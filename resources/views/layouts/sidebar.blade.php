@@ -13,7 +13,7 @@
 
             <div class="pull-left info">
                 @php
-                    $user_name = explode(" ", $usuario->nombre_usuario);
+                    $user_name = explode(" ", session('usuario')->nombre_usuario);
                 @endphp
                 <p>{{ strtolower($user_name[0]) }}</p>
 

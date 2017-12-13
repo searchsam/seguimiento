@@ -49,7 +49,7 @@
                 <!-- Notifications Menu -->
                 <li class="dropdown notifications-menu">
 
-                    <!-- Menu toggle button -->
+                    <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     @if ( !is_null( $bells ) AND (count( $bells ) >= 1) )
                             <i class="fa fa-bell"></i>
@@ -59,7 +59,7 @@
                     <ul class="dropdown-menu">
                         <li class="header">Tienes {{ count( $bells ) }} notificaciones.</li>
                         <li>
-                            <!-- Inner Menu: contains the notifications -->
+                            <!-- Inner menu: contains the tasks -->
                             <ul class="menu">
                                 @foreach ( $bells as $bell )
                                     <li><!-- start notification -->
@@ -71,7 +71,7 @@
                                 @endforeach
                             </ul>
                         </li>
-                        <!-- li class="footer"><a href="#">View all</a></li -->
+                        <!-- li class="footer"><a href="#">View all tasks</a></li -->
                     </ul>
                     @else
                         <i class="fa fa-bell-o"></i>
@@ -127,7 +127,7 @@
                         <!-- The user image in the navbar-->
                         <img src="{{ asset(session('usuario')->foto_usuario) }}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</span>
+                        <span class="hidden-xs">{{ session('usuario')->nombre_usuario }} {{ session('usuario')->apellido_usuario }}</span>
                     </a>
 
                     <ul class="dropdown-menu">
@@ -135,7 +135,7 @@
                         <li class="user-header">
                             <img src="{{ asset(session('usuario')->foto_usuario) }}" class="img-circle" alt="User Image" />
                             <p>
-                                {{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }} <br> {{ $usuario->tipousuario->tipo_usuario }}
+                                {{ session('usuario')->nombre_usuario }} {{ session('usuario')->apellido_usuario }} <br> {{ session('usuario')->tipousuario->tipo_usuario }}
                             </p>
                         </li>
 

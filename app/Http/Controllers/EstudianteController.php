@@ -18,6 +18,7 @@ use App\Events\GenerarLineaTiempo;
 use App\Events\NotificacionesEstudiante;
 
 // Modelos
+use App\User;
 use App\Oferta;
 use App\Carrera;
 use App\Usuario;
@@ -412,10 +413,11 @@ class EstudianteController extends Controller
         {
             foreach($request->estudiante as $estudiante)
             {
-                dd($estudiante);
-                $user = Estudiante::find($estudiante)->user();
+                $estudiante = Estudiante::find($estudiante);
+                $user = User::find($estudiante->usuario_id);
                 $user->notify(new AsignarNotificacion());
             }
+            return redirect()->route( 'ver_ofertas' );
         }
         return back()->with( 'flash', 'Selecciones al menos un estudiante' );
     }

@@ -18,7 +18,7 @@ class AsignarNotificacion extends Notification
      */
      public function via($notifiable)
      {
-         return ['mail', 'database'];
+         return ['database'];//, 'mail'];
      }
 
      /**
@@ -29,7 +29,7 @@ class AsignarNotificacion extends Notification
       */
      public function toMail($notifiable)
      {
-         return (new MailMessage)->markdown('emails.confirmacion', ['user' => $notifiable]);
+         return (new MailMessage)->markdown('emails.confirmacion', ['usuario' => $notifiable]);
      }
 
      /**

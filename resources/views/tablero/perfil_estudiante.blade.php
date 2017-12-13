@@ -47,7 +47,7 @@
                     <p class="text-muted">{{ $usuario->estudiante->direccion_estudiante }} - {{ $usuario->estudiante->ciudad_estudiante }}</p>
                     <hr />
                     <strong><i class="fa fa-envelope margin-r-5"></i> Correo Electronico</strong>
-                    <p class="text-muted">{{ $usuario->email_usuario }}</p>
+                    <p class="text-muted">{{ $usuario->estudiante->email_estudiante }}</p>
                     <hr />
                     <strong><i class="fa fa-mobile margin-r-5"></i> Celular</strong>
                     <p class="text-muted">{{ $usuario->estudiante->celular_estudiante }}</p>
