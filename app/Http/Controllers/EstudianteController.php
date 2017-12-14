@@ -22,6 +22,7 @@ use App\User;
 use App\Oferta;
 use App\Carrera;
 use App\Usuario;
+use App\Asignacion;
 use App\Estudiante;
 use App\TipoEstudio;
 use App\LineaTiempo;
@@ -413,6 +414,11 @@ class EstudianteController extends Controller
         {
             foreach($request->estudiante as $estudiante)
             {
+                $asignar = new Asignacion;
+                $asignar->oferta_id     = $request->oferta;
+                $asignar->estudiante_id = $estudiante;
+                $asignar->save();
+
                 $estudiante = Estudiante::find($estudiante);
                 $user = User::find($estudiante->usuario_id);
                 $user->notify(new AsignarNotificacion());
@@ -420,5 +426,22 @@ class EstudianteController extends Controller
             return redirect()->route( 'ver_ofertas' );
         }
         return back()->with( 'flash', 'Selecciones al menos un estudiante' );
+    }
+
+    public function ver_ofertas()
+    {
+        $data['usuario']        = session('usuario');
+        $usuario                = session('usuario');
+        $data['asignaciones']   = Asignacion::where([ ['estudiante_id', $usuario->estudiante->id_estudiante], ['aplica', 0] ])->get();
+        $data['page_title']     = 'Ofertas asignadas';
+        return view('tablero.estudiante_ofertas', $data);
+    }
+
+    public function aplicacion(Asignacion $asignacion)
+    {
+        //Asignacion::find($asignacion->id_asignacion);
+        $asignacion->aplica = 1;
+        $asignacion->save();
+        return redirect()->route( 'aplicar_ofertas' );
     }
 }

@@ -43,7 +43,7 @@ class AsignarNotificacion extends Notification
          return [
              'tipo' => 'bell',
              'text' => 'Se te ha enviado una oferta.',
-             'ruta' => 'ver_ofertas'
+             'ruta' => 'aplicar_ofertas'
          ];
      }
 }

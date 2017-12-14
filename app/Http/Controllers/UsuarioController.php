@@ -14,6 +14,7 @@ use App\Events\ActualizarSession;
 use App\Oferta;
 use App\Empresa;
 use App\Usuario;
+use App\Asignacion;
 use App\Estudiante;
 use App\LineaTiempo;
 
@@ -42,6 +43,6 @@ class UsuarioController extends Controller
 
     public function registro()
     {
-
+        return true;
     }
 }

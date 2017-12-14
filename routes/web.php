@@ -30,6 +30,8 @@ Route::prefix( 'tablero' )->group( function () {
         Route::get( 'registro_curriculum', 'EstudianteController@registro' )->name( 'registro_curriculum' );
         Route::post( 'registrar_curriculum', 'EstudianteController@registrar' )->name( 'registrar_curriculum' );
         Route::get( 'subir_curriculum', 'EstudianteController@subir' )->name( 'subir_curriculum' );
+        Route::get( 'ver_ofertas', 'EstudianteController@ver_ofertas' )->name( 'aplicar_ofertas' );
+        Route::get( 'aplicacion/{asignacion}', 'EstudianteController@aplicacion' )->name( 'aplicacion' );
     });
 
     Route::prefix( 'empresa')->group( function () {
