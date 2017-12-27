@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Events\MarcarComoLeida;
 use App\Events\GenerarLineaTiempo;
 use App\Events\NotificacionesOferta;
+use App\Events\NotificacionesAplicacion;
 
 // Modelos
 use App\Oferta;
@@ -87,7 +88,17 @@ class OfertaController extends Controller
         $data['usuario']     = session( 'usuario' );
         $data['ofertas']     = Oferta::all();
         $data['page_title']  = 'Ofertas de Empresas';
+        event( new MarcarComoLeida(Auth::user(), 'GenerarAplicacion' ) );
         event( new MarcarComoLeida( Auth::user(), 'RegistrarOferta' ) );
         return view('usuario.ofertas_empresas', $data);
+    }
+
+    // Cambia el estado de una oferta hacia aplicacion
+    public function atender(Oferta $oferta)
+    {
+        $oferta->estado_oferta = 1;
+        $oferta->save();
+        event( new NotificacionesAplicacion(Auth::user(), $oferta->empresa->id_empresa ) );
+        return redirect()->route( 'ver_ofertas' );
     }
 }

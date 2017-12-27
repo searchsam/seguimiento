@@ -37,4 +37,12 @@ class Oferta extends Model
     {
         return $this->belongsTo('App\TipoOferta', 'tipo_oferta_id');
     }
+
+    /**
+     * Obtener el registro de las asignaciones asociadas con la oferta.
+     */
+    public function asignacion()
+    {
+        return $this->hasMany('App\Asignacion', 'oferta_id');
+    }
 }

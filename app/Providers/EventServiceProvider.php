@@ -40,6 +40,12 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\NotificacionesOferta' => [
             'App\Listeners\CrearNotificacionOferta',
         ],
+        'App\Events\NotificacionesAplicacion' => [
+            'App\Listeners\CrearNotificacionAplicacion',
+        ],
+        'App\Events\NotificacionesCandidato' => [
+            'App\Listeners\CrearNotificacionCandidato',
+        ],
     ];
 
     /**

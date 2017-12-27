@@ -15,6 +15,7 @@ use App\Notifications\AsignarNotificacion;
 use App\Events\MarcarComoLeida;
 use App\Events\ActualizarSession;
 use App\Events\GenerarLineaTiempo;
+use App\Events\NotificacionesCandidato;
 use App\Events\NotificacionesEstudiante;
 
 // Modelos
@@ -434,14 +435,16 @@ class EstudianteController extends Controller
         $usuario                = session('usuario');
         $data['asignaciones']   = Asignacion::where([ ['estudiante_id', $usuario->estudiante->id_estudiante], ['aplica', 0] ])->get();
         $data['page_title']     = 'Ofertas asignadas';
+
+        event(new MarcarComoLeida(Auth::user(), 'AsignarNotificacion'));
         return view('tablero.estudiante_ofertas', $data);
     }
 
     public function aplicacion(Asignacion $asignacion)
     {
-        //Asignacion::find($asignacion->id_asignacion);
         $asignacion->aplica = 1;
         $asignacion->save();
+        event(new NotificacionesCandidato(Auth::user()));
         return redirect()->route( 'aplicar_ofertas' );
     }
 }
