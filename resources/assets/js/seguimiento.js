@@ -101,10 +101,60 @@ window.addEventListener('load', function () {
     Vue.component('modal', {
         template: '#modal-template'
     });
-
-    // start app
+//  ===================================================================> Empresa
+    // Empresa - mostrar oferta
     new Vue({
         el: '#mostrar-oferta',
+        data: {
+            showModal: false
+        },
+        methods: {
+            close() {
+                alert('hole');
+            }
+        }
+    });
+    // Empresa - mostrar candidato
+    new Vue({
+        el: '#mostrar-candidato',
+        data: {
+            showModal: false
+        },
+        methods: {
+            close() {
+                alert('hole');
+            }
+        }
+    });
+//  ==================================================================> Ususario
+    // Usuario - mostrar asignar oferta a cantidato
+    new Vue({
+        el: '#mostrar-asignar',
+        data: {
+            showModal: false
+        },
+        methods: {
+            close() {
+                alert('hole');
+            }
+        }
+    });
+    // Usuario - mostrar enviar candidato a empresa
+    new Vue({
+        el: '#mostrar-enviar',
+        data: {
+            showModal: false
+        },
+        methods: {
+            close() {
+                alert('hole');
+            }
+        }
+    });
+//  ================================================================> Estudiante
+    // Estudiante - mostrar opciones de ofertas a aplicar
+    new Vue({
+        el: '#mostrar-aplicar',
         data: {
             showModal: false
         },

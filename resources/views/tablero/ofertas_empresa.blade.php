@@ -1,7 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
-    <div class='row' id="mostrar-oferta">
+    <div class='row'>
         <div class='col-md-6'>
             <!-- Box -->
             <div class="box box-primary">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
 
-                <div class="box-body">
+                <div class="box-body mostrar-oferta" id="mostrar-oferta">
                     <!-- button type="button" data-toggle="modal" data-target="#oferta-modal" class="btn btn-default add-oferta"><i class="fa fa-plus"></i></button -->
                     @if (count($cliente))
                         @foreach ($cliente as $oferta)
@@ -65,7 +65,7 @@
                     </div>
                 </div>
 
-                <div class="box-body">
+                <div class="box-body mostrar-oferta" id="mostrar-candidato">
                     @if (count($cliente))
                         @foreach ($cliente as $oferta)
                             @if ($oferta->estado_oferta == 1)

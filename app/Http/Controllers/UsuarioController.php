@@ -34,7 +34,7 @@ class UsuarioController extends Controller
     {
         $data['usuario']     = session('usuario');
         $data['cliente']     = FALSE;
-        $data['ofertas']     = Oferta::all()->count();
+        $data['ofertas']     = Oferta::where('estado_oferta', '<', 2)->count();
         $data['empresas']    = Empresa::all()->count();
         $data['estudiantes'] = Estudiante::all()->count();
         $data['page_title']  = 'Perfil de Usuario';

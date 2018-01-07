@@ -1,8 +1,8 @@
 @extends('layouts.admin_template')
 
 @section('content')
-    <div class='row' id="mostrar-oferta">
-        <div class='col-md-12'>
+    <div class="row">
+        <div class="col-md-12">
             <!-- Box -->
             <div class="box box-primary">
 
@@ -13,7 +13,7 @@
                     </div>
                 </div>
 
-                <div class="box-body">
+                <div class="box-body mostrar-oferta" id="mostrar-aplicar">
                     <!-- button type="button" data-toggle="modal" data-target="#oferta-modal" class="btn btn-default add-oferta"><i class="fa fa-plus"></i></button -->
                     @if (count($asignaciones))
                         @foreach ($asignaciones as $asignacion)

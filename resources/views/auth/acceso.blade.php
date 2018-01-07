@@ -9,7 +9,7 @@
         <div class="form-log-cont">
 
             <div class="form-log-header">
-                <img src="{{ asset("img/form-log-logo.png")}}" alt="">
+                <img src="{{ asset('storage/log-logo.svg')}}" alt="">
             </div>
 
             <div class="form-log-body">

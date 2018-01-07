@@ -1251,7 +1251,7 @@ input:checked + .slider:before,
   padding: 20px;
 }
 
-#mostrar-oferta .card {
+.mostrar-oferta .card {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   width: 100%;
@@ -1263,12 +1263,12 @@ input:checked + .slider:before,
   position: relative;
 }
 
-#mostrar-oferta .card:hover {
+.mostrar-oferta .card:hover {
   -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-#mostrar-oferta .card .triangle-container {
+.mostrar-oferta .card .triangle-container {
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -1281,19 +1281,19 @@ input:checked + .slider:before,
   line-height: 0px;
 }
 
-#mostrar-oferta .card .warning {
+.mostrar-oferta .card .warning {
   border-right-color: #FFC107;
 }
 
-#mostrar-oferta .card .success {
+.mostrar-oferta .card .success {
   border-right-color: #28A745;
 }
 
-#mostrar-oferta .card .card-body {
+.mostrar-oferta .card .card-body {
   padding: 2px 16px;
 }
 
-#mostrar-oferta .add-oferta {
+.mostrar-oferta .add-oferta {
   border-radius: 0;
   background-color: transparent;
   border: 2px solid #808080;
@@ -1301,7 +1301,7 @@ input:checked + .slider:before,
   width: 100%;
 }
 
-#mostrar-oferta .add-oferta:hover {
+.mostrar-oferta .add-oferta:hover {
   background-color: #808080;
   color: white;
 }

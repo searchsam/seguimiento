@@ -41,6 +41,8 @@ class OfertaController extends Controller
         $data['contacto']    = Empresa::find(  $usuario->id_empresa )->contacto;
         $data['tipo_oferta'] = TipoOferta::all();
         $data['page_title']  = 'Ofertas de Empresa';
+
+        event( new MarcarComoLeida( Auth::user(), 'GenerarAplicacion' ) );
         return view('tablero.ofertas_empresa', $data);
     }
 
@@ -96,7 +98,7 @@ class OfertaController extends Controller
     // Cambia el estado de una oferta hacia aplicacion
     public function atender(Oferta $oferta)
     {
-        $oferta->estado_oferta = 1;
+        $oferta->estado_oferta = 2;
         $oferta->save();
         event( new NotificacionesAplicacion(Auth::user(), $oferta->empresa->id_empresa ) );
         return redirect()->route( 'ver_ofertas' );

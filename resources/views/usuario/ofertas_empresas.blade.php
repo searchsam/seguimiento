@@ -1,8 +1,8 @@
 @extends('layouts.admin_template')
 
 @section('content')
-    <div class='row' id="mostrar-oferta">
-        <div class='col-md-6'>
+    <div class="row">
+        <div class="col-md-6">
             <!-- Box -->
             <div class="box box-primary">
 
@@ -13,11 +13,10 @@
                     </div>
                 </div>
 
-                <div class="box-body">
+                <div class="box-body mostrar-oferta" id="mostrar-asignar">
                     @if (count($ofertas))
                         @foreach ($ofertas as $oferta)
                             @if ($oferta->estado_oferta == 0)
-                                @if ( $oferta->asignacion()->where( [['aplica', '=', '0'], ['oferta_id', '=', $oferta->id_oferta]] )->first() )
                                 <div class="card" id="show-modal" @click="showModal = true">
                                     <div class="triangle-container warning" data-toggle="tooltip" data-placement="left" title="Oferta en espera de ser atendida."></div>
                                     <div class="card-body">
@@ -47,7 +46,7 @@
                                     @endif
                                     <a slot="oferta" class="btn btn-default btn-flat" href="{{ route('asignacion', ['oferta' => $oferta->id_oferta]) }}" style="width: 100%; background-color: #28A745; color: #fff; height: 50px; font-size: 17px;">Asignar</a>
                                 </modal>
-                                @endif
+
                             @endif
                         @endforeach
                     @endif
@@ -67,39 +66,41 @@
                     </div>
                 </div>
 
-                <div class="box-body">
+                <div class="box-body mostrar-oferta" id="mostrar-enviar">
                     @if (count($ofertas))
                         @foreach ($ofertas as $oferta)
-                            @if ( $oferta->asignacion()->where( [['aplica', '=', '1'], ['oferta_id', '=', $oferta->id_oferta]] )->first() )
-                                <div class="card" id="show-modal" @click="showModal = true">
-                                    <div class="triangle-container success" data-toggle="tooltip" data-placement="left" title="Oferta atendida."></div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col col-md-4">
-                                                <img class="img-circle" src="{{ asset($oferta->empresa->usuario->foto_usuario) }}" alt="{{ $oferta->empresa->nombre_empresa }}" width="128px" height="128px">
-                                            </div>
-                                            <div class="col col-md-8">
-                                                <h1><b>{{ $oferta->empresa->nombre_empresa }}</b> <small>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</small> </h1>
-                                                <div class="text-truncate">
-                                                    <p>{{ $oferta->descripcion_oferta }}</p>
+                            @if ($oferta->estado_oferta == 1)
+                                @if ( $oferta->asignacion()->where( [['aplica', '=', '1'], ['oferta_id', '=', $oferta->id_oferta]] )->first() )
+                                    <div class="card" id="show-modal" @click="showModal = true">
+                                        <div class="triangle-container success" data-toggle="tooltip" data-placement="left" title="Oferta atendida."></div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col col-md-4">
+                                                    <img class="img-circle" src="{{ asset($oferta->empresa->usuario->foto_usuario) }}" alt="{{ $oferta->empresa->nombre_empresa }}" width="128px" height="128px">
                                                 </div>
-                                                <p>{{ $oferta->fecha_limite_oferta }}</p>
+                                                <div class="col col-md-8">
+                                                    <h1><b>{{ $oferta->empresa->nombre_empresa }}</b> <small>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</small> </h1>
+                                                    <div class="text-truncate">
+                                                        <p>{{ $oferta->descripcion_oferta }}</p>
+                                                    </div>
+                                                    <p>{{ $oferta->fecha_limite_oferta }}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <modal v-if="showModal" @close="showModal = false">
-                                    <div slot="banner" class="modal-header widget-user-header bg-blue" style="background: url(<?php echo asset($oferta->empresa->usuario->foto_usuario); ?>) center center; height: 128px;"></div>
-                                    <h1 slot="header"><b>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</b> <small slot="sub-header">{{ $oferta->empresa->nombre_empresa }}</small></h1>
-                                    <p slot="body">{{ $oferta->descripcion_oferta }}</p>
-                                    <div slot="color" class="atendida aside"></div>
-                                    <p slot="state" class="aside">Oferta Atendida</p>
-                                    @if (!is_null($oferta->fecha_limite_oferta))
-                                        <p slot="limit">{{ $oferta->fecha_limite_oferta }}</p>
-                                    @endif
-                                    <a slot="oferta" class="btn btn-default btn-flat" href="{{ route('atender', ['oferta' => $oferta->id_oferta]) }}" style="width: 100%; background-color: #28A745; color: #fff; height: 50px; font-size: 17px;">Enviar</a>
-                                </modal>
+                                    <modal v-if="showModal" @close="showModal = false">
+                                        <div slot="banner" class="modal-header widget-user-header bg-blue" style="background: url(<?php echo asset($oferta->empresa->usuario->foto_usuario); ?>) center center; height: 128px;"></div>
+                                        <h1 slot="header"><b>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</b> <small slot="sub-header">{{ $oferta->empresa->nombre_empresa }}</small></h1>
+                                        <p slot="body">{{ $oferta->descripcion_oferta }}</p>
+                                        <div slot="color" class="atendida aside"></div>
+                                        <p slot="state" class="aside">Oferta Atendida</p>
+                                        @if (!is_null($oferta->fecha_limite_oferta))
+                                            <p slot="limit">{{ $oferta->fecha_limite_oferta }}</p>
+                                        @endif
+                                        <a slot="oferta" class="btn btn-default btn-flat" href="{{ route('atender', ['oferta' => $oferta->id_oferta]) }}" style="width: 100%; background-color: #28A745; color: #fff; height: 50px; font-size: 17px;">Enviar</a>
+                                    </modal>
+                                @endif
                             @endif
                         @endforeach
                     @endif

@@ -6,7 +6,7 @@
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><h1>SEGUIMIENTO</h1></span>
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><img src="{{ asset('img/s.png') }}"></span>
+        <span class="logo-mini"><img src="{{ asset('storage/s.svg') }}"></span>
     </a>
 
     <!-- Header Navbar -->
