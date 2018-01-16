@@ -72,3 +72,8 @@ Route::prefix( 'ajax' )->group( function () {
     Route::any( 'add_laboral', 'AjaxController@add_laboral' )->name( 'add_laboral' );
     Route::any( 'add_estudio', 'AjaxController@add_estudio' )->name( 'add_estudio' );
 });
+
+
+Route::get( 'hash/{secrect}', function( $secrect ) {
+    return response()->json([ 'Original' => $secrect, 'Hashed' => Hash::make( $secrect ) ]);
+} );

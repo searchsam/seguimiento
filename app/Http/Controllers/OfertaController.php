@@ -92,6 +92,7 @@ class OfertaController extends Controller
         $data['page_title']  = 'Ofertas de Empresas';
         event( new MarcarComoLeida(Auth::user(), 'GenerarAplicacion' ) );
         event( new MarcarComoLeida( Auth::user(), 'RegistrarOferta' ) );
+        event( new MarcarComoLeida( Auth::user(), 'AtenderOferta' ) );
         return view('usuario.ofertas_empresas', $data);
     }
 

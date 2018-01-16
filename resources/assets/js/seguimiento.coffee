@@ -54,18 +54,14 @@ $ document
 # Seleccionar uno o varios estudiantes
 $ document
     .on 'click', '.info-box-icon', ->
-        estudiante_eleccionado = $ '.box-selectable'
-            .children('input:checkbox').is(':checked')
-        if estudiante_eleccionado
-            $ '.box-selectable'
-                .children('input:checkbox').prop('checked', false)
-            $ '.box-selectable'
-                .css({'background-color': 'white', 'color': '#808080'})
+        estudiante_seleccionado = $ this
+            .parents('.box-selectable')
+        if estudiante_seleccionado.children('input:checkbox').is(':checked')
+            estudiante_seleccionado.children('input:checkbox').prop('checked', false)
+            estudiante_seleccionado.css({'background-color': 'white', 'color': '#808080'})
         else
-            $ '.box-selectable'
-                .children('input:checkbox').prop('checked', true)
-            $ '.box-selectable'
-                .css({'background-color': '#1C3170', 'color': 'white'})
+            estudiante_seleccionado.children('input:checkbox').prop('checked', true)
+            estudiante_seleccionado.css({'background-color': '#1C3170', 'color': 'white'})
 
 $ document
     .on 'click', '#enviar', ->
@@ -76,3 +72,21 @@ $ document
         else
             $ '#asignar-form'
                     .submit()
+
+# Tamaño de los cards de estudiantes
+cards = $ document
+    .find('.info-box')
+cards.each ->
+    alto = $ this
+        .height()
+    css = '{"height":"'+alto+'px", "width":"'+alto+'px"'
+    if alto > 90
+        css += ', "margin-right":"10px"}'
+    else
+        css += '}'
+
+    $ this
+        .children('.info-box-icon').css(JSON.parse(css))
+
+    $ this
+        .find('.img-circle').css({'max-height':(alto-10)+'px', 'max-width':(alto-10)+'px', 'overflow':'hidden'})

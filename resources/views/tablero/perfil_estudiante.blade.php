@@ -91,15 +91,11 @@
                         @foreach ($usuario->estudiante->formacion_academica as $estudio)
                             <tr>
                               <td>{{ $estudio->tipo_estudio->tipo_estudio }}</td>
-                              @if ( strcmp($estudio->nombre_estudio, '5') == 0 )
-                                  @foreach ($carreras as $carrera)
-                                      @if (strcmp($carrera->id_carrera, '5') == 0)
+                              @foreach ($carreras as $carrera)
+                                  @if (strcmp($carrera->id_carrera, $estudio->nombre_estudio) == 0)
                                       <td>{{ $carrera->nombre_carrera }}</td>
-                                      @endif
-                                  @endforeach
-                              @else
-                              <td>{{ $estudio->nombre_estudio }}</td>
-                              @endif
+                                  @endif
+                              @endforeach
                               <td>{{ $estudio->institucion_estudio }}</td>
                               <td>{{ $estudio->localidad_estudio }}</td>
                               <td>{{ $estudio->fecha_estudio }}</td>

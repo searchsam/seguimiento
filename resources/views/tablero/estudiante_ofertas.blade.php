@@ -17,7 +17,7 @@
                     <!-- button type="button" data-toggle="modal" data-target="#oferta-modal" class="btn btn-default add-oferta"><i class="fa fa-plus"></i></button -->
                     @if (count($asignaciones))
                         @foreach ($asignaciones as $asignacion)
-                            @if ($asignacion->oferta->estado_oferta == 0)
+                            @if ($asignacion->oferta->estado_oferta == 1)
                                 <div class='col-md-6'>
                                     <div class="card" id="show-modal" @click="showModal = true">
                                         <div class="triangle-container warning" data-toggle="tooltip" data-placement="left" title="Oferta en espera de ser atendida."></div>

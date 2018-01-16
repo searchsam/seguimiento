@@ -373,6 +373,7 @@ class EstudianteController extends Controller
     public function usuario_estudiantes()
     {
         $data['usuario']        = session('usuario');
+        $data['carreras']       = Carrera::all();
         $data['estudiantes']    = Estudiante::all();
         $data['page_title']     = 'Estudiantes Registrados';
 
@@ -424,6 +425,11 @@ class EstudianteController extends Controller
                 $user = User::find($estudiante->usuario_id);
                 $user->notify(new AsignarNotificacion());
             }
+
+            $oferta = Oferta::find($request->oferta);
+            $oferta->estado_oferta = 1;
+            $oferta->save();
+
             return redirect()->route( 'ver_ofertas' );
         }
         return back()->with( 'flash', 'Selecciones al menos un estudiante' );

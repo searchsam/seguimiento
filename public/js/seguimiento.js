@@ -275,6 +275,8 @@ new Vue({
 /***/ (function(module, exports) {
 
 // FORMACIÓN ACADÉMICA
+var cards;
+
 $(document).on('click', '#agregar-academico', function() {
   return $.get('/ajax/add_academico', function(data) {
     $('#estudio-row').append(data);
@@ -328,17 +330,17 @@ $(document).on('click', '.closebtn', function() {
 
 // Seleccionar uno o varios estudiantes
 $(document).on('click', '.info-box-icon', function() {
-  var estudiante_eleccionado;
-  estudiante_eleccionado = $('.box-selectable').children('input:checkbox').is(':checked');
-  if (estudiante_eleccionado) {
-    $('.box-selectable').children('input:checkbox').prop('checked', false);
-    return $('.box-selectable').css({
+  var estudiante_seleccionado;
+  estudiante_seleccionado = $(this).parents('.box-selectable');
+  if (estudiante_seleccionado.children('input:checkbox').is(':checked')) {
+    estudiante_seleccionado.children('input:checkbox').prop('checked', false);
+    return estudiante_seleccionado.css({
       'background-color': 'white',
       'color': '#808080'
     });
   } else {
-    $('.box-selectable').children('input:checkbox').prop('checked', true);
-    return $('.box-selectable').css({
+    estudiante_seleccionado.children('input:checkbox').prop('checked', true);
+    return estudiante_seleccionado.css({
       'background-color': '#1C3170',
       'color': 'white'
     });
@@ -353,6 +355,26 @@ $(document).on('click', '#enviar', function() {
   } else {
     return $('#asignar-form').submit();
   }
+});
+
+// Tamaño de los cards de estudiantes
+cards = $(document).find('.info-box');
+
+cards.each(function() {
+  var alto, css;
+  alto = $(this).height();
+  css = '{"height":"' + alto + 'px", "width":"' + alto + 'px"';
+  if (alto > 90) {
+    css += ', "margin-right":"10px"}';
+  } else {
+    css += '}';
+  }
+  $(this).children('.info-box-icon').css(JSON.parse(css));
+  return $(this).find('.img-circle').css({
+    'max-height': (alto - 10) + 'px',
+    'max-width': (alto - 10) + 'px',
+    'overflow': 'hidden'
+  });
 });
 
 
