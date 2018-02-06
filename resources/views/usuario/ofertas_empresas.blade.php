@@ -89,7 +89,7 @@
                                         </div>
                                     </div>
 
-                                    <modal v-if="showModal" @close="showModal = false">
+                                    <modal-students v-if="showModal" @close="showModal = false">
                                         <div slot="banner" class="modal-header widget-user-header bg-blue" style="background: url(<?php echo asset($oferta->empresa->usuario->foto_usuario); ?>) center center; height: 128px;"></div>
                                         <h1 slot="header"><b>{{ $oferta->empresa->contacto->nombre_contacto }} {{ $oferta->empresa->contacto->apellido_contacto }}</b> <small slot="sub-header">{{ $oferta->empresa->nombre_empresa }}</small></h1>
                                         <p slot="body">{{ $oferta->descripcion_oferta }}</p>
@@ -98,8 +98,15 @@
                                         @if (!is_null($oferta->fecha_limite_oferta))
                                             <p slot="limit">{{ $oferta->fecha_limite_oferta }}</p>
                                         @endif
+                                        @php $asignaciones = $oferta->asignacion; @endphp
+                                        @foreach ($asignaciones as $asignacion)
+                                        <li slot="candidato">
+                                            <img src="{{ asset($asignacion->estudiante->usuario->foto_usuario) }}" alt="User Image" style="width: 128px; height: 128px;">
+                                            <a class="users-list-name" href="{{ route('estudiante_perfil', ['estudiante' => $asignacion->estudiante->id_estudiante]) }}">{{ $asignacion->estudiante->nombre_estudiante }} {{ $asignacion->estudiante->apellido_estudiante }}</a>
+                                        </li>
+                                        @endforeach
                                         <a slot="oferta" class="btn btn-default btn-flat" href="{{ route('atender', ['oferta' => $oferta->id_oferta]) }}" style="width: 100%; background-color: #28A745; color: #fff; height: 50px; font-size: 17px;">Enviar</a>
-                                    </modal>
+                                    </modal-students>
                                 @endif
                             @endif
                         @endforeach
@@ -117,7 +124,6 @@
                 <div class="modal-wrapper">
                     <div class="modal-container">
                         <slot name="banner"></slot>
-                        <!-- div class="modal-header widget-user-header bg-blue" style="background: url(<?php echo asset($usuario->foto_usuario); ?>) center center; height: 128px;"></div -->
 
                         <div class="modal-body warning">
                             <slot name="header">Contacto <slot name="sub-header">Empresa</slot></slot>
@@ -131,7 +137,47 @@
                                     <slot name="limit"></slot>
                                 </div>
                             </div>
-                            <!-- button class="modal-default-button" @click="$emit('close')" style="width: 100%;">Cerrar</button -->
+                            <div class="row">
+                                <div class="col col-md-6 seccess">
+                                    <slot name="oferta">Asignar</slot>
+                                </div>
+                                <div class="col col-md-6 cancel">
+                                    <button type="button" class="modal-default-button" @click="$emit('close')" style="width: 100%;">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </script>
+
+    <!-- template for the modal component -->
+    <script type="text/x-template" id="modal-template-students">
+        <transition name="modal-students">
+            <div class="modal-mask">
+                <div class="modal-wrapper">
+                    <div class="modal-container">
+                        <slot name="banner"></slot>
+
+                        <div class="modal-body warning">
+                            <slot name="header">Contacto <slot name="sub-header">Empresa a estudiante</slot></slot>
+                            <slot name="body">Descriptcion de la Oferta para el estudiante</slot>
+                            <div class="row">
+                                <div class="col col-md-6">
+                                    <slot name="color"></slot>
+                                    <slot name="state">Estado de la Oferta</slot>
+                                </div>
+                                <div class="col col-md-6 right" style="float: right;">
+                                    <slot name="limit"></slot>
+                                </div>
+                            </div>
+                            <div class="no-padding">
+                                <ul class="users-list clearfix">
+                                    <slot name="candidato"></slot>
+                                </ul>
+                            </div>
                             <div class="row">
                                 <div class="col col-md-6 seccess">
                                     <slot name="oferta">Asignar</slot>

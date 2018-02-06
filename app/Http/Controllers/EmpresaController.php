@@ -111,4 +111,22 @@ class EmpresaController extends Controller
         $name = strtolower( $name );
         return $name;
     }
+
+    public function usuario_empresas()
+    {
+        $data['usuario']        = session('usuario');
+        #$data['carreras']      = Carrera::all();
+        $data['empresas']       = Empresa::all();
+        $data['page_title']     = 'Empresas Registrados';
+
+        return view('usuario.empresas', $data);
+    }
+
+    public function perfil_empresa(Empresa $empresa)
+    {
+        $data['usuario']    = $empresa->usuario;
+        $data['cliente']    = $empresa;
+        $data['page_title'] = 'Perfil de Empresa';
+        return view('tablero.perfil_empresa', $data);
+    }
 }

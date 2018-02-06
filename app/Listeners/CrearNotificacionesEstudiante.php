@@ -46,7 +46,7 @@ class CrearNotificacionesEstudiante implements ShouldQueue
                 }
             }
 
-            if ( !DB::table('notifications')->where([ ['notifiable_id', '=', $event->user->id], ['type', 'LIKE', '*SubirCurriculum'], ])->get())
+            /*if ( !DB::table('notifications')->where([ ['notifiable_id', '=', $event->user->id], ['type', 'LIKE', '*SubirCurriculum'], ])->get())
             {
                 if ( !isset($usuario->estudiante) )
                 {
@@ -59,21 +59,21 @@ class CrearNotificacionesEstudiante implements ShouldQueue
                         $event->user->notify(new SubirCurriculum());
                     }
                 }
-            }
+            }*/
         }
         else {
             if ( !isset($usuario->estudiante) )
             {
                 $event->user->notify(new RegistrarPlanEstudios());
-                $event->user->notify(new SubirCurriculum());
+                //$event->user->notify(new SubirCurriculum());
             }
-            else
+            /*else
             {
                 if ( is_null( $usuario->estudiante->curriculum ) )
                 {
                     $event->user->notify(new SubirCurriculum());
                 }
-            }
+            }*/
         }
 
     }

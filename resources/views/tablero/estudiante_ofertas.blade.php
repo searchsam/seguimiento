@@ -77,7 +77,6 @@
                                     <slot name="limit"></slot>
                                 </div>
                             </div>
-                            <!-- button class="modal-default-button" @click="$emit('close')" style="width: 100%;">Cerrar</button -->
                             <div class="row">
                                 <div class="col col-md-6 seccess">
                                     <slot name="oferta">Asignar</slot>

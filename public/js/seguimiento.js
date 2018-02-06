@@ -179,6 +179,9 @@ window.addEventListener('load', function () {
     Vue.component('modal', {
         template: '#modal-template'
     });
+    Vue.component('modal-students', {
+        template: '#modal-template-students'
+    });
     //  ===================================================================> Empresa
     // Empresa - mostrar oferta
     new Vue({

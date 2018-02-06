@@ -53,6 +53,8 @@ Route::prefix( 'usuario' )->group( function () {
     Route::get( 'perfil_estudiante/{estudiante}', 'EstudianteController@perfil_estudiante' )->name( 'estudiante_perfil' );
     Route::post( 'asignar', 'EstudianteController@asignar' )->name( 'asignar' );
     Route::get( 'atender/{oferta}', 'OfertaController@atender' )->name( 'atender' );
+    Route::get( 'empresas', 'EmpresaController@usuario_empresas' )->name( 'ver_empresas' );
+    Route::get( 'perfil_empresa/{empresa}', 'EmpresaController@perfil_empresa' )->name( 'empresa_perfil' );
 });
 
 Route::prefix( 'admin' )->group( function () {

@@ -68,7 +68,7 @@
                 <div class="box-body mostrar-oferta" id="mostrar-candidato">
                     @if (count($cliente))
                         @foreach ($cliente as $oferta)
-                            @if ($oferta->estado_oferta == 1)
+                            @if ($oferta->estado_oferta == 2)
                                 <div class="card" id="show-modal" @click="showModal = true">
                                     <div class="triangle-container success" data-toggle="tooltip" data-placement="left" title="Oferta atendida."></div>
                                     <div class="card-body">

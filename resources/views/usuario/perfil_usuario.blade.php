@@ -24,7 +24,7 @@
                         <div class="col-sm-4 border-right">
                             <div class="description-block">
                                 <h5 class="description-header">{{ $empresas }}</h5>
-                                <span class="description-text"><a href="#">EMPRESAS</a></span>
+                                <span class="description-text"><a href="{{ route('ver_empresas') }}">EMPRESAS</a></span>
                             </div><!-- /.description-block -->
                         </div><!-- /.col -->
                         <div class="col-sm-4">

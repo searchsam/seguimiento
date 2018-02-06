@@ -1495,6 +1495,30 @@ input:checked + .slider:before,
   z-index: 1030;
 }
 
+.no-padding {
+  border-top: 1px solid #ECF0F5;
+  border-bottom: 1px solid #ECF0F5;
+}
+
+.bg-blue {
+  color: #4D73BA;
+  background-color: #1C3170 !important;
+}
+
+.small-box h3,
+.small-box p {
+  color: #4D73BA;
+}
+
+.small-box .small-box-footer {
+  color: white;
+  background: #808080;
+}
+
+.small-box .small-box-footer:hover {
+  background: rgba(128, 128, 128, 0.8);
+}
+
 @media only screen and (max-width: 500px) {
   .form-log-cont {
     left: 26%;
@@ -1508,6 +1532,6 @@ input:checked + .slider:before,
 }
 
 .flex-center .position-ref .full-height {
-  background-color: #2E5097;
+  background-color: #2E5097 !important;
 }
 

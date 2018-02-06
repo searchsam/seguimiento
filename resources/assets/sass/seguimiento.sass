@@ -830,6 +830,23 @@ input
     bottom: 75px
     z-index: 1030
 
+.no-padding
+    border-top: 1px solid $grisclaro
+    border-bottom: 1px solid $grisclaro
+
+.bg-blue
+    color: $celeste
+    background-color: $azuloscuro !important;
+
+.small-box 
+    h3,p
+        color: $celeste
+    .small-box-footer
+        color: white
+        background: $gris
+        &:hover
+            background: rgba(128, 128, 128, 0.8)
+
 @media only screen and (max-width: 500px)
     // Estilo Login
     .form-log-cont
@@ -842,4 +859,4 @@ input
 
 // Errores
 .flex-center .position-ref .full-height
-    background-color: $azul
+    background-color: $azul !important
