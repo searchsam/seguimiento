@@ -16,5 +16,6 @@
     <ul class="treeview-menu">
         <li><a href="{{ route('ver_ofertas') }}"><i class="fa fa-circle-o"></i>Ver Ofertas</a></li>
         <li><a href="{{ route('registro_oferta') }}"><i class="fa fa-circle-o"></i>Generar Oferta</a></li>
+        <li><a href="{{ route('historial_oferta') }}"><i class="fa fa-circle-o"></i>Historial de Ofertas</a></li>
     </ul>
 </li>

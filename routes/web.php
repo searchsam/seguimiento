@@ -55,10 +55,16 @@ Route::prefix( 'usuario' )->group( function () {
     Route::get( 'atender/{oferta}', 'OfertaController@atender' )->name( 'atender' );
     Route::get( 'empresas', 'EmpresaController@usuario_empresas' )->name( 'ver_empresas' );
     Route::get( 'perfil_empresa/{empresa}', 'EmpresaController@perfil_empresa' )->name( 'empresa_perfil' );
+    Route::get( 'historial/oferta', 'OfertaController@historial_oferta' )->name( 'historial_oferta' );
 });
 
 Route::prefix( 'admin' )->group( function () {
     // Administrador
+    Route::get( 'inicio', 'UsuarioController@perfil' )->name( 'admin_perfil' );
+    Route::get( 'ofertas', 'UsuarioController@ofertas' )->name( 'admin_ofertas' );
+    Route::get( 'empresas', 'UsuarioController@empresas' )->name( 'admin_empresas' );
+    Route::get( 'estudiantes', 'UsuarioController@estudiantes' )->name( 'admin_estudiantes' );
+    Route::get( 'estudiantes', 'UsuarioController@estudiantes' )->name( 'admin_estudiantes' );
 });
 
 Route::prefix( 'error' )->group( function () {

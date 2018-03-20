@@ -40,10 +40,14 @@ class LoginController extends Controller
                 event(new NotificacionesEmpresa(Auth::user()));
                 return redirect()->route( 'perfil_empresa' );
             }
-            if ( $usuario->tipo_usuario_id == 2 OR $usuario->tipo_usuario_id == 1)
+            if ( $usuario->tipo_usuario_id == 2 )
             {
                 //event(new NotificacionesEmpresa(Auth::user()));
                 return redirect()->route( 'perfil_usuario' );
+            }
+            if ( $usuario->tipo_usuario_id == 1)
+            {
+                return redirect()->route( 'admin_perfil' );
             }
         }
 

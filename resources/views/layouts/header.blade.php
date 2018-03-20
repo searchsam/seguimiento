@@ -6,7 +6,11 @@
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><h1>SEGUIMIENTO</h1></span>
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><img src="{{ asset('storage/s.svg') }}"></span>
+        @if($usuario->tipo_usuario_id == 1)
+            <span class="logo-mini"><img src="{{ asset('storage/seguimiento-brand.svg') }}"></span>
+        @else
+            <span class="logo-mini"><img src="{{ asset('storage/s.svg') }}"></span>
+        @endif
     </a>
 
     <!-- Header Navbar -->

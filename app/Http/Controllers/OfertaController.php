@@ -69,6 +69,8 @@ class OfertaController extends Controller
             'descripcion'     => 'required|string',
         ]);
 
+        dd($request->limite)
+
         $empresa = Usuario::find( Auth::id() )->empresa;
         $oferta = new Oferta;
         $oferta->fecha_registro_oferta  = now()->toFormattedDateString();
@@ -103,5 +105,14 @@ class OfertaController extends Controller
         $oferta->save();
         event( new NotificacionesAplicacion(Auth::user(), $oferta->empresa->id_empresa ) );
         return redirect()->route( 'ver_ofertas' );
+    }
+
+    public function historial_oferta()
+    {
+        $data['usuario']     = session('usuario');
+        $data['cliente']     = FALSE;
+        $data['ofertas']     = Oferta::all();
+        $data['page_title']  = 'Historial de Ofertas';
+        return view('usuario.historial_ofertas', $data);
     }
 }
