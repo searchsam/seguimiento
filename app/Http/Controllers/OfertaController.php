@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Rules\Selectnumeric;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,13 @@ class OfertaController extends Controller
     public function registro()
     {
         $usuario = session( 'usuario' );
+
+        if (session()->has('flash_user'))
+        {
+            $usuario = session('flash_user');
+            $data['usuarios'] = Usuario::all();
+        }
+
         if ( $usuario->empresa )
         {
             $data['usuario']     = $usuario;
@@ -69,9 +77,20 @@ class OfertaController extends Controller
             'descripcion'     => 'required|string',
         ]);
 
-        dd($request->limite)
+        if (is_null($request->limite))
+        {
+            $request->limite = Carbon::tomorrow();
+        }
+
+        dd($request->limite);
 
         $empresa = Usuario::find( Auth::id() )->empresa;
+
+        if (session()->has('flash_user'))
+        {
+            $empresa = session('flash_user')->empresa;
+        }
+
         $oferta = new Oferta;
         $oferta->fecha_registro_oferta  = now()->toFormattedDateString();
         $oferta->fecha_limite_oferta    = $request->limite;

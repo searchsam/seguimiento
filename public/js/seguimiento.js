@@ -380,6 +380,17 @@ cards.each(function() {
   });
 });
 
+// Super Administrador selection
+$(document).on('click', '.control-sidebar-menu li', function() {
+  var id;
+  $('.control-sidebar-menu li').removeClass('selected');
+  $(this).addClass('selected');
+  id = $(this).attr('data');
+  return $.get('/ajax/add_flash/' + id, function(data) {
+    return console.log(data);
+  });
+});
+
 
 /***/ })
 

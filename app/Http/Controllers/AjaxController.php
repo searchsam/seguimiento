@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Carrera;
+use App\Usuario;
 use App\TipoEstudio;
 
 class AjaxController extends Controller
@@ -106,5 +107,11 @@ class AjaxController extends Controller
                 }
         echo '</select>
         </div>';
+    }
+
+    public function add_flash(Usuario $usuario)
+    {
+        session(['flash_user' => $usuario]);
+        echo session('flash_user');
     }
 }

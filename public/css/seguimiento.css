@@ -1519,6 +1519,10 @@ input:checked + .slider:before,
   background: rgba(128, 128, 128, 0.8);
 }
 
+.selected {
+  background: #1e282c;
+}
+
 @media only screen and (max-width: 500px) {
   .form-log-cont {
     left: 26%;

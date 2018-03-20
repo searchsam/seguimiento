@@ -90,3 +90,15 @@ cards.each ->
 
     $ this
         .find('.img-circle').css({'max-height':(alto-10)+'px', 'max-width':(alto-10)+'px', 'overflow':'hidden'})
+
+# Super Administrador selection
+$ document
+    .on 'click', '.control-sidebar-menu li', ->
+        $ '.control-sidebar-menu li'
+            .removeClass('selected')
+        $ this
+            .addClass('selected')
+        id = $ this
+            .attr('data')
+        $.get '/ajax/add_flash/' + id, (data) ->
+            console.log(data)

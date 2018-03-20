@@ -17,17 +17,29 @@
 
             <ul class="control-sidebar-menu">
                 @foreach ($usuarios as $usuario)
-                <li>
-                    <a href="{{  }}">
-                        <div class="user-block">
-                            <img class="img-circle" src="{{ asset($usuario->foto_usuario) }}" alt="User Image">
-                            <div class="menu-info">
-                                <h4 class="control-sidebar-subheading">{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</h4>
-                                <p>{{ $usuario->tipo_usuario }}</p>
+                    @if ($usuario->id_usuario > 1)
+                    @php
+                        $activo = '';
+                        if (session()->has('flash_user'))
+                        {
+                            if(session('flash_user')->id_usuario == $usuario->id_usuario)
+                            {
+                                $activo = 'selected';
+                            }
+                        }
+                    @endphp
+                    <li data="{{ $usuario->id_usuario }}" class="{{ $activo }}">
+                        <a href="#">
+                            <div class="user-block">
+                                <img class="img-circle" src="{{ asset($usuario->foto_usuario) }}" alt="User Image">
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</h4>
+                                    <p>{{ $usuario->tipousuario->tipo_usuario }}</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
+                        </a>
+                    </li>
+                    @endif
                 @endforeach
             </ul>
             <!-- /.control-sidebar-menu -->
