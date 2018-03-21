@@ -20,9 +20,9 @@
                     @if ($usuario->id_usuario > 1)
                     @php
                         $activo = '';
-                        if (session()->has('flash_user'))
+                        if (session()->has('flash_usuario'))
                         {
-                            if(session('flash_user')->id_usuario == $usuario->id_usuario)
+                            if(session('flash_usuario')->id_usuario == $usuario->id_usuario)
                             {
                                 $activo = 'selected';
                             }

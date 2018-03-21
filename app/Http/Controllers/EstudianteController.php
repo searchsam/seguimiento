@@ -50,8 +50,9 @@ class EstudianteController extends Controller
     {
         $data['usuario']    = session('usuario');
         $data['cliente']    = Estudiante::where( 'usuario_id', Auth::id() )->get();
-        $data['carreras']    = Carrera::all();
+        $data['carreras']   = Carrera::all();
         $data['page_title'] = 'Perfil de Estudiante';
+        $data['usuarios']   = Usuario::all();
         return view('tablero.perfil_estudiante', $data);
     }
 
@@ -60,7 +61,7 @@ class EstudianteController extends Controller
         $data['usuario']        = session('usuario');
         $data['tipo_estudio']   = TipoEstudio::all();
         $data['page_title']     = 'Registrar Resumen de Vida';
-
+        $data['usuarios']       = Usuario::all();
         return view('tablero.curriculum', $data);
     }
 
@@ -376,7 +377,7 @@ class EstudianteController extends Controller
         $data['carreras']       = Carrera::all();
         $data['estudiantes']    = Estudiante::all();
         $data['page_title']     = 'Estudiantes Registrados';
-
+        $data['usuarios']       = Usuario::all();
         return view('usuario.estudiantes', $data);
     }
 
@@ -397,7 +398,7 @@ class EstudianteController extends Controller
         $data['estudiantes']    = $estudiantes;
         $data['carreras']       = Carrera::all();
         $data['page_title']     = 'Estudiantes Registrados';
-
+        $data['usuarios']       = Usuario::all();
         return view('usuario.ofertas_estudiantes', $data);
     }
 
@@ -407,6 +408,7 @@ class EstudianteController extends Controller
         $data['cliente']    = $estudiante;
         $data['carreras']   = Carrera::all();
         $data['page_title'] = 'Perfil de Estudiante';
+        $data['usuarios']   = Usuario::all();
         return view('tablero.perfil_estudiante', $data);
     }
 
@@ -441,7 +443,7 @@ class EstudianteController extends Controller
         $usuario                = session('usuario');
         $data['asignaciones']   = Asignacion::where([ ['estudiante_id', $usuario->estudiante->id_estudiante], ['aplica', 0] ])->get();
         $data['page_title']     = 'Ofertas asignadas';
-
+        $data['usuarios']       = Usuario::all();
         event(new MarcarComoLeida(Auth::user(), 'AsignarNotificacion'));
         return view('tablero.estudiante_ofertas', $data);
     }

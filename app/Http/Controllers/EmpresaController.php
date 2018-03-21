@@ -38,6 +38,7 @@ class EmpresaController extends Controller
         $data['usuario']    = session( 'usuario' );
         $data['cliente']    = Empresa::where( 'usuario_id', Auth::id() )->get();
         $data['page_title'] = 'Perfil de Empresa';
+        $data['usuarios']   = Usuario::all();
         return view('tablero.perfil_empresa', $data);
     }
 
@@ -45,6 +46,7 @@ class EmpresaController extends Controller
     {
         $data['usuario']    = session( 'usuario' );
         $data['page_title'] = 'Registrar Identidad Empresarial';
+        $data['usuarios']   = Usuario::all();
         return view('tablero.entidad', $data);
     }
 
@@ -118,7 +120,7 @@ class EmpresaController extends Controller
         #$data['carreras']      = Carrera::all();
         $data['empresas']       = Empresa::all();
         $data['page_title']     = 'Empresas Registrados';
-
+        $data['usuarios']       = Usuario::all();
         return view('usuario.empresas', $data);
     }
 
@@ -127,6 +129,7 @@ class EmpresaController extends Controller
         $data['usuario']    = $empresa->usuario;
         $data['cliente']    = $empresa;
         $data['page_title'] = 'Perfil de Empresa';
+        $data['usuarios']   = Usuario::all();
         return view('tablero.perfil_empresa', $data);
     }
 }

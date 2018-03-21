@@ -28,7 +28,7 @@
             <li class="treeview">
                 <ul class="sidebar-menu tree" data-widget="tree">
                     <li class="header">NAVEGACIÓN PRINCIPAL</li>
-                    @switch($usuario->tipo_usuario_id)
+                    @switch(session('usuario')->tipo_usuario_id)
                         @case(1)
                             @include('administrador.treeview_admin')
                             @break

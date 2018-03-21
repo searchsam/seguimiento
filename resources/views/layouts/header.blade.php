@@ -167,7 +167,7 @@
                 </li>
 
                 <!-- Control Sidebar Toggle Button -->
-                @if ($usuario->tipo_usuario_id == 1)
+                @if (session( 'usuario' )->tipo_usuario_id == 1)
                     <li>
                         <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>

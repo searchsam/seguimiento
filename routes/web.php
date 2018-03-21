@@ -64,7 +64,6 @@ Route::prefix( 'admin' )->group( function () {
     Route::get( 'ofertas', 'UsuarioController@ofertas' )->name( 'admin_ofertas' );
     Route::get( 'empresas', 'UsuarioController@empresas' )->name( 'admin_empresas' );
     Route::get( 'estudiantes', 'UsuarioController@estudiantes' )->name( 'admin_estudiantes' );
-    Route::get( 'estudiantes', 'UsuarioController@estudiantes' )->name( 'admin_estudiantes' );
 });
 
 Route::prefix( 'error' )->group( function () {

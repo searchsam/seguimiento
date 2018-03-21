@@ -39,6 +39,7 @@ class UsuarioController extends Controller
         $data['empresas']    = Empresa::all()->count();
         $data['estudiantes'] = Estudiante::all()->count();
         $data['page_title']  = 'Perfil de Usuario';
+        $data['usuarios']    = Usuario::all();
         return view('usuario.perfil_usuario', $data);
     }
 

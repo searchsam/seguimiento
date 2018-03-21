@@ -38,12 +38,19 @@ class OfertaController extends Controller
     {
         $data['usuario']     = session( 'usuario' );
         $usuario             = Usuario::find( Auth::id() )->empresa;
+        $user                = Auth::user();
+        if (session()->has('flash_user'))
+        {
+            $usuario = session( 'flash_usuario' )->empresa;
+            $user    = session( 'flash_user' );
+            $data['usuario'] = session( 'flash_usuario' );
+        }
         $data['cliente']     = Oferta::where(  'empresa_id', $usuario->id_empresa )->get();
         $data['contacto']    = Empresa::find(  $usuario->id_empresa )->contacto;
         $data['tipo_oferta'] = TipoOferta::all();
         $data['page_title']  = 'Ofertas de Empresa';
-
-        event( new MarcarComoLeida( Auth::user(), 'GenerarAplicacion' ) );
+        $data['usuarios']    = Usuario::all();
+        event( new MarcarComoLeida( $user, 'GenerarAplicacion' ) );
         return view('tablero.ofertas_empresa', $data);
     }
 
@@ -51,10 +58,9 @@ class OfertaController extends Controller
     {
         $usuario = session( 'usuario' );
 
-        if (session()->has('flash_user'))
+        if (session()->has('flash_usuario'))
         {
-            $usuario = session('flash_user');
-            $data['usuarios'] = Usuario::all();
+            $usuario = session('flash_usuario');
         }
 
         if ( $usuario->empresa )
@@ -63,6 +69,7 @@ class OfertaController extends Controller
             $data['tipo_oferta'] = TipoOferta::all();
             $data['carreras']    = Carrera::all();
             $data['page_title']  = 'Generar Oferta';
+            $data['usuarios']    = Usuario::all();
             return view( 'tablero.oferta', $data );
         }
         return back()->with( 'flash', 'Por favor regristre la identidad de la empresa.' );
@@ -79,16 +86,16 @@ class OfertaController extends Controller
 
         if (is_null($request->limite))
         {
-            $request->limite = Carbon::tomorrow();
+            $request->limite = now()->addDay();
         }
 
-        dd($request->limite);
-
         $empresa = Usuario::find( Auth::id() )->empresa;
+        $usuario = Auth::user();
 
         if (session()->has('flash_user'))
         {
-            $empresa = session('flash_user')->empresa;
+            $empresa = session('flash_usuario')->empresa;
+            $usuario = session('flash_user');
         }
 
         $oferta = new Oferta;
@@ -100,9 +107,9 @@ class OfertaController extends Controller
         $oferta->empresa_id             = $empresa->id_empresa;
         $oferta->save();
 
-        event( new GenerarLineaTiempo( Auth::user(), 6 ) );
-        event( new MarcarComoLeida( Auth::user(), 'GenerarOferta' ) );
-        event( new NotificacionesOferta( Auth::user() ) );
+        event( new GenerarLineaTiempo( $usuario, 6 ) );
+        event( new MarcarComoLeida( $usuario, 'GenerarOferta' ) );
+        event( new NotificacionesOferta( $usuario ) );
         return redirect()->route( 'ofertas' );
     }
 
@@ -111,6 +118,7 @@ class OfertaController extends Controller
         $data['usuario']     = session( 'usuario' );
         $data['ofertas']     = Oferta::all();
         $data['page_title']  = 'Ofertas de Empresas';
+        $data['usuarios']    = Usuario::all();
         event( new MarcarComoLeida(Auth::user(), 'GenerarAplicacion' ) );
         event( new MarcarComoLeida( Auth::user(), 'RegistrarOferta' ) );
         event( new MarcarComoLeida( Auth::user(), 'AtenderOferta' ) );
@@ -129,9 +137,13 @@ class OfertaController extends Controller
     public function historial_oferta()
     {
         $data['usuario']     = session('usuario');
+        if (session()->has('flash_usuario'))
+        {
+            $data['usuario'] = session('flash_usuario');
+        }
         $data['cliente']     = FALSE;
-        $data['ofertas']     = Oferta::all();
-        $data['page_title']  = 'Historial de Ofertas';
+        $data['ofertas']     = Oferta::where('estado_oferta', '>=', 2)->get();
+        $data['usuarios']    = Usuario::all();
         return view('usuario.historial_ofertas', $data);
     }
 }
